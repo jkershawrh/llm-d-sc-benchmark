@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""Generate unique benchmark contexts with an exact, verified token count.
+
+This is benchmark tooling only. It reads the same tokenizer.json mounted by the
+target and emits JSONL for an external load driver. Every generated context is
+tokenized again before emission; a mismatch is a hard failure.
+"""
+
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+
+from tokenizers import Tokenizer
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--tokenizer", required=True, type=Path)
+    parser.add_argument("--tokens", required=True, type=int)
+    parser.add_argument("--count", default=1, type=int)
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    if args.count < 1:
+        raise SystemExit("--count must be positive")
+
+    identity_bits = max(1, math.ceil(math.log2(args.count)))
+    if args.tokens < identity_bits + 2:
+        capacity = 1 << (args.tokens - 2) if args.tokens >= 2 else 0
+        raise SystemExit(
+            f"{args.tokens} total tokens can encode at most {capacity} unique rows"
+        )
+
+    tokenizer_bytes = args.tokenizer.read_bytes()
+    tokenizer_sha256 = hashlib.sha256(tokenizer_bytes).hexdigest()
+    tokenizer = Tokenizer.from_file(str(args.tokenizer))
+    truncation = json.loads(tokenizer_bytes).get("truncation")
+
+    if truncation and args.tokens > truncation["max_length"]:
+        raise SystemExit(
+            f"--tokens exceeds tokenizer max_length {truncation['max_length']}"
+        )
+
+    # alpha, bravo, and service are each one content token in this tokenizer.
+    # The minimum alpha/bravo positions needed for --count encode row identity
+    # without changing token count.
+    for word in ("alpha", "bravo", "service"):
+        encoding = tokenizer.encode(word)
+        if len(encoding.ids) != 3:
+            raise SystemExit(f"{word!r} is not exactly one content token")
+
+    content_tokens = args.tokens - 2
+    for sequence in range(args.count):
+        identity = [
+            "bravo" if sequence & (1 << bit) else "alpha"
+            for bit in range(identity_bits)
+        ]
+        words = identity + ["service"] * (content_tokens - len(identity))
+        context = " ".join(words)
+        encoding = tokenizer.encode(context)
+        if len(encoding.ids) != args.tokens:
+            raise RuntimeError(
+                f"generated sequence {sequence} has {len(encoding.ids)} tokens, "
+                f"expected {args.tokens}"
+            )
+        print(
+            json.dumps(
+                {
+                    "sequence": sequence,
+                    "context": context,
+                    "utf8_bytes": len(context.encode()),
+                    "token_count_including_specials": len(encoding.ids),
+                    "tokenizer_sha256": tokenizer_sha256,
+                },
+                separators=(",", ":"),
+            )
+        )
+
+
+if __name__ == "__main__":
+    main()

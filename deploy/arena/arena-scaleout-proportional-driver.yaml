@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: proportional-clusterip-r5-v2
+  namespace: llm-d-sc-scaleout
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels: {app.kubernetes.io/name: llm-d-sc-scaleout, app.kubernetes.io/component: proportional-driver}
+    spec:
+      restartPolicy: Never
+      nodeSelector: {kubernetes.io/hostname: rhgnr1}
+      containers:
+        - name: driver
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin@sha256:37377f46ae5f408607fc31a8ccf1aead27b61a8a338d2eeeeda015e914a9e87a
+          command: ["/usr/local/bin/llm-d-sc-connection-probe"]
+          args: ["--target", "classifier-target.llm-d-sc-scaleout.svc:50051", "--topology", "arena-rhgnr1-proportional-clusterip-r5", "--context-bytes", "256", "--concurrency", "125", "--connections", "125", "--requests", "5000000"]
+          resources:
+            requests: {cpu: "2", memory: 512Mi}
+            limits: {cpu: "8", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true

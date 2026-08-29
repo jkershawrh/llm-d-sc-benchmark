@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: promotion-token-corpus
+  namespace: llm-d-sc-gremlins
+  labels:
+    app.kubernetes.io/name: llm-d-sc-gremlin
+    app.kubernetes.io/component: benchmark-corpus
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: nfs-storage
+  resources:
+    requests:
+      storage: 128Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: promotion-corpus-uploader
+  namespace: llm-d-sc-gremlins
+  labels:
+    app.kubernetes.io/name: llm-d-sc-gremlin
+    app.kubernetes.io/component: benchmark-corpus-uploader
+spec:
+  restartPolicy: Never
+  nodeSelector:
+    kubernetes.io/hostname: gnr2.fm2aihpcsed.com
+  containers:
+    - name: uploader
+      image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin@sha256:161be071693def4c6e555b33f78df62ddfdcf4780411781379a106eaa57337b8
+      command: ["/bin/sh", "-c", "sleep 3600"]
+      volumeMounts:
+        - name: corpus
+          mountPath: /corpus
+      resources:
+        requests: {cpu: 10m, memory: 32Mi}
+        limits: {cpu: 100m, memory: 128Mi}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+  volumes:
+    - name: corpus
+      persistentVolumeClaim:
+        claimName: promotion-token-corpus

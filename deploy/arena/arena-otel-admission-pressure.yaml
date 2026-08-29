@@ -1,0 +1,54 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: otel-candidate-admission-pressure-2
+  namespace: llm-d-sc-scaleout
+  labels:
+    app.kubernetes.io/name: llm-d-sc-otel-candidate
+    app.kubernetes.io/component: admission-pressure-driver
+spec:
+  backoffLimit: 0
+  completionMode: Indexed
+  completions: 4
+  parallelism: 4
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: llm-d-sc-otel-candidate
+        app.kubernetes.io/component: admission-pressure-driver
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/hostname: gnr2.fm2aihpcsed.com
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: driver
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin@sha256:161be071693def4c6e555b33f78df62ddfdcf4780411781379a106eaa57337b8
+          command: ["/bin/sh", "-ceu"]
+          args:
+            - |
+              offset=$((JOB_COMPLETION_INDEX * 200))
+              /usr/local/bin/llm-d-sc-corpus-probe \
+                --target classifier-otel-candidate.llm-d-sc-scaleout.svc:50051 \
+                --corpus /corpus/tokens-64.jsonl \
+                --offset "${offset}" \
+                --requests 200 \
+                --concurrency 100 \
+                --target-image sha256:afb2bc2838f41e64d54876830cddb690ccbd699cfd51f36e69f799d25e244574 \
+                --model-sha256 7914abbd152278879b4c3235d188e3006753bb778b7de6266fbcbe4c4ba2ef2f \
+                --node rhgnr1
+          resources:
+            requests: {cpu: "2", memory: 512Mi}
+            limits: {cpu: "8", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - {name: corpus, mountPath: /corpus, readOnly: true}
+      volumes:
+        - name: corpus
+          configMap: {name: token-corpus-64-part-0}

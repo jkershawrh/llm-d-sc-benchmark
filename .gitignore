@@ -1,0 +1,11 @@
+.DS_Store
+*.kubeconfig
+kubeconfig*
+*.env
+*.key
+*.pem
+results/
+artifacts/
+target/
+__pycache__/
+*.pyc

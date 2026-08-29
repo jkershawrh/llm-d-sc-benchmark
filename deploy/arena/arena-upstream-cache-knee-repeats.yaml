@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: upstream-cache-knee-repeats-long
+  namespace: llm-d-sc-gremlins
+  labels: &driverLabels
+    app.kubernetes.io/name: llm-d-sc-gremlin
+    app.kubernetes.io/component: benchmark-driver
+    benchmark.llm-d.ai/target: upstream
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels: *driverLabels
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/hostname: gnr2.fm2aihpcsed.com
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: saturation-driver
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin:latest
+          imagePullPolicy: Always
+          command: ["/bin/sh", "-ceu"]
+          args:
+            - |
+              target=classifier-target.llm-d-sc-gremlins.svc:50051
+              for repetition in 1 2 3; do
+                for concurrency in 8 16 32 64; do
+                  echo "GREMLIN_CELL_BEGIN repetition=${repetition} concurrency=${concurrency}"
+                  /usr/local/bin/llm-d-sc-saturation-probe \
+                    --target "${target}" \
+                    --topology arena-gnr2-upstream-cache-knee-repeat \
+                    --cache-mode hit \
+                    --context-bytes 256 \
+                    --concurrency "${concurrency}" \
+                    --requests 100000
+                  echo "GREMLIN_CELL_END repetition=${repetition} concurrency=${concurrency}"
+                done
+              done
+          resources:
+            requests: {cpu: "2", memory: 512Mi}
+            limits: {cpu: "8", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true

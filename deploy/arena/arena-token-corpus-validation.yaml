@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: upstream-token-corpus-wave-1
+  namespace: llm-d-sc-gremlins
+  labels:
+    app.kubernetes.io/name: llm-d-sc-gremlin
+    app.kubernetes.io/component: benchmark-driver
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: llm-d-sc-gremlin
+        app.kubernetes.io/component: benchmark-driver
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/hostname: gnr2.fm2aihpcsed.com
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: corpus-driver
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin@sha256:161be071693def4c6e555b33f78df62ddfdcf4780411781379a106eaa57337b8
+          command: ["/bin/sh", "-ceu"]
+          args:
+            - |
+              target=classifier-target.llm-d-sc-gremlins.svc:50051
+              target_image=sha256:04323612ce3f73873b4c3ed6e09264e828241537e2c1a4231b43f32e9744d5aa
+              model_sha256=7914abbd152278879b4c3235d188e3006753bb778b7de6266fbcbe4c4ba2ef2f
+              for tokens in 16 64 256; do
+                for concurrency in 1 4; do
+                  if [ "${concurrency}" = 1 ]; then offset=0; else offset=100; fi
+                  /usr/local/bin/llm-d-sc-corpus-probe \
+                    --target "${target}" \
+                    --corpus "/corpus/tokens-${tokens}.jsonl" \
+                    --offset "${offset}" \
+                    --requests 100 \
+                    --concurrency "${concurrency}" \
+                    --target-image "${target_image}" \
+                    --model-sha256 "${model_sha256}" \
+                    --node gnr2.fm2aihpcsed.com
+                done
+              done
+          volumeMounts:
+            - name: corpus
+              mountPath: /corpus
+              readOnly: true
+          resources:
+            requests: {cpu: "2", memory: 512Mi}
+            limits: {cpu: "8", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+      volumes:
+        - name: corpus
+          configMap:
+            name: token-corpus-wave-1

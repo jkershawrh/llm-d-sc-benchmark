@@ -1,0 +1,117 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: classifier-otel-candidate
+  namespace: llm-d-sc-scaleout
+  labels:
+    app.kubernetes.io/name: llm-d-sc-otel-candidate
+spec:
+  selector:
+    app.kubernetes.io/name: llm-d-sc-otel-candidate
+  ports:
+    - {name: grpc, port: 50051, targetPort: grpc}
+    - {name: metrics, port: 9464, targetPort: metrics}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: classifier-otel-candidate
+  namespace: llm-d-sc-scaleout
+  labels:
+    app.kubernetes.io/name: llm-d-sc-otel-candidate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: llm-d-sc-otel-candidate
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: llm-d-sc-otel-candidate
+        app.kubernetes.io/component: classifier-otel-candidate
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: rhgnr1
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: llm-d-sc
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-otel-candidate@sha256:afb2bc2838f41e64d54876830cddb690ccbd699cfd51f36e69f799d25e244574
+          imagePullPolicy: IfNotPresent
+          env:
+            - {name: LLM_D_SC_MODEL_DIR, value: /models}
+            - {name: LLM_D_SC_CLASSIFIER, value: complexity}
+            - {name: LLM_D_SC_LISTEN, value: "0.0.0.0:50051"}
+            - {name: LLM_D_SC_INFERENCE_WORKERS, value: "4"}
+            - {name: LLM_D_SC_METRICS_LOG_SECS, value: "10"}
+            - {name: LLM_D_SC_METRICS_LISTEN, value: "0.0.0.0:9464"}
+            - {name: LLM_D_SC_TRACE_SAMPLE_RATIO, value: "0"}
+            - {name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://llm-d-sc-otel.llm-d-sc-scaleout.svc:4317"}
+            - {name: OTEL_BSP_MAX_QUEUE_SIZE, value: "2048"}
+            - {name: OTEL_BSP_MAX_EXPORT_BATCH_SIZE, value: "256"}
+          ports:
+            - {name: grpc, containerPort: 50051}
+            - {name: metrics, containerPort: 9464}
+          readinessProbe:
+            tcpSocket: {port: grpc}
+            initialDelaySeconds: 3
+            periodSeconds: 2
+            timeoutSeconds: 1
+          livenessProbe:
+            tcpSocket: {port: grpc}
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 1
+          resources:
+            requests: {cpu: "1", memory: 1Gi}
+            limits: {cpu: "4", memory: 4Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - {name: models, mountPath: /models, readOnly: true}
+      volumes:
+        - name: models
+          persistentVolumeClaim: {claimName: classifier-model}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: classifier-otel-candidate
+  namespace: llm-d-sc-scaleout
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: llm-d-sc-otel-candidate
+  endpoints:
+    - port: metrics
+      path: /metrics
+      interval: 5s
+      scrapeTimeout: 4s
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-candidate-metrics-scrape
+  namespace: llm-d-sc-scaleout
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: llm-d-sc-otel-candidate
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: openshift-user-workload-monitoring
+      ports:
+        - {protocol: TCP, port: 9464}
+    - from:
+        - podSelector: {}
+      ports:
+        - {protocol: TCP, port: 50051}
+        - {protocol: TCP, port: 9464}

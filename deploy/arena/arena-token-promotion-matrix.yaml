@@ -1,0 +1,113 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: upstream-token-promotion-matrix-1
+  namespace: llm-d-sc-gremlins
+  labels:
+    app.kubernetes.io/name: llm-d-sc-gremlin
+    app.kubernetes.io/component: benchmark-driver
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: llm-d-sc-gremlin
+        app.kubernetes.io/component: benchmark-driver
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/hostname: gnr2.fm2aihpcsed.com
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: corpus-driver
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin@sha256:161be071693def4c6e555b33f78df62ddfdcf4780411781379a106eaa57337b8
+          command: ["/bin/sh", "-ceu"]
+          args:
+            - |
+              target=classifier-target.llm-d-sc-gremlins.svc:50051
+              target_image=sha256:04323612ce3f73873b4c3ed6e09264e828241537e2c1a4231b43f32e9744d5aa
+              model_sha256=7914abbd152278879b4c3235d188e3006753bb778b7de6266fbcbe4c4ba2ef2f
+              while read -r tokens concurrency repetition; do
+                case "${concurrency}" in
+                  1) within_rep=0;; 4) within_rep=500;;
+                  8) within_rep=1000;; 16) within_rep=1500;;
+                esac
+                offset=$(( (repetition - 1) * 2000 + within_rep ))
+                echo "PROMOTION_CELL tokens=${tokens} concurrency=${concurrency} repetition=${repetition} offset=${offset}"
+                /usr/local/bin/llm-d-sc-corpus-probe \
+                  --target "${target}" \
+                  --corpus "/corpus/tokens-${tokens}.jsonl" \
+                  --offset "${offset}" \
+                  --requests 500 \
+                  --concurrency "${concurrency}" \
+                  --target-image "${target_image}" \
+                  --model-sha256 "${model_sha256}" \
+                  --node gnr2.fm2aihpcsed.com
+              done <<'CELLS'
+              64 16 3
+              128 16 3
+              64 8 2
+              16 1 2
+              256 8 2
+              64 8 1
+              16 8 3
+              256 1 1
+              16 8 1
+              128 4 2
+              64 8 3
+              128 4 3
+              16 16 3
+              64 1 2
+              64 1 1
+              128 8 1
+              256 16 1
+              16 1 1
+              128 16 2
+              16 1 3
+              128 4 1
+              128 1 1
+              256 1 2
+              16 4 3
+              128 16 1
+              64 4 3
+              16 16 2
+              16 16 1
+              256 8 3
+              16 8 2
+              128 8 2
+              256 4 3
+              64 4 1
+              64 16 1
+              256 16 3
+              128 1 2
+              256 1 3
+              256 16 2
+              16 4 1
+              256 8 1
+              128 1 3
+              64 1 3
+              128 8 3
+              256 4 2
+              16 4 2
+              256 4 1
+              64 4 2
+              64 16 2
+              CELLS
+          volumeMounts:
+            - name: corpus
+              mountPath: /corpus
+              readOnly: true
+          resources:
+            requests: {cpu: "2", memory: 512Mi}
+            limits: {cpu: "8", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+      volumes:
+        - name: corpus
+          persistentVolumeClaim:
+            claimName: promotion-token-corpus

@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: otel-candidate-smoke-1
+  namespace: llm-d-sc-scaleout
+  labels:
+    app.kubernetes.io/name: llm-d-sc-otel-candidate
+    app.kubernetes.io/component: benchmark-driver
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: llm-d-sc-otel-candidate
+        app.kubernetes.io/component: benchmark-driver
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/hostname: gnr2.fm2aihpcsed.com
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: driver
+          image: image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-gremlin@sha256:37377f46ae5f408607fc31a8ccf1aead27b61a8a338d2eeeeda015e914a9e87a
+          command: ["/usr/local/bin/llm-d-sc-connection-probe"]
+          args:
+            - --target
+            - classifier-otel-candidate.llm-d-sc-scaleout.svc:50051
+            - --topology
+            - arena-otel-candidate-smoke
+            - --context-bytes
+            - "256"
+            - --concurrency
+            - "2"
+            - --connections
+            - "2"
+            - --requests
+            - "20"
+          resources:
+            requests: {cpu: 500m, memory: 256Mi}
+            limits: {cpu: "2", memory: 1Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
