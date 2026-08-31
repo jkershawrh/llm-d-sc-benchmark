@@ -1,0 +1,447 @@
+{
+  "blocks": [
+    {
+      "all_directions_agree": true,
+      "block": 1,
+      "direction_checks": {
+        "delta_drain_above_zero": true,
+        "delta_success_below_zero": true,
+        "latency_ratio_above_one": true,
+        "marginal_useful_below_one": true
+      },
+      "paired_effects": {
+        "delta_drain": 0.010975609756097562,
+        "delta_success": -0.01097560975609757,
+        "latency_ratio": 66.85676330127127,
+        "marginal_useful_rps": 0.5388888888888843
+      },
+      "rate_41": {
+        "clean": true,
+        "clean_checks": {
+          "drain_at_most_0_01": true,
+          "p99_at_most_35_363_ms": true,
+          "success_at_least_0_99": true,
+          "zero_health_violations": true,
+          "zero_in_flight_limit_drops": true,
+          "zero_restarts_attested": true,
+          "zero_service_errors": true
+        },
+        "observation": {
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 1,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o001",
+          "service_errors": 0,
+          "success_ratio": 0.9998644986449865,
+          "successful_completion_p99_us": 29734.0,
+          "useful_rps": 40.99444444444445
+        }
+      },
+      "rate_42": {
+        "observation": {
+          "drain_ratio": 0.011111111111111112,
+          "drained_after_plateau": 84,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 2,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o002",
+          "service_errors": 0,
+          "success_ratio": 0.9888888888888889,
+          "successful_completion_p99_us": 1987919.0,
+          "useful_rps": 41.53333333333333
+        },
+        "stress_checks": {
+          "paired_p99_ratio_above_1_25": true,
+          "stress_signal": true
+        },
+        "stressed": true
+      }
+    },
+    {
+      "all_directions_agree": true,
+      "block": 2,
+      "direction_checks": {
+        "delta_drain_above_zero": true,
+        "delta_success_below_zero": true,
+        "latency_ratio_above_one": true,
+        "marginal_useful_below_one": true
+      },
+      "paired_effects": {
+        "delta_drain": 0.012430636211124016,
+        "delta_success": -0.012430636211124058,
+        "latency_ratio": 73.9611634495026,
+        "marginal_useful_rps": 0.4777777777777743
+      },
+      "rate_41": {
+        "clean": true,
+        "clean_checks": {
+          "drain_at_most_0_01": true,
+          "p99_at_most_35_363_ms": true,
+          "success_at_least_0_99": true,
+          "zero_health_violations": true,
+          "zero_in_flight_limit_drops": true,
+          "zero_restarts_attested": true,
+          "zero_service_errors": true
+        },
+        "observation": {
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 4,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o004",
+          "service_errors": 0,
+          "success_ratio": 0.9998644986449865,
+          "successful_completion_p99_us": 30358.0,
+          "useful_rps": 40.99444444444445
+        }
+      },
+      "rate_42": {
+        "observation": {
+          "drain_ratio": 0.012566137566137565,
+          "drained_after_plateau": 95,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 3,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o003",
+          "service_errors": 0,
+          "success_ratio": 0.9874338624338624,
+          "successful_completion_p99_us": 2245313.0,
+          "useful_rps": 41.47222222222222
+        },
+        "stress_checks": {
+          "paired_p99_ratio_above_1_25": true,
+          "stress_signal": true
+        },
+        "stressed": true
+      }
+    },
+    {
+      "all_directions_agree": true,
+      "block": 3,
+      "direction_checks": {
+        "delta_drain_above_zero": true,
+        "delta_success_below_zero": true,
+        "latency_ratio_above_one": true,
+        "marginal_useful_below_one": true
+      },
+      "paired_effects": {
+        "delta_drain": 0.018118466898954706,
+        "delta_success": -0.0181184668989548,
+        "latency_ratio": 104.83049590507513,
+        "marginal_useful_rps": 0.23888888888888715
+      },
+      "rate_41": {
+        "clean": true,
+        "clean_checks": {
+          "drain_at_most_0_01": true,
+          "p99_at_most_35_363_ms": true,
+          "success_at_least_0_99": true,
+          "zero_health_violations": true,
+          "zero_in_flight_limit_drops": true,
+          "zero_restarts_attested": true,
+          "zero_service_errors": true
+        },
+        "observation": {
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 5,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o005",
+          "service_errors": 0,
+          "success_ratio": 0.9998644986449865,
+          "successful_completion_p99_us": 31014.0,
+          "useful_rps": 40.99444444444445
+        }
+      },
+      "rate_42": {
+        "observation": {
+          "drain_ratio": 0.018253968253968255,
+          "drained_after_plateau": 138,
+          "health_event_violations": 1,
+          "in_flight_limit_drops": 0,
+          "order": 6,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o006",
+          "service_errors": 0,
+          "success_ratio": 0.9817460317460317,
+          "successful_completion_p99_us": 3251213.0,
+          "useful_rps": 41.233333333333334
+        },
+        "stress_checks": {
+          "paired_p99_ratio_above_1_25": true,
+          "stress_signal": true
+        },
+        "stressed": true
+      }
+    },
+    {
+      "all_directions_agree": true,
+      "block": 4,
+      "direction_checks": {
+        "delta_drain_above_zero": true,
+        "delta_success_below_zero": true,
+        "latency_ratio_above_one": true,
+        "marginal_useful_below_one": true
+      },
+      "paired_effects": {
+        "delta_drain": 0.01137243515292296,
+        "delta_success": -0.011372435152922966,
+        "latency_ratio": 67.16520084011552,
+        "marginal_useful_rps": 0.5222222222222186
+      },
+      "rate_41": {
+        "clean": true,
+        "clean_checks": {
+          "drain_at_most_0_01": true,
+          "p99_at_most_35_363_ms": true,
+          "success_at_least_0_99": true,
+          "zero_health_violations": true,
+          "zero_in_flight_limit_drops": true,
+          "zero_restarts_attested": true,
+          "zero_service_errors": true
+        },
+        "observation": {
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 8,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o008",
+          "service_errors": 0,
+          "success_ratio": 0.9998644986449865,
+          "successful_completion_p99_us": 30472.0,
+          "useful_rps": 40.99444444444445
+        }
+      },
+      "rate_42": {
+        "observation": {
+          "drain_ratio": 0.011507936507936509,
+          "drained_after_plateau": 87,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 7,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o007",
+          "service_errors": 0,
+          "success_ratio": 0.9884920634920635,
+          "successful_completion_p99_us": 2046658.0,
+          "useful_rps": 41.516666666666666
+        },
+        "stress_checks": {
+          "paired_p99_ratio_above_1_25": true,
+          "stress_signal": true
+        },
+        "stressed": true
+      }
+    },
+    {
+      "all_directions_agree": true,
+      "block": 5,
+      "direction_checks": {
+        "delta_drain_above_zero": true,
+        "delta_success_below_zero": true,
+        "latency_ratio_above_one": true,
+        "marginal_useful_below_one": true
+      },
+      "paired_effects": {
+        "delta_drain": 0.014414763195251,
+        "delta_success": -0.014414763195251035,
+        "latency_ratio": 88.54282898984064,
+        "marginal_useful_rps": 0.3944444444444386
+      },
+      "rate_41": {
+        "clean": true,
+        "clean_checks": {
+          "drain_at_most_0_01": true,
+          "p99_at_most_35_363_ms": true,
+          "success_at_least_0_99": true,
+          "zero_health_violations": true,
+          "zero_in_flight_limit_drops": true,
+          "zero_restarts_attested": true,
+          "zero_service_errors": true
+        },
+        "observation": {
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 9,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o009",
+          "service_errors": 0,
+          "success_ratio": 0.9998644986449865,
+          "successful_completion_p99_us": 29431.0,
+          "useful_rps": 40.99444444444445
+        }
+      },
+      "rate_42": {
+        "observation": {
+          "drain_ratio": 0.01455026455026455,
+          "drained_after_plateau": 110,
+          "health_event_violations": 0,
+          "in_flight_limit_drops": 0,
+          "order": 10,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o010",
+          "service_errors": 0,
+          "success_ratio": 0.9854497354497355,
+          "successful_completion_p99_us": 2605904.0,
+          "useful_rps": 41.388888888888886
+        },
+        "stress_checks": {
+          "paired_p99_ratio_above_1_25": true,
+          "stress_signal": true
+        },
+        "stressed": true
+      }
+    }
+  ],
+  "bootstrap": {
+    "checks": {
+      "delta_drain_lower_above_zero": true,
+      "delta_success_upper_below_zero": true,
+      "latency_ratio_lower_above_1_25": true,
+      "marginal_useful_upper_below_one": true
+    },
+    "effects": {
+      "delta_drain": {
+        "lower_95": 0.010975609756097562,
+        "median_effect": 0.012430636211124016,
+        "upper_95": 0.018118466898954706
+      },
+      "delta_success": {
+        "lower_95": -0.0181184668989548,
+        "median_effect": -0.012430636211124058,
+        "upper_95": -0.01097560975609757
+      },
+      "latency_ratio": {
+        "lower_95": 66.85676330127127,
+        "median_effect": 73.9611634495026,
+        "upper_95": 104.83049590507513
+      },
+      "marginal_useful_rps": {
+        "lower_95": 0.23888888888888715,
+        "median_effect": 0.4777777777777743,
+        "upper_95": 0.5388888888888843
+      }
+    },
+    "interval": "95% percentile, R-7 linear empirical quantile",
+    "passed": true,
+    "resamples": 100000,
+    "resampling_unit": "whole paired repetition block",
+    "seed": 20260829,
+    "statistic": "median paired effect"
+  },
+  "conditions": {
+    "all_10_cells_attributed": true,
+    "all_five_paired_directions_agree": true,
+    "paired_bootstrap_intervals_pass": true,
+    "rate_41_clean_in_all_five_blocks": true,
+    "rate_42_stressed_in_all_five_blocks": true,
+    "sample_cv_limits_pass": false
+  },
+  "decision": {
+    "claim": null,
+    "full_study_rerun_required": false,
+    "reasons": [
+      "sample CV limits did not pass: p99_42_at_most_0_20"
+    ],
+    "status": "inconclusive"
+  },
+  "interpretation_limit": "This decision does not establish an absolute throughput ceiling, same-Pod recovery, ClusterIP behavior, or horizontal 20-50 replica scaling.",
+  "preregistration": {
+    "blocks": 5,
+    "clean_p99_limit_ms": 35.363,
+    "clean_p99_reference_ms": 28.29,
+    "lower_clean_rate_rps_per_pod": 41,
+    "run_id": "ol-rt1-knee-confirm-20260829-a",
+    "upper_stress_rate_rps_per_pod": 42
+  },
+  "schema_version": 1,
+  "validation": {
+    "all_external_attribution_and_protocol_gates_passed": true,
+    "checks": {
+      "accounting": true,
+      "adjacent_pairing_by_repetition": true,
+      "cgroup_and_health_attribution": true,
+      "frozen_randomized_order": true,
+      "frozen_runtime_shape": true,
+      "scheduler_attribution": true,
+      "source_runtime_linkage": true,
+      "telemetry_and_zero_restart_attestation": true,
+      "ten_planned_and_attested_cells": true,
+      "topology_and_identity": true
+    },
+    "expected_order": [
+      {
+        "offered_rps": 41,
+        "order": 1,
+        "repetition": 1
+      },
+      {
+        "offered_rps": 42,
+        "order": 2,
+        "repetition": 1
+      },
+      {
+        "offered_rps": 42,
+        "order": 3,
+        "repetition": 2
+      },
+      {
+        "offered_rps": 41,
+        "order": 4,
+        "repetition": 2
+      },
+      {
+        "offered_rps": 41,
+        "order": 5,
+        "repetition": 3
+      },
+      {
+        "offered_rps": 42,
+        "order": 6,
+        "repetition": 3
+      },
+      {
+        "offered_rps": 42,
+        "order": 7,
+        "repetition": 4
+      },
+      {
+        "offered_rps": 41,
+        "order": 8,
+        "repetition": 4
+      },
+      {
+        "offered_rps": 41,
+        "order": 9,
+        "repetition": 5
+      },
+      {
+        "offered_rps": 42,
+        "order": 10,
+        "repetition": 5
+      }
+    ],
+    "pairing_method": "join rates 41 and 42 on repetition; require adjacent order positions",
+    "structure_valid": true
+  },
+  "variability": {
+    "checks": {
+      "p99_41_at_most_0_10": true,
+      "p99_42_at_most_0_20": false,
+      "useful_rps_41_at_most_0_02": true,
+      "useful_rps_42_at_most_0_02": true
+    },
+    "definition": "sample standard deviation (ddof=1) divided by arithmetic mean",
+    "drain_and_error_cv_intentionally_omitted": true,
+    "passed": false,
+    "values": {
+      "p99_41": 0.020744033230351327,
+      "p99_42": 0.21424018654863367,
+      "useful_rps_41": 0.0,
+      "useful_rps_42": 0.0029644585249595703
+    }
+  }
+}

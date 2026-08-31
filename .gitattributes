@@ -1,0 +1,3 @@
+# Preserve archived tabular evidence byte-for-byte and keep whitespace checks
+# focused on source and documentation.
+evidence/**/*.tsv -text -diff

@@ -1,0 +1,502 @@
+[
+  {
+    "pod": "classifier-target-595b8fbf9c-225sh",
+    "pod_uid": "e86d09ed-e963-4f22-a2e1-4daa72299f8a",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "17,161",
+      "end": "17,161"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55962805,
+    "average_cpu_cores": 0.9327134166666666,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-2444p",
+    "pod_uid": "74fda8ac-c721-43b7-b7c2-9c52bc14a5d6",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "23,167",
+      "end": "23,167"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55685473,
+    "average_cpu_cores": 0.9280912166666667,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-2tg8q",
+    "pod_uid": "d7d58576-9188-40a0-a402-360334dc2e63",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "8,152",
+      "end": "8,152"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 56125103,
+    "average_cpu_cores": 0.9354183833333334,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-2wzhl",
+    "pod_uid": "7d106f7b-f1c2-45af-a570-674ad8034a99",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "5,149",
+      "end": "5,149"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 56184725,
+    "average_cpu_cores": 0.9364120833333334,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-4fmt9",
+    "pod_uid": "88652977-2154-4078-a8df-1835be958a87",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "16,160",
+      "end": "16,160"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55808215,
+    "average_cpu_cores": 0.9301369166666666,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-8djx7",
+    "pod_uid": "577ee889-d9ab-46ba-8c86-2fcb7aba13e6",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "13,157",
+      "end": "13,157"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55691826,
+    "average_cpu_cores": 0.9281971,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-b4554",
+    "pod_uid": "85e0e560-1712-47bd-a4e2-fd0b610a9bbc",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "15,159",
+      "end": "15,159"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 56125307,
+    "average_cpu_cores": 0.9354217833333334,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-cdv7l",
+    "pod_uid": "fef44126-1cca-403d-9fbf-42ae1ed56b72",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "19,163",
+      "end": "19,163"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55755656,
+    "average_cpu_cores": 0.9292609333333334,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-czv2r",
+    "pod_uid": "d279127b-6a66-428e-b820-f8d1d8664963",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "10,154",
+      "end": "10,154"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 56299593,
+    "average_cpu_cores": 0.93832655,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-jn5qh",
+    "pod_uid": "0a1f9e0a-d7bc-4ea4-9865-3b9201b8fae0",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "7,151",
+      "end": "7,151"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55921905,
+    "average_cpu_cores": 0.93203175,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-n8xp6",
+    "pod_uid": "941fb848-ec19-488b-899a-c57aa5a65008",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "6,150",
+      "end": "6,150"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55619691,
+    "average_cpu_cores": 0.92699485,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-nq68k",
+    "pod_uid": "a655afe2-3c64-463d-b6e1-1459f9f603dc",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "14,158",
+      "end": "14,158"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55747358,
+    "average_cpu_cores": 0.9291226333333333,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-snsnk",
+    "pod_uid": "37ca3220-62e6-489e-a28d-f2bcc7e997ae",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "12,156",
+      "end": "12,156"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55916439,
+    "average_cpu_cores": 0.93194065,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-t55rt",
+    "pod_uid": "90a107d0-89c1-4c06-9a9e-0bcd8e0b5530",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "22,166",
+      "end": "22,166"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55797699,
+    "average_cpu_cores": 0.92996165,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-v6w8q",
+    "pod_uid": "701fff27-dd2b-49ca-a5be-f66409c2946b",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "18,162",
+      "end": "18,162"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 56486269,
+    "average_cpu_cores": 0.9414378166666667,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-w7ll5",
+    "pod_uid": "556dfcff-fa02-4ec3-a400-46a6043f9943",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "21,165",
+      "end": "21,165"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55845392,
+    "average_cpu_cores": 0.9307565333333333,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-xclk8",
+    "pod_uid": "2499506f-c83a-42b3-ba4f-127f1d5f99b7",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "20,164",
+      "end": "20,164"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 56079561,
+    "average_cpu_cores": 0.93465935,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-xmscf",
+    "pod_uid": "05017fe5-74ab-4369-89e0-68c63e3b86dd",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "9,153",
+      "end": "9,153"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55989014,
+    "average_cpu_cores": 0.9331502333333334,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-xxbg5",
+    "pod_uid": "514dac86-e29e-4e74-9b14-4f88070a72ec",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "11,155",
+      "end": "11,155"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55962298,
+    "average_cpu_cores": 0.9327049666666667,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  },
+  {
+    "pod": "classifier-target-595b8fbf9c-zk2dm",
+    "pod_uid": "69879566-cf50-438d-868e-58ebabb423c8",
+    "start_epoch_s": 1787976333,
+    "end_epoch_s": 1787976393,
+    "elapsed_seconds": 60,
+    "cpuset_cpus_effective": {
+      "start": "144-145",
+      "end": "144-145"
+    },
+    "cpu_max": {
+      "start": "max 100000",
+      "end": "max 100000"
+    },
+    "scaling_cur_freq_khz": {
+      "start": 800000,
+      "end": 800000
+    },
+    "usage_usec_delta": 55651714,
+    "average_cpu_cores": 0.9275285666666667,
+    "nr_periods_delta": 0,
+    "nr_throttled_delta": 0,
+    "throttled_usec_delta": 0,
+    "throttled_period_ratio": null
+  }
+]

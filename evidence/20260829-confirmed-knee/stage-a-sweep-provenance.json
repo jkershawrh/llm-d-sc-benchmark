@@ -1,0 +1,109 @@
+{
+  "schema_version": 2,
+  "run_id": "ol-rt1-knee-confirm-20260829-a",
+  "created_at": "2026-08-29T07:45:53Z",
+  "protocol": "deterministic_offered_rate_v1",
+  "load_scope": "per target; one independent scheduler per direct Pod IP",
+  "namespace": "llm-d-sc-scaleout",
+  "deployment": "classifier-target",
+  "target_selector": "app.kubernetes.io/component=classifier-target,app.kubernetes.io/name=llm-d-sc-scaleout",
+  "target_node": "gnr2.fm2aihpcsed.com",
+  "driver_node": "rhgnr1",
+  "topology": "cross-node-direct-gnr2.fm2aihpcsed.com-from-rhgnr1",
+  "offered_rps_steps": "41 42",
+  "replicas": 1,
+  "repeats": 5,
+  "order": {
+    "mode": "randomized",
+    "seed": "8294102"
+  },
+  "duration_seconds": 180,
+  "start_delay_seconds": 90,
+  "quiescence_seconds": 30,
+  "target_lifecycle": {
+    "fresh_targets_per_cell": true
+  },
+  "concurrency": 1,
+  "connections": 1,
+  "token_count": 64,
+  "max_rows_per_endpoint": 10000,
+  "driver_image": "image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-benchmark-driver@sha256:a747ed5dfda79956cab099ae7aa7d398d9270a43a9f848e46d8d995eb725ca3e",
+  "target_image": "sha256:04323612ce3f73873b4c3ed6e09264e828241537e2c1a4231b43f32e9744d5aa",
+  "model_sha256": "7914abbd152278879b4c3235d188e3006753bb778b7de6266fbcbe4c4ba2ef2f",
+  "tokenizer_sha256": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c",
+  "source_attestation": {
+    "local_probe_source_sha256": "5145c6f840a9bd388b1945cbed3b9990489c42eed4b0b96b808cc626e9ac6d12",
+    "driver_build_source_sha256": "5145c6f840a9bd388b1945cbed3b9990489c42eed4b0b96b808cc626e9ac6d12",
+    "runtime_source_linkage_attested": true,
+    "note": "operator-supplied build source hash matches the local probe source"
+  },
+  "sequence": {
+    "base": 19000000000,
+    "endpoint_span": 10001,
+    "cell_stride": 10001,
+    "reserved_end_exclusive": 19000100010
+  },
+  "scheduler": {
+    "max_in_flight_per_target": 512,
+    "connections_per_target": 1,
+    "dispatch_late_after_ms": 1,
+    "drop_late_after_ms": 100,
+    "rpc_timeout_ms": 30000,
+    "attribution_gate": {
+      "max_dispatch_p99_lag_ms": 5,
+      "max_schedule_drop_ratio": 0
+    }
+  },
+  "telemetry": {
+    "required": true,
+    "otel_daemonset": "llm-d-sc-otel",
+    "query_step_seconds": 5,
+    "completeness_max_gap_seconds": 10,
+    "authoritative": [
+      "pod_cpu_otel",
+      "container_cpu_otel",
+      "memory_working_set",
+      "restarts",
+      "pod_ready",
+      "node_ready",
+      "direct_cgroup"
+    ],
+    "supporting": [
+      "container_cpu_cadvisor",
+      "throttle_ratio",
+      "cpu_pressure_waiting"
+    ]
+  },
+  "topology_preflight": {
+    "required": true,
+    "fail_closed": true,
+    "runner": "/Users/jkershaw/Documents/ChatGPT/llm-d-sc/hack/arena-sc-topology-preflight.py",
+    "selector": "app.kubernetes.io/component=classifier-target,app.kubernetes.io/name=llm-d-sc-scaleout",
+    "expected_pods": 1,
+    "container": "llm-d-sc",
+    "reserved_cpu_overrides": null,
+    "phase": "after target readiness/provenance checks and before start-time calculation, sampling, or driver Job creation",
+    "per_cell_evidence": [
+      "topology-preflight-report.json",
+      "topology-preflight-execution.json",
+      "topology-preflight-stdout.txt",
+      "topology-preflight-stderr.txt"
+    ]
+  },
+  "recovery": {
+    "collected": false,
+    "limitation": "this sweep does not establish same-Pod functional recovery after overload"
+  },
+  "limitations": {
+    "driver_resource_telemetry": false,
+    "per_request_timestamps_or_time_bins": false,
+    "cpu_sibling_topology_attestation": true,
+    "note": "dispatch quality and live CPU-sibling placement are gated; driver resource telemetry and per-request time bins remain gaps"
+  },
+  "interpretation": {
+    "offered_load": "scheduled slots, including explicit pre-initiation drops",
+    "useful_throughput": "OK completions within the plateau",
+    "latency_population": "OK completions within the plateau only",
+    "validity": "accounting, provenance, runtime invariance, scheduler attribution, and required telemetry are distinct from SC saturation signals"
+  }
+}

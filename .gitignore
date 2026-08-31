@@ -4,8 +4,8 @@ kubeconfig*
 *.env
 *.key
 *.pem
-results/
-artifacts/
+/results/
+/artifacts/
 target/
 __pycache__/
 *.pyc

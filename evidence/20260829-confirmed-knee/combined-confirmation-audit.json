@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "audit_scope": "independent recomputation from the 20 raw cell artifacts and frozen Stage B rules",
+  "verdict": "numeric and protocol result reproduced exactly",
+  "scoped_result": {
+    "knee_interval_offered_rps_per_pod": "(41, 42]",
+    "interpretation": "service/SLO completion-window knee, not a hard-error or absolute throughput ceiling",
+    "runtime_scope": "unchanged W1/RT1, 64-token unique-miss, direct Pod IP, one HTTP/2 connection, 180 seconds",
+    "rate_41_clean_blocks": "10/10",
+    "rate_42_stressed_blocks": "10/10",
+    "paired_direction_blocks": "10/10",
+    "median_paired_p99_ratio": 67.01098207069339,
+    "median_marginal_useful_rps": 0.5305555555555515,
+    "p99_41_ms_range": [29.431, 34.512],
+    "p99_42_ms_range": [1917.492, 3251.213]
+  },
+  "pooled_sample_cv_ddof_1": {
+    "useful_rps_41": 0.0,
+    "useful_rps_42": 0.002417110934289753,
+    "p99_41": 0.04662689879148288,
+    "p99_42": 0.19065185150897873,
+    "p99_42_limit": 0.20,
+    "p99_42_headroom": 0.00934814849102128
+  },
+  "hashes": {
+    "stage_a_decision_sha256": "772a2d1038de5a89c74bfa49d18518a798b2ecd9e2f1525a244496423b4fd413",
+    "combined_decision_sha256": "842aba48948f09f9731f0ff46a90b5cc59b42cfc192b42c520f8cf3357c0f120",
+    "stage_a_preregistration_sha256": "04b413097056f36d89957266ab7bde1cc2cc3bf2ce1b76de3de91c22b1187da8",
+    "extension_preregistration_sha256": "914357704e7263fd3868ba74883e65e6b05e55e95cd005054d4ff4121583a511"
+  },
+  "reporting_correction": {
+    "issue": "the bundled Stage A preregistration does not document a five-to-ten-block extension rule; the extension protocol was frozen after Stage A and before Stage B",
+    "do_not_say": "pre-authorized five-block extension",
+    "recommended_language": "Across five original blocks and a five-block extension whose protocol and analysis were frozen before extension load, the combined 10-block rule confirmed the scoped knee.",
+    "external_validation": false,
+    "internal_same_cluster_replication": true
+  },
+  "caveats": [
+    "At 42 RPS all requests eventually returned OK; more than 1% completed after the plateau and conditional successful-within-window p99 rose to seconds.",
+    "One Stage A 42-RPS cell had a liveness timeout 40 seconds before plateau; it caused no restart and no plateau or post-plateau health event.",
+    "All topology reports warned that node housekeeping CPUs split SMT; the measured target cpuset 5,149 was unaffected.",
+    "Driver pod runtime imageID and node were not persisted per cell; pinned configuration, driver self-report, archived build evidence, and target identity are present.",
+    "Model and tokenizer hashes were supplied identities and were not rehashed from the PVC in every cell.",
+    "The result does not cover ClusterIP routing, same-Pod recovery, default W4 behavior, or 20-50 replica scale-out."
+  ]
+}

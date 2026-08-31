@@ -1,0 +1,24 @@
+name: verify
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  framework:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check shell syntax
+        run: |
+          for script in hack/*.sh; do
+            bash -n "$script"
+          done
+      - name: Run cluster-free regression tests
+        run: python3 -m unittest discover -s tests -p 'test_arena_sc_*.py'
+      - name: Verify compact evidence checksums
+        run: sha256sum -c evidence/20260829-confirmed-knee/SHA256SUMS

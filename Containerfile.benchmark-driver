@@ -1,0 +1,40 @@
+# Dedicated external benchmark-driver image.
+#
+# This image is intentionally not a semantic-classifier service image.  The
+# runtime stage contains only the sustained corpus probe from this repository;
+# it has no model, service binary, classifier CLI, or other benchmark probes.
+# Build it into a driver-only ImageStream and always run it by digest.
+
+FROM rust:1-bookworm AS builder
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends protobuf-compiler build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+COPY Cargo.toml Cargo.lock build.rs ./
+COPY proto ./proto
+COPY classifiers ./classifiers
+COPY src ./src
+RUN cargo build --locked --release --bin llm-d-sc-sustained-corpus-probe
+
+# Match the builder's Debian/glibc generation.  The probe uses plaintext gRPC
+# to direct in-cluster Pod IPs, so no model files or service configuration are
+# required in this stage.
+FROM debian:bookworm-slim AS runtime
+
+ARG LLM_D_SC_DRIVER_GIT_HEAD=unattested
+ARG LLM_D_SC_DRIVER_CONTEXT_MANIFEST_SHA256=unattested
+ARG LLM_D_SC_DRIVER_ARCHIVE_SHA256=unattested
+ARG LLM_D_SC_DRIVER_PROBE_SHA256=unattested
+LABEL org.opencontainers.image.title="llm-d-sc sustained corpus benchmark driver" \
+      org.opencontainers.image.description="External deterministic load generator; not an llm-d-sc service image" \
+      org.opencontainers.image.revision="${LLM_D_SC_DRIVER_GIT_HEAD}" \
+      io.llm-d.benchmark.context-manifest-sha256="${LLM_D_SC_DRIVER_CONTEXT_MANIFEST_SHA256}" \
+      io.llm-d.benchmark.archive-sha256="${LLM_D_SC_DRIVER_ARCHIVE_SHA256}" \
+      io.llm-d.benchmark.probe-source-sha256="${LLM_D_SC_DRIVER_PROBE_SHA256}"
+
+COPY --from=builder /src/target/release/llm-d-sc-sustained-corpus-probe \
+     /usr/local/bin/llm-d-sc-sustained-corpus-probe
+
+USER 65534
+ENTRYPOINT ["/usr/local/bin/llm-d-sc-sustained-corpus-probe"]

@@ -1,0 +1,1729 @@
+{
+  "combined": {
+    "block_count": 10,
+    "blocks": [
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 1,
+        "paired_effects": {
+          "delta_drain": 0.010975609756097562,
+          "delta_success": -0.01097560975609757,
+          "latency_ratio": 66.85676330127127,
+          "marginal_useful_rps": 0.5388888888888843
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 1,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o001",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 29734.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.011111111111111112,
+            "drained_after_plateau": 84,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 2,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o002",
+            "service_errors": 0,
+            "success_ratio": 0.9888888888888889,
+            "successful_completion_p99_us": 1987919.0,
+            "useful_rps": 41.53333333333333
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "A",
+        "stage_repetition": 1
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 2,
+        "paired_effects": {
+          "delta_drain": 0.012430636211124016,
+          "delta_success": -0.012430636211124058,
+          "latency_ratio": 73.9611634495026,
+          "marginal_useful_rps": 0.4777777777777743
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 4,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o004",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 30358.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.012566137566137565,
+            "drained_after_plateau": 95,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 3,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o003",
+            "service_errors": 0,
+            "success_ratio": 0.9874338624338624,
+            "successful_completion_p99_us": 2245313.0,
+            "useful_rps": 41.47222222222222
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "A",
+        "stage_repetition": 2
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 3,
+        "paired_effects": {
+          "delta_drain": 0.018118466898954706,
+          "delta_success": -0.0181184668989548,
+          "latency_ratio": 104.83049590507513,
+          "marginal_useful_rps": 0.23888888888888715
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 5,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o005",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 31014.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.018253968253968255,
+            "drained_after_plateau": 138,
+            "health_event_violations": 1,
+            "in_flight_limit_drops": 0,
+            "order": 6,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o006",
+            "service_errors": 0,
+            "success_ratio": 0.9817460317460317,
+            "successful_completion_p99_us": 3251213.0,
+            "useful_rps": 41.233333333333334
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "A",
+        "stage_repetition": 3
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 4,
+        "paired_effects": {
+          "delta_drain": 0.01137243515292296,
+          "delta_success": -0.011372435152922966,
+          "latency_ratio": 67.16520084011552,
+          "marginal_useful_rps": 0.5222222222222186
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 8,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o008",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 30472.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.011507936507936509,
+            "drained_after_plateau": 87,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 7,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o007",
+            "service_errors": 0,
+            "success_ratio": 0.9884920634920635,
+            "successful_completion_p99_us": 2046658.0,
+            "useful_rps": 41.516666666666666
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "A",
+        "stage_repetition": 4
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 5,
+        "paired_effects": {
+          "delta_drain": 0.014414763195251,
+          "delta_success": -0.014414763195251035,
+          "latency_ratio": 88.54282898984064,
+          "marginal_useful_rps": 0.3944444444444386
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 9,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o009",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 29431.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.01455026455026455,
+            "drained_after_plateau": 110,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 10,
+            "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o010",
+            "service_errors": 0,
+            "success_ratio": 0.9854497354497355,
+            "successful_completion_p99_us": 2605904.0,
+            "useful_rps": 41.388888888888886
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "A",
+        "stage_repetition": 5
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 6,
+        "paired_effects": {
+          "delta_drain": 0.010843334623822429,
+          "delta_success": -0.010843334623822476,
+          "latency_ratio": 66.14468099328231,
+          "marginal_useful_rps": 0.5444444444444443
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 2,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o002",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 29921.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.010978835978835979,
+            "drained_after_plateau": 83,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 1,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o001",
+            "service_errors": 0,
+            "success_ratio": 0.989021164021164,
+            "successful_completion_p99_us": 1979115.0,
+            "useful_rps": 41.53888888888889
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "B",
+        "stage_repetition": 1
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 7,
+        "paired_effects": {
+          "delta_drain": 0.010843334623822429,
+          "delta_success": -0.010843334623822476,
+          "latency_ratio": 65.5272769455124,
+          "marginal_useful_rps": 0.5444444444444443
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 3,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o003",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 30172.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.010978835978835979,
+            "drained_after_plateau": 83,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 4,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o004",
+            "service_errors": 0,
+            "success_ratio": 0.989021164021164,
+            "successful_completion_p99_us": 1977089.0,
+            "useful_rps": 41.53888888888889
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "B",
+        "stage_repetition": 2
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 8,
+        "paired_effects": {
+          "delta_drain": 0.010578784359272165,
+          "delta_success": -0.010578784359272175,
+          "latency_ratio": 61.31069544364508,
+          "marginal_useful_rps": 0.55555555555555
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 6,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o006",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 31275.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.010714285714285714,
+            "drained_after_plateau": 81,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 5,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o005",
+            "service_errors": 0,
+            "success_ratio": 0.9892857142857143,
+            "successful_completion_p99_us": 1917492.0,
+            "useful_rps": 41.55
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "B",
+        "stage_repetition": 3
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 9,
+        "paired_effects": {
+          "delta_drain": 0.010578784359272165,
+          "delta_success": -0.010578784359272175,
+          "latency_ratio": 55.98988757533611,
+          "marginal_useful_rps": 0.55555555555555
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 7,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o007",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 34512.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.010714285714285714,
+            "drained_after_plateau": 81,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 8,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o008",
+            "service_errors": 0,
+            "success_ratio": 0.9892857142857143,
+            "successful_completion_p99_us": 1932323.0,
+            "useful_rps": 41.55
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "B",
+        "stage_repetition": 4
+      },
+      {
+        "all_directions_agree": true,
+        "direction_checks": {
+          "delta_drain_above_zero": true,
+          "delta_success_below_zero": true,
+          "latency_ratio_above_one": true,
+          "marginal_useful_below_one": true
+        },
+        "global_block": 10,
+        "paired_effects": {
+          "delta_drain": 0.011769260549748355,
+          "delta_success": -0.011769260549748362,
+          "latency_ratio": 69.32071117467333,
+          "marginal_useful_rps": 0.5055555555555529
+        },
+        "rate_41": {
+          "clean": true,
+          "clean_checks": {
+            "drain_at_most_0_01": true,
+            "p99_at_most_35_363_ms": true,
+            "success_at_least_0_99": true,
+            "zero_health_violations": true,
+            "zero_in_flight_limit_drops": true,
+            "zero_restarts_attested": true,
+            "zero_service_errors": true
+          },
+          "observation": {
+            "drain_ratio": 0.00013550135501355014,
+            "drained_after_plateau": 1,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 10,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o010",
+            "service_errors": 0,
+            "success_ratio": 0.9998644986449865,
+            "successful_completion_p99_us": 30766.0,
+            "useful_rps": 40.99444444444445
+          }
+        },
+        "rate_42": {
+          "observation": {
+            "drain_ratio": 0.011904761904761904,
+            "drained_after_plateau": 90,
+            "health_event_violations": 0,
+            "in_flight_limit_drops": 0,
+            "order": 9,
+            "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o009",
+            "service_errors": 0,
+            "success_ratio": 0.9880952380952381,
+            "successful_completion_p99_us": 2132721.0,
+            "useful_rps": 41.5
+          },
+          "stress_checks": {
+            "paired_p99_ratio_above_1_25": true,
+            "stress_signal": true
+          },
+          "stressed": true
+        },
+        "stage": "B",
+        "stage_repetition": 5
+      }
+    ],
+    "bootstrap": {
+      "checks": {
+        "delta_drain_lower_above_zero": true,
+        "delta_success_upper_below_zero": true,
+        "latency_ratio_lower_above_1_25": true,
+        "marginal_useful_upper_below_one": true
+      },
+      "effects": {
+        "delta_drain": {
+          "lower_95": 0.010711059491547298,
+          "median_effect": 0.011174022454510261,
+          "upper_95": 0.013092011872499677
+        },
+        "delta_success": {
+          "lower_95": -0.013092011872499698,
+          "median_effect": -0.011174022454510268,
+          "upper_95": -0.010711059491547326
+        },
+        "latency_ratio": {
+          "lower_95": 63.7276882184637,
+          "median_effect": 67.01098207069339,
+          "upper_95": 78.93177008225699
+        },
+        "marginal_useful_rps": {
+          "lower_95": 0.44999999999999574,
+          "median_effect": 0.5305555555555515,
+          "upper_95": 0.5499999999999972
+        }
+      },
+      "interval": "95% percentile, R-7 linear empirical quantile",
+      "median_definition": "arithmetic mean of the fifth and sixth ordered values",
+      "passed": true,
+      "resamples": 100000,
+      "resampling_unit": "whole paired block",
+      "seed": 20260829,
+      "statistic": "median paired effect"
+    },
+    "cell_count": 20,
+    "conditions": {
+      "all_cells_attributed": true,
+      "all_paired_directions_agree": true,
+      "paired_bootstrap_intervals_pass": true,
+      "rate_41_clean_in_every_block": true,
+      "rate_42_stressed_in_every_block": true,
+      "sample_cv_limits_pass": true
+    },
+    "decision": {
+      "claim": "Across the original five blocks and the pre-authorized five-block extension, the scoped service/SLO knee is confirmed in (41, 42] offered RPS per Pod for the unchanged W1/RT1, 64-token unique-miss, direct-Pod-IP shape over a 180-second horizon.",
+      "reasons": [
+        "all six preregistered numeric and attribution conditions passed"
+      ],
+      "status": "confirmed"
+    },
+    "pooling_permitted": true,
+    "variability": {
+      "checks": {
+        "p99_41_at_most_0_10": true,
+        "p99_42_at_most_0_20": true,
+        "useful_rps_41_at_most_0_02": true,
+        "useful_rps_42_at_most_0_02": true
+      },
+      "definition": "sample standard deviation (ddof=1) divided by arithmetic mean",
+      "drain_and_error_cv_intentionally_omitted": true,
+      "passed": true,
+      "pooled_block_count": 10,
+      "values": {
+        "p99_41": 0.04662689879148288,
+        "p99_42": 0.19065185150897873,
+        "useful_rps_41": 0.0,
+        "useful_rps_42": 0.002417110934289753
+      }
+    }
+  },
+  "cross_stage_validation": {
+    "checks": {
+      "runtime_signatures_identical": true,
+      "scheduler_thresholds_identical": true,
+      "source_identities_identical": true,
+      "telemetry_requirement_identical": true,
+      "topology_preflight_configuration_identical": true
+    },
+    "passed": true
+  },
+  "decision": {
+    "claim": "Across the original five blocks and the pre-authorized five-block extension, the scoped service/SLO knee is confirmed in (41, 42] offered RPS per Pod for the unchanged W1/RT1, 64-token unique-miss, direct-Pod-IP shape over a 180-second horizon.",
+    "full_stage_b_rerun_required": false,
+    "further_sample_size_extension_permitted": false,
+    "reasons": [
+      "all six preregistered numeric and attribution conditions passed"
+    ],
+    "status": "confirmed"
+  },
+  "interpretation_limit": "This is not an absolute throughput ceiling, universal llm-d-sc limit, ClusterIP or production-routing result, same-Pod recovery result, or 20-50 replica scale-out result.",
+  "pooling_validation": {
+    "checks": {
+      "combined_order_balanced_five_each_direction": true,
+      "cross_stage_settings_identical": true,
+      "stage_a_external_gates": true,
+      "stage_a_original_decision_artifact_matches": true,
+      "stage_a_original_status_remains_inconclusive": true,
+      "stage_b_external_gates": true
+    },
+    "forward_order_blocks": 5,
+    "pooling_permitted": true,
+    "reverse_order_blocks": 5
+  },
+  "preregistration": {
+    "no_third_sample_size_extension": true,
+    "stage_a_decision_sha256": "772a2d1038de5a89c74bfa49d18518a798b2ecd9e2f1525a244496423b4fd413",
+    "stage_a_randomization_seed": 8294102,
+    "stage_a_run_id": "ol-rt1-knee-confirm-20260829-a",
+    "stage_b_randomization_seed": 8294103,
+    "stage_b_repetitions_to_global_blocks": {
+      "1": 6,
+      "2": 7,
+      "3": 8,
+      "4": 9,
+      "5": 10
+    },
+    "stage_b_run_id": "ol-rt1-knee-confirm-ext-20260829-b"
+  },
+  "schema_version": 1,
+  "stage_a": {
+    "expected_original_decision_sha256": "772a2d1038de5a89c74bfa49d18518a798b2ecd9e2f1525a244496423b4fd413",
+    "original_analysis_preserved_unchanged": {
+      "blocks": [
+        {
+          "all_directions_agree": true,
+          "block": 1,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "paired_effects": {
+            "delta_drain": 0.010975609756097562,
+            "delta_success": -0.01097560975609757,
+            "latency_ratio": 66.85676330127127,
+            "marginal_useful_rps": 0.5388888888888843
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 1,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o001",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 29734.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.011111111111111112,
+              "drained_after_plateau": 84,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 2,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o002",
+              "service_errors": 0,
+              "success_ratio": 0.9888888888888889,
+              "successful_completion_p99_us": 1987919.0,
+              "useful_rps": 41.53333333333333
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          }
+        },
+        {
+          "all_directions_agree": true,
+          "block": 2,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "paired_effects": {
+            "delta_drain": 0.012430636211124016,
+            "delta_success": -0.012430636211124058,
+            "latency_ratio": 73.9611634495026,
+            "marginal_useful_rps": 0.4777777777777743
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 4,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o004",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 30358.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.012566137566137565,
+              "drained_after_plateau": 95,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 3,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o003",
+              "service_errors": 0,
+              "success_ratio": 0.9874338624338624,
+              "successful_completion_p99_us": 2245313.0,
+              "useful_rps": 41.47222222222222
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          }
+        },
+        {
+          "all_directions_agree": true,
+          "block": 3,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "paired_effects": {
+            "delta_drain": 0.018118466898954706,
+            "delta_success": -0.0181184668989548,
+            "latency_ratio": 104.83049590507513,
+            "marginal_useful_rps": 0.23888888888888715
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 5,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o005",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 31014.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.018253968253968255,
+              "drained_after_plateau": 138,
+              "health_event_violations": 1,
+              "in_flight_limit_drops": 0,
+              "order": 6,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o006",
+              "service_errors": 0,
+              "success_ratio": 0.9817460317460317,
+              "successful_completion_p99_us": 3251213.0,
+              "useful_rps": 41.233333333333334
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          }
+        },
+        {
+          "all_directions_agree": true,
+          "block": 4,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "paired_effects": {
+            "delta_drain": 0.01137243515292296,
+            "delta_success": -0.011372435152922966,
+            "latency_ratio": 67.16520084011552,
+            "marginal_useful_rps": 0.5222222222222186
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 8,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o008",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 30472.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.011507936507936509,
+              "drained_after_plateau": 87,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 7,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o007",
+              "service_errors": 0,
+              "success_ratio": 0.9884920634920635,
+              "successful_completion_p99_us": 2046658.0,
+              "useful_rps": 41.516666666666666
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          }
+        },
+        {
+          "all_directions_agree": true,
+          "block": 5,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "paired_effects": {
+            "delta_drain": 0.014414763195251,
+            "delta_success": -0.014414763195251035,
+            "latency_ratio": 88.54282898984064,
+            "marginal_useful_rps": 0.3944444444444386
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 9,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o009",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 29431.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.01455026455026455,
+              "drained_after_plateau": 110,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 10,
+              "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o010",
+              "service_errors": 0,
+              "success_ratio": 0.9854497354497355,
+              "successful_completion_p99_us": 2605904.0,
+              "useful_rps": 41.388888888888886
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          }
+        }
+      ],
+      "bootstrap": {
+        "checks": {
+          "delta_drain_lower_above_zero": true,
+          "delta_success_upper_below_zero": true,
+          "latency_ratio_lower_above_1_25": true,
+          "marginal_useful_upper_below_one": true
+        },
+        "effects": {
+          "delta_drain": {
+            "lower_95": 0.010975609756097562,
+            "median_effect": 0.012430636211124016,
+            "upper_95": 0.018118466898954706
+          },
+          "delta_success": {
+            "lower_95": -0.0181184668989548,
+            "median_effect": -0.012430636211124058,
+            "upper_95": -0.01097560975609757
+          },
+          "latency_ratio": {
+            "lower_95": 66.85676330127127,
+            "median_effect": 73.9611634495026,
+            "upper_95": 104.83049590507513
+          },
+          "marginal_useful_rps": {
+            "lower_95": 0.23888888888888715,
+            "median_effect": 0.4777777777777743,
+            "upper_95": 0.5388888888888843
+          }
+        },
+        "interval": "95% percentile, R-7 linear empirical quantile",
+        "passed": true,
+        "resamples": 100000,
+        "resampling_unit": "whole paired repetition block",
+        "seed": 20260829,
+        "statistic": "median paired effect"
+      },
+      "conditions": {
+        "all_10_cells_attributed": true,
+        "all_five_paired_directions_agree": true,
+        "paired_bootstrap_intervals_pass": true,
+        "rate_41_clean_in_all_five_blocks": true,
+        "rate_42_stressed_in_all_five_blocks": true,
+        "sample_cv_limits_pass": false
+      },
+      "decision": {
+        "claim": null,
+        "full_study_rerun_required": false,
+        "reasons": [
+          "sample CV limits did not pass: p99_42_at_most_0_20"
+        ],
+        "status": "inconclusive"
+      },
+      "interpretation_limit": "This decision does not establish an absolute throughput ceiling, same-Pod recovery, ClusterIP behavior, or horizontal 20-50 replica scaling.",
+      "preregistration": {
+        "blocks": 5,
+        "clean_p99_limit_ms": 35.363,
+        "clean_p99_reference_ms": 28.29,
+        "lower_clean_rate_rps_per_pod": 41,
+        "run_id": "ol-rt1-knee-confirm-20260829-a",
+        "upper_stress_rate_rps_per_pod": 42
+      },
+      "schema_version": 1,
+      "validation": {
+        "all_external_attribution_and_protocol_gates_passed": true,
+        "checks": {
+          "accounting": true,
+          "adjacent_pairing_by_repetition": true,
+          "cgroup_and_health_attribution": true,
+          "frozen_randomized_order": true,
+          "frozen_runtime_shape": true,
+          "scheduler_attribution": true,
+          "source_runtime_linkage": true,
+          "telemetry_and_zero_restart_attestation": true,
+          "ten_planned_and_attested_cells": true,
+          "topology_and_identity": true
+        },
+        "expected_order": [
+          {
+            "offered_rps": 41,
+            "order": 1,
+            "repetition": 1
+          },
+          {
+            "offered_rps": 42,
+            "order": 2,
+            "repetition": 1
+          },
+          {
+            "offered_rps": 42,
+            "order": 3,
+            "repetition": 2
+          },
+          {
+            "offered_rps": 41,
+            "order": 4,
+            "repetition": 2
+          },
+          {
+            "offered_rps": 41,
+            "order": 5,
+            "repetition": 3
+          },
+          {
+            "offered_rps": 42,
+            "order": 6,
+            "repetition": 3
+          },
+          {
+            "offered_rps": 42,
+            "order": 7,
+            "repetition": 4
+          },
+          {
+            "offered_rps": 41,
+            "order": 8,
+            "repetition": 4
+          },
+          {
+            "offered_rps": 41,
+            "order": 9,
+            "repetition": 5
+          },
+          {
+            "offered_rps": 42,
+            "order": 10,
+            "repetition": 5
+          }
+        ],
+        "pairing_method": "join rates 41 and 42 on repetition; require adjacent order positions",
+        "structure_valid": true
+      },
+      "variability": {
+        "checks": {
+          "p99_41_at_most_0_10": true,
+          "p99_42_at_most_0_20": false,
+          "useful_rps_41_at_most_0_02": true,
+          "useful_rps_42_at_most_0_02": true
+        },
+        "definition": "sample standard deviation (ddof=1) divided by arithmetic mean",
+        "drain_and_error_cv_intentionally_omitted": true,
+        "passed": false,
+        "values": {
+          "p99_41": 0.020744033230351327,
+          "p99_42": 0.21424018654863367,
+          "useful_rps_41": 0.0,
+          "useful_rps_42": 0.0029644585249595703
+        }
+      }
+    },
+    "original_decision_artifact_matches": true,
+    "recomputed_original_decision_sha256": "772a2d1038de5a89c74bfa49d18518a798b2ecd9e2f1525a244496423b4fd413",
+    "validation": {
+      "all_external_attribution_and_protocol_gates_passed": true,
+      "checks": {
+        "accounting": true,
+        "adjacent_pairing_by_repetition": true,
+        "cgroup_and_health_attribution": true,
+        "frozen_randomized_order": true,
+        "frozen_runtime_shape": true,
+        "scheduler_attribution": true,
+        "source_runtime_linkage": true,
+        "telemetry_and_zero_restart_attestation": true,
+        "ten_planned_and_attested_cells": true,
+        "topology_and_identity": true
+      },
+      "expected_order": [
+        {
+          "offered_rps": 41,
+          "order": 1,
+          "repetition": 1
+        },
+        {
+          "offered_rps": 42,
+          "order": 2,
+          "repetition": 1
+        },
+        {
+          "offered_rps": 42,
+          "order": 3,
+          "repetition": 2
+        },
+        {
+          "offered_rps": 41,
+          "order": 4,
+          "repetition": 2
+        },
+        {
+          "offered_rps": 41,
+          "order": 5,
+          "repetition": 3
+        },
+        {
+          "offered_rps": 42,
+          "order": 6,
+          "repetition": 3
+        },
+        {
+          "offered_rps": 42,
+          "order": 7,
+          "repetition": 4
+        },
+        {
+          "offered_rps": 41,
+          "order": 8,
+          "repetition": 4
+        },
+        {
+          "offered_rps": 41,
+          "order": 9,
+          "repetition": 5
+        },
+        {
+          "offered_rps": 42,
+          "order": 10,
+          "repetition": 5
+        }
+      ],
+      "expected_randomization_seed": 8294102,
+      "pairing_method": "join rates 41 and 42 on repetition; require adjacent order positions",
+      "seed_evidence_scope": "schema-v2 summary omits the seed value; its exact frozen generated order is validated",
+      "structure_valid": true
+    }
+  },
+  "stage_b": {
+    "standalone_sensitivity_analysis": {
+      "block_count": 5,
+      "blocks": [
+        {
+          "all_directions_agree": true,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "global_block": 6,
+          "paired_effects": {
+            "delta_drain": 0.010843334623822429,
+            "delta_success": -0.010843334623822476,
+            "latency_ratio": 66.14468099328231,
+            "marginal_useful_rps": 0.5444444444444443
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 2,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o002",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 29921.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.010978835978835979,
+              "drained_after_plateau": 83,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 1,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o001",
+              "service_errors": 0,
+              "success_ratio": 0.989021164021164,
+              "successful_completion_p99_us": 1979115.0,
+              "useful_rps": 41.53888888888889
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          },
+          "stage": "B",
+          "stage_repetition": 1
+        },
+        {
+          "all_directions_agree": true,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "global_block": 7,
+          "paired_effects": {
+            "delta_drain": 0.010843334623822429,
+            "delta_success": -0.010843334623822476,
+            "latency_ratio": 65.5272769455124,
+            "marginal_useful_rps": 0.5444444444444443
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 3,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o003",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 30172.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.010978835978835979,
+              "drained_after_plateau": 83,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 4,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o004",
+              "service_errors": 0,
+              "success_ratio": 0.989021164021164,
+              "successful_completion_p99_us": 1977089.0,
+              "useful_rps": 41.53888888888889
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          },
+          "stage": "B",
+          "stage_repetition": 2
+        },
+        {
+          "all_directions_agree": true,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "global_block": 8,
+          "paired_effects": {
+            "delta_drain": 0.010578784359272165,
+            "delta_success": -0.010578784359272175,
+            "latency_ratio": 61.31069544364508,
+            "marginal_useful_rps": 0.55555555555555
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 6,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o006",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 31275.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.010714285714285714,
+              "drained_after_plateau": 81,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 5,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o005",
+              "service_errors": 0,
+              "success_ratio": 0.9892857142857143,
+              "successful_completion_p99_us": 1917492.0,
+              "useful_rps": 41.55
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          },
+          "stage": "B",
+          "stage_repetition": 3
+        },
+        {
+          "all_directions_agree": true,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "global_block": 9,
+          "paired_effects": {
+            "delta_drain": 0.010578784359272165,
+            "delta_success": -0.010578784359272175,
+            "latency_ratio": 55.98988757533611,
+            "marginal_useful_rps": 0.55555555555555
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 7,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o007",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 34512.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.010714285714285714,
+              "drained_after_plateau": 81,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 8,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o008",
+              "service_errors": 0,
+              "success_ratio": 0.9892857142857143,
+              "successful_completion_p99_us": 1932323.0,
+              "useful_rps": 41.55
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          },
+          "stage": "B",
+          "stage_repetition": 4
+        },
+        {
+          "all_directions_agree": true,
+          "direction_checks": {
+            "delta_drain_above_zero": true,
+            "delta_success_below_zero": true,
+            "latency_ratio_above_one": true,
+            "marginal_useful_below_one": true
+          },
+          "global_block": 10,
+          "paired_effects": {
+            "delta_drain": 0.011769260549748355,
+            "delta_success": -0.011769260549748362,
+            "latency_ratio": 69.32071117467333,
+            "marginal_useful_rps": 0.5055555555555529
+          },
+          "rate_41": {
+            "clean": true,
+            "clean_checks": {
+              "drain_at_most_0_01": true,
+              "p99_at_most_35_363_ms": true,
+              "success_at_least_0_99": true,
+              "zero_health_violations": true,
+              "zero_in_flight_limit_drops": true,
+              "zero_restarts_attested": true,
+              "zero_service_errors": true
+            },
+            "observation": {
+              "drain_ratio": 0.00013550135501355014,
+              "drained_after_plateau": 1,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 10,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o010",
+              "service_errors": 0,
+              "success_ratio": 0.9998644986449865,
+              "successful_completion_p99_us": 30766.0,
+              "useful_rps": 40.99444444444445
+            }
+          },
+          "rate_42": {
+            "observation": {
+              "drain_ratio": 0.011904761904761904,
+              "drained_after_plateau": 90,
+              "health_event_violations": 0,
+              "in_flight_limit_drops": 0,
+              "order": 9,
+              "run_id": "ol-ol-rt1-knee-confirm-ext-20260829-b-o009",
+              "service_errors": 0,
+              "success_ratio": 0.9880952380952381,
+              "successful_completion_p99_us": 2132721.0,
+              "useful_rps": 41.5
+            },
+            "stress_checks": {
+              "paired_p99_ratio_above_1_25": true,
+              "stress_signal": true
+            },
+            "stressed": true
+          },
+          "stage": "B",
+          "stage_repetition": 5
+        }
+      ],
+      "bootstrap": {
+        "checks": {
+          "delta_drain_lower_above_zero": true,
+          "delta_success_upper_below_zero": true,
+          "latency_ratio_lower_above_1_25": true,
+          "marginal_useful_upper_below_one": true
+        },
+        "effects": {
+          "delta_drain": {
+            "lower_95": 0.010578784359272165,
+            "median_effect": 0.010843334623822429,
+            "upper_95": 0.011769260549748355
+          },
+          "delta_success": {
+            "lower_95": -0.011769260549748362,
+            "median_effect": -0.010843334623822476,
+            "upper_95": -0.010578784359272175
+          },
+          "latency_ratio": {
+            "lower_95": 55.98988757533611,
+            "median_effect": 65.5272769455124,
+            "upper_95": 69.32071117467333
+          },
+          "marginal_useful_rps": {
+            "lower_95": 0.5055555555555529,
+            "median_effect": 0.5444444444444443,
+            "upper_95": 0.55555555555555
+          }
+        },
+        "interval": "95% percentile, R-7 linear empirical quantile",
+        "median_definition": "middle ordered value",
+        "passed": true,
+        "resamples": 100000,
+        "resampling_unit": "whole paired block",
+        "seed": 20260829,
+        "statistic": "median paired effect"
+      },
+      "cell_count": 10,
+      "conditions": {
+        "all_cells_attributed": true,
+        "all_paired_directions_agree": true,
+        "paired_bootstrap_intervals_pass": true,
+        "rate_41_clean_in_every_block": true,
+        "rate_42_stressed_in_every_block": true,
+        "sample_cv_limits_pass": true
+      },
+      "decision": {
+        "claim": "Stage B alone satisfies the original five-block rule as an internal replication/sensitivity result; it is not independent external validation.",
+        "reasons": [
+          "all six preregistered numeric and attribution conditions passed"
+        ],
+        "status": "confirmed"
+      },
+      "variability": {
+        "checks": {
+          "p99_41_at_most_0_10": true,
+          "p99_42_at_most_0_20": true,
+          "useful_rps_41_at_most_0_02": true,
+          "useful_rps_42_at_most_0_02": true
+        },
+        "definition": "sample standard deviation (ddof=1) divided by arithmetic mean",
+        "drain_and_error_cv_intentionally_omitted": true,
+        "passed": true,
+        "pooled_block_count": 5,
+        "values": {
+          "p99_41": 0.059227974611051754,
+          "p99_42": 0.0429930120525657,
+          "useful_rps_41": 0.0,
+          "useful_rps_42": 0.0004968748494196672
+        }
+      }
+    },
+    "validation": {
+      "all_external_attribution_and_protocol_gates_passed": true,
+      "checks": {
+        "accounting": true,
+        "adjacent_pairing_by_repetition": true,
+        "cgroup_and_health_attribution": true,
+        "frozen_randomized_order": true,
+        "frozen_runtime_shape": true,
+        "scheduler_attribution": true,
+        "source_runtime_linkage": true,
+        "stage_b_adjacent_pairing_by_repetition": true,
+        "stage_b_cell_run_ids_match_order": true,
+        "stage_b_complementary_seed_generated_order": true,
+        "stage_b_frozen_run_id": true,
+        "telemetry_and_zero_restart_attestation": true,
+        "ten_planned_and_attested_cells": true,
+        "topology_and_identity": true
+      },
+      "expected_order": [
+        {
+          "global_block": 6,
+          "offered_rps": 42,
+          "order": 1,
+          "stage_repetition": 1
+        },
+        {
+          "global_block": 6,
+          "offered_rps": 41,
+          "order": 2,
+          "stage_repetition": 1
+        },
+        {
+          "global_block": 7,
+          "offered_rps": 41,
+          "order": 3,
+          "stage_repetition": 2
+        },
+        {
+          "global_block": 7,
+          "offered_rps": 42,
+          "order": 4,
+          "stage_repetition": 2
+        },
+        {
+          "global_block": 8,
+          "offered_rps": 42,
+          "order": 5,
+          "stage_repetition": 3
+        },
+        {
+          "global_block": 8,
+          "offered_rps": 41,
+          "order": 6,
+          "stage_repetition": 3
+        },
+        {
+          "global_block": 9,
+          "offered_rps": 41,
+          "order": 7,
+          "stage_repetition": 4
+        },
+        {
+          "global_block": 9,
+          "offered_rps": 42,
+          "order": 8,
+          "stage_repetition": 4
+        },
+        {
+          "global_block": 10,
+          "offered_rps": 42,
+          "order": 9,
+          "stage_repetition": 5
+        },
+        {
+          "global_block": 10,
+          "offered_rps": 41,
+          "order": 10,
+          "stage_repetition": 5
+        }
+      ],
+      "expected_randomization_seed": 8294103,
+      "pairing_method": "map Stage B repetitions 1-5 to global blocks 6-10",
+      "seed_evidence_scope": "schema-v2 summary omits the seed value; its exact frozen generated order is validated",
+      "structure_valid": true
+    }
+  }
+}

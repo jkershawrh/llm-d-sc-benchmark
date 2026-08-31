@@ -1,0 +1,722 @@
+{
+  "all_accounting_valid": true,
+  "all_required_telemetry_valid": true,
+  "all_required_topology_preflights_valid": true,
+  "all_scheduler_attribution_valid": true,
+  "attested_cells": 10,
+  "knee": {
+    "confidence": "exploratory",
+    "confirmation_limit": "a promotion claim still requires paired-direction consistency, confidence intervals, and same-Pod recovery evidence",
+    "interpretation": "the knee lies within this offered-rate interval; do not report the upper point as sustainable capacity",
+    "lower_clean_rate_per_target": "41",
+    "marginal_efficiency": 0.4777777777777743,
+    "status": "bracketed",
+    "triggers": [
+      "median offered-success ratio below 99%",
+      "more than 1% of offered work drained after plateau",
+      "target health event observed",
+      "marginal useful-throughput gain below 50% of added offer",
+      "median p99 at least 25% above low-rate baseline"
+    ],
+    "upper_stress_rate_per_target": "42"
+  },
+  "knee_inference_policy": {
+    "capacity_signal_timing": "throughput loss, in-flight drops, drains, errors, missing success latency, and health events bracket immediately",
+    "latency_only_confirmation": "the elevation must persist at the next higher offered-rate point; an isolated p99 elevation does not bracket a knee",
+    "latency_p99_ratio_to_low_rate_baseline": 1.25,
+    "maximum_clean_drain_ratio": 0.01,
+    "minimum_marginal_useful_throughput_efficiency": 0.5,
+    "minimum_offered_success_ratio": 0.99
+  },
+  "limitations": {
+    "cpu_sibling_topology_attestation": true,
+    "driver_resource_telemetry": false,
+    "note": "dispatch quality and live CPU-sibling placement are gated; driver resource telemetry and per-request time bins remain gaps",
+    "per_request_timestamps_or_time_bins": false
+  },
+  "planned_cells": 10,
+  "protocol": "deterministic_offered_rate_v1",
+  "rates": [
+    {
+      "all_scheduler_valid": true,
+      "cells": [
+        {
+          "aggregate_offered_rps": 41,
+          "aggregate_useful_rps": 40.99444444444445,
+          "average_target_cpu_cores": 0.9737499333333334,
+          "dispatch_lag_us": {
+            "max": 6649,
+            "min": 87,
+            "p50": 1058,
+            "p95": 1878,
+            "p99": 2286,
+            "samples": 7380
+          },
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 50034,
+            "min": 23482,
+            "p50": 24620,
+            "p95": 26661,
+            "p99": 29734,
+            "samples": 7379
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "41",
+          "offered_success_ratio": 0.9998644986449865,
+          "order": 1,
+          "repetition": 1,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o001",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "03546e0922b81e1160847212460f57820d67a5cb6e6726bcfc371bcde70d3d86",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "05e937a586a0b6e35b12ca5f693821c0044dd5bd5ca4dab49d6dba868ac74c81",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 41,
+          "aggregate_useful_rps": 40.99444444444445,
+          "average_target_cpu_cores": 0.9734125555555555,
+          "dispatch_lag_us": {
+            "max": 6998,
+            "min": 35,
+            "p50": 1045,
+            "p95": 1878,
+            "p99": 2776,
+            "samples": 7380
+          },
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 49711,
+            "min": 23259,
+            "p50": 24600,
+            "p95": 27097,
+            "p99": 30358,
+            "samples": 7379
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "41",
+          "offered_success_ratio": 0.9998644986449865,
+          "order": 4,
+          "repetition": 2,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o004",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "69f5ed264202f268cccf6305bc8b3c54a847153997e309cb4298eee557ef1715",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "50d0f6f1321eb14781f1a4d17a1e5cef5ec573a1bb34bb084ba72a4205d6f4fc",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 41,
+          "aggregate_useful_rps": 40.99444444444445,
+          "average_target_cpu_cores": 0.97604915,
+          "dispatch_lag_us": {
+            "max": 7334,
+            "min": 99,
+            "p50": 1060,
+            "p95": 1875,
+            "p99": 2590,
+            "samples": 7380
+          },
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 51054,
+            "min": 23308,
+            "p50": 24626,
+            "p95": 27096,
+            "p99": 31014,
+            "samples": 7379
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "41",
+          "offered_success_ratio": 0.9998644986449865,
+          "order": 5,
+          "repetition": 3,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o005",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "1f5492a784a627515a41f6f046e265377780934bf183b90a1ec1fbca29d269b4",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "003586b25ed86075c76209274b0b1d62350be1ce972edcbb73a7f5e4ad8f1e9e",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 41,
+          "aggregate_useful_rps": 40.99444444444445,
+          "average_target_cpu_cores": 0.9745538277777778,
+          "dispatch_lag_us": {
+            "max": 5509,
+            "min": 94,
+            "p50": 1043,
+            "p95": 1883,
+            "p99": 2745,
+            "samples": 7380
+          },
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 49980,
+            "min": 23438,
+            "p50": 24624,
+            "p95": 26942,
+            "p99": 30472,
+            "samples": 7379
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "41",
+          "offered_success_ratio": 0.9998644986449865,
+          "order": 8,
+          "repetition": 4,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o008",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "6aa64f62d62115cfc7dd9076bed015995daae858b82776cd88317a30f25da2e5",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "e146fb704c23e76f82721d6d74cbec042095028d1194c33c84bc80f78f3bb734",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 41,
+          "aggregate_useful_rps": 40.99444444444445,
+          "average_target_cpu_cores": 0.9736507833333333,
+          "dispatch_lag_us": {
+            "max": 5575,
+            "min": 75,
+            "p50": 1055,
+            "p95": 1835,
+            "p99": 2495,
+            "samples": 7380
+          },
+          "drain_ratio": 0.00013550135501355014,
+          "drained_after_plateau": 1,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 49037,
+            "min": 23348,
+            "p50": 24474,
+            "p95": 26216,
+            "p99": 29431,
+            "samples": 7379
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "41",
+          "offered_success_ratio": 0.9998644986449865,
+          "order": 9,
+          "repetition": 5,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o009",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "51d8f3d97c72ea3c1a4a5b914a9cf718cfb48fa52a749c6262a42618d65510c8",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "91e3e7fe2ed60d0aeeaa732124ae02247c8d885038879c1ce1c6728c39801de0",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        }
+      ],
+      "latency_p99_cv": 0.018554027372232048,
+      "max_endpoint_useful_rps_cv": null,
+      "max_schedule_drop_ratio": 0.0,
+      "median_aggregate_useful_rps": 40.99444444444445,
+      "median_average_target_cpu_cores": 0.9737499333333334,
+      "median_drain_ratio": 0.00013550135501355014,
+      "median_in_flight_drop_ratio": 0.0,
+      "median_latency_p50_us": 24620,
+      "median_latency_p99_us": 30358,
+      "median_offered_success_ratio": 0.9998644986449865,
+      "observed_target_cpusets": [
+        "5,149"
+      ],
+      "offered_rps_per_target": "41",
+      "offered_rps_per_target_numeric": 41.0,
+      "repetitions": 5,
+      "scheduler_valid_repetitions": 5,
+      "total_errors_within_plateau": 0,
+      "total_health_event_violations": 0,
+      "useful_rps_cv": 0.0
+    },
+    {
+      "all_scheduler_valid": true,
+      "cells": [
+        {
+          "aggregate_offered_rps": 42,
+          "aggregate_useful_rps": 41.53333333333333,
+          "average_target_cpu_cores": 0.9930007,
+          "dispatch_lag_us": {
+            "max": 5331,
+            "min": 35,
+            "p50": 1097,
+            "p95": 1831,
+            "p99": 2691,
+            "samples": 7560
+          },
+          "drain_ratio": 0.011111111111111112,
+          "drained_after_plateau": 84,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 2015570,
+            "min": 28828,
+            "p50": 1040064,
+            "p95": 1903720,
+            "p99": 1987919,
+            "samples": 7476
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "42",
+          "offered_success_ratio": 0.9888888888888889,
+          "order": 2,
+          "repetition": 1,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o002",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "f8d9b8ed2d6dd3b6ac3d5730b669efb85c577484bb90b2e096d5228504ec3805",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "1a636cdff2803ea8211d4a26fc71aceab8ad9f8451cd8130c482dad35b6d7813",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 42,
+          "aggregate_useful_rps": 41.47222222222222,
+          "average_target_cpu_cores": 0.9980498444444444,
+          "dispatch_lag_us": {
+            "max": 6727,
+            "min": 98,
+            "p50": 1090,
+            "p95": 1866,
+            "p99": 3136,
+            "samples": 7560
+          },
+          "drain_ratio": 0.012566137566137565,
+          "drained_after_plateau": 95,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 2261996,
+            "min": 31958,
+            "p50": 1155941,
+            "p95": 2149917,
+            "p99": 2245313,
+            "samples": 7465
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "42",
+          "offered_success_ratio": 0.9874338624338624,
+          "order": 3,
+          "repetition": 2,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o003",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "86ba3cad3ca03601a562f5f50764cf16eea05704aee7f764649c20521d6f461d",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "9f1ce4a7ca39a6137c09cdc788e899e4c84103241df3606f0c2d2564e35feb54",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 42,
+          "aggregate_useful_rps": 41.233333333333334,
+          "average_target_cpu_cores": 1.000616288888889,
+          "dispatch_lag_us": {
+            "max": 7686,
+            "min": 92,
+            "p50": 1157,
+            "p95": 2736,
+            "p99": 4503,
+            "samples": 7560
+          },
+          "drain_ratio": 0.018253968253968255,
+          "drained_after_plateau": 138,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 1,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 3285947,
+            "min": 66452,
+            "p50": 1651399,
+            "p95": 3132202,
+            "p99": 3251213,
+            "samples": 7422
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "42",
+          "offered_success_ratio": 0.9817460317460317,
+          "order": 6,
+          "repetition": 3,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o006",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "6b136089c8252ecf20cc420c278ca650348b02061a7b4ded4df1163efac05b72",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "02768e010840b8398800ceb286845f94d14703530e2c1c7dd70170653e30aca8",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 42,
+          "aggregate_useful_rps": 41.516666666666666,
+          "average_target_cpu_cores": 0.9982856388888889,
+          "dispatch_lag_us": {
+            "max": 7624,
+            "min": 125,
+            "p50": 1127,
+            "p95": 1877,
+            "p99": 3016,
+            "samples": 7560
+          },
+          "drain_ratio": 0.011507936507936509,
+          "drained_after_plateau": 87,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 2075570,
+            "min": 34643,
+            "p50": 1046599,
+            "p95": 1964046,
+            "p99": 2046658,
+            "samples": 7473
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "42",
+          "offered_success_ratio": 0.9884920634920635,
+          "order": 7,
+          "repetition": 4,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o007",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "1987892f3da66c8835123411b7239077fc2745788500f1a2cfeab4e19f318239",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "6415efb0dcf1e48e4be2b1f1e775cc3c81bcf8c1f0fc99a158f94eaaae08f9ea",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        },
+        {
+          "aggregate_offered_rps": 42,
+          "aggregate_useful_rps": 41.388888888888886,
+          "average_target_cpu_cores": 0.9925780333333334,
+          "dispatch_lag_us": {
+            "max": 7396,
+            "min": 56,
+            "p50": 1088,
+            "p95": 1822,
+            "p99": 2596,
+            "samples": 7560
+          },
+          "drain_ratio": 0.01455026455026455,
+          "drained_after_plateau": 110,
+          "dropped_in_flight_limit": 0,
+          "dropped_schedule_late": 0,
+          "endpoint_useful_rps_cv": null,
+          "error_completed_within_plateau": 0,
+          "health_event_violations": 0,
+          "in_flight_drop_ratio": 0.0,
+          "latency_us": {
+            "max": 2633655,
+            "min": 32621,
+            "p50": 1300625,
+            "p95": 2478314,
+            "p99": 2605904,
+            "samples": 7450
+          },
+          "offered_acceptance_ratio": 1,
+          "offered_rps_per_target": "42",
+          "offered_success_ratio": 0.9854497354497355,
+          "order": 10,
+          "repetition": 5,
+          "run_id": "ol-ol-rt1-knee-confirm-20260829-a-o010",
+          "schedule_drop_ratio": 0.0,
+          "scheduler_invalid_reasons": [],
+          "scheduler_valid": true,
+          "target_cpusets": [
+            "5,149"
+          ],
+          "telemetry": {
+            "node_count": 2,
+            "pod_count": 1,
+            "required_series_complete": true,
+            "supporting_queries_succeeded": true
+          },
+          "topology_preflight": {
+            "attested": true,
+            "execution_sha256": "ffe37b2973a259bd86559bed2696f994db77ab92d4b94e414cb63b4e67fab330",
+            "load_authorized": true,
+            "placement_verdict": "PASS",
+            "report_sha256": "0f3e70ad6127671be619b9d92f0f2004c80d723e83534fd82ab4f3e18fb04263",
+            "required": true,
+            "target_identities": 1,
+            "verdict": "PASS"
+          }
+        }
+      ],
+      "latency_p99_cv": 0.19162224825399238,
+      "max_endpoint_useful_rps_cv": null,
+      "max_schedule_drop_ratio": 0.0,
+      "median_aggregate_useful_rps": 41.47222222222222,
+      "median_average_target_cpu_cores": 0.9980498444444444,
+      "median_drain_ratio": 0.012566137566137565,
+      "median_in_flight_drop_ratio": 0.0,
+      "median_latency_p50_us": 1155941,
+      "median_latency_p99_us": 2245313,
+      "median_offered_success_ratio": 0.9874338624338624,
+      "observed_target_cpusets": [
+        "5,149"
+      ],
+      "offered_rps_per_target": "42",
+      "offered_rps_per_target_numeric": 42.0,
+      "repetitions": 5,
+      "scheduler_valid_repetitions": 5,
+      "total_errors_within_plateau": 0,
+      "total_health_event_violations": 1,
+      "useful_rps_cv": 0.0026514923113153425
+    }
+  ],
+  "run_id": "ol-rt1-knee-confirm-20260829-a",
+  "runtime_signature": {
+    "concurrency_per_target": 1,
+    "connections_per_target": 1,
+    "deployment": "classifier-target",
+    "driver_image": "image-registry.openshift-image-registry.svc:5000/llm-d-sc-gremlins/llm-d-sc-benchmark-driver@sha256:a747ed5dfda79956cab099ae7aa7d398d9270a43a9f848e46d8d995eb725ca3e",
+    "driver_node": "rhgnr1",
+    "duration_seconds": 180,
+    "inference_workers": "1",
+    "model_sha256": "7914abbd152278879b4c3235d188e3006753bb778b7de6266fbcbe4c4ba2ef2f",
+    "namespace": "llm-d-sc-scaleout",
+    "qos_class": "Guaranteed",
+    "replicas": 1,
+    "resources": {
+      "limits": {
+        "cpu": "2",
+        "memory": "4Gi"
+      },
+      "requests": {
+        "cpu": "2",
+        "memory": "4Gi"
+      }
+    },
+    "runtime_threads": {
+      "candle": "unset",
+      "rayon": "1"
+    },
+    "target_image": "sha256:04323612ce3f73873b4c3ed6e09264e828241537e2c1a4231b43f32e9744d5aa",
+    "target_node": "gnr2.fm2aihpcsed.com",
+    "tokenizer_sha256": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c",
+    "topology": "cross-node-direct-gnr2.fm2aihpcsed.com-from-rhgnr1"
+  },
+  "scheduler_attribution_thresholds": {
+    "max_dispatch_p99_lag_ms": 5.0,
+    "max_schedule_drop_ratio": 0.0,
+    "policy": "driver schedule failures invalidate SC capacity attribution; in-flight-limit drops remain an overload signal"
+  },
+  "schema_version": 2,
+  "source_attestation": {
+    "driver_build_source_sha256": "5145c6f840a9bd388b1945cbed3b9990489c42eed4b0b96b808cc626e9ac6d12",
+    "local_probe_source_sha256": "5145c6f840a9bd388b1945cbed3b9990489c42eed4b0b96b808cc626e9ac6d12",
+    "note": "operator-supplied build source hash matches the local probe source",
+    "runtime_source_linkage_attested": true
+  },
+  "telemetry_required": true,
+  "topology_preflight": {
+    "container": "llm-d-sc",
+    "expected_pods": 1,
+    "fail_closed": true,
+    "per_cell_evidence": [
+      "topology-preflight-report.json",
+      "topology-preflight-execution.json",
+      "topology-preflight-stdout.txt",
+      "topology-preflight-stderr.txt"
+    ],
+    "phase": "after target readiness/provenance checks and before start-time calculation, sampling, or driver Job creation",
+    "required": true,
+    "reserved_cpu_overrides": null,
+    "runner": "/Users/jkershaw/Documents/ChatGPT/llm-d-sc/hack/arena-sc-topology-preflight.py",
+    "selector": "app.kubernetes.io/component=classifier-target,app.kubernetes.io/name=llm-d-sc-scaleout"
+  }
+}

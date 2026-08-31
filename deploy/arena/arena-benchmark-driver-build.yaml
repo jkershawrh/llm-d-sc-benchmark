@@ -1,0 +1,40 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: llm-d-sc-benchmark-driver
+  namespace: llm-d-sc-gremlins
+  labels:
+    app.kubernetes.io/name: llm-d-sc-benchmark-driver
+    app.kubernetes.io/component: benchmark-driver
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: llm-d-sc-benchmark-driver
+  namespace: llm-d-sc-gremlins
+  labels:
+    app.kubernetes.io/name: llm-d-sc-benchmark-driver
+    app.kubernetes.io/component: benchmark-driver
+spec:
+  runPolicy: SerialLatestOnly
+  source:
+    type: Binary
+    binary: {}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Containerfile.benchmark-driver
+  output:
+    to:
+      kind: ImageStreamTag
+      name: llm-d-sc-benchmark-driver:latest
+  resources:
+    requests:
+      cpu: "2"
+      memory: 4Gi
+    limits:
+      cpu: "8"
+      memory: 8Gi
+  successfulBuildsHistoryLimit: 3
+  failedBuildsHistoryLimit: 3
+  triggers: []
