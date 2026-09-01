@@ -1,5 +1,10 @@
 # Five-replica cache-hit transport knee — 2026-09-01
 
+> Superseded for knee and ceiling conclusions by
+> `cache-hit-transport-knee-corrected-otel-20260901.md`. The corrected analysis
+> withdraws the 48.8k RPS ceiling language and places the operational knee at
+> c250→c500.
+
 ## Result
 
 Two distinct boundaries were confirmed for the scoped five-replica cache-hit

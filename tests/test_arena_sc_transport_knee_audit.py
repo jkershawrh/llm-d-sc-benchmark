@@ -81,6 +81,31 @@ class TransportKneeAuditTests(unittest.TestCase):
     def test_percent_change(self):
         self.assertAlmostEqual(MODULE.percent_change(100.0, 104.0), 4.0)
 
+    def test_aggregation_pools_repeated_runs_at_same_concurrency(self):
+        cell = {
+            "treatment": "clusterip",
+            "useful_rps": 100.0,
+            "p99_ms": 3.0,
+            "selected_requests": 100,
+            "error_requests": 0,
+            "health_slo_pass": True,
+            "restart_delta": 0,
+            "warning_event_delta": 0,
+            "statuses": {"OK": 100},
+        }
+        runs = [
+            {"concurrency": 50, "topology_isolated": True, "cells": [cell]},
+            {
+                "concurrency": 50,
+                "topology_isolated": True,
+                "cells": [{**cell, "useful_rps": 120.0}],
+            },
+        ]
+        rows = MODULE.aggregate_by_concurrency(runs)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["runs"], 2)
+        self.assertEqual(rows[0]["treatments"]["clusterip"]["median_useful_rps"], 110.0)
+
 
 if __name__ == "__main__":
     unittest.main()

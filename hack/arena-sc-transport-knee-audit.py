@@ -41,6 +41,15 @@ def driver_node(path: Path) -> str | None:
     return items[0].get("spec", {}).get("nodeName") if items else None
 
 
+def group_values(summary: dict, section: str, metric: str, field: str) -> dict[str, float]:
+    groups = summary.get(section, {}).get(metric, {}).get("groups", {})
+    return {
+        name: float(values[field])
+        for name, values in groups.items()
+        if isinstance(values, dict) and values.get(field) is not None
+    }
+
+
 def audit_cell(cell_dir: Path) -> dict:
     result_path = cell_dir / "result.json"
     health_path = cell_dir / "health-summary.json"
@@ -48,6 +57,8 @@ def audit_cell(cell_dir: Path) -> dict:
     result = load(result_path)
     health = load(health_path)
     resources = load(resource_path)
+    external_path = cell_dir / "external-telemetry-summary.json"
+    external = load(external_path) if external_path.exists() else None
 
     statuses: Counter[str] = Counter()
     for endpoint in result.get("endpoints", []):
@@ -63,7 +74,7 @@ def audit_cell(cell_dir: Path) -> dict:
     target_cpu = resources.get("target_cpu_cores", {})
     driver_cpu = resources.get("driver_cpu_cores", {})
     throttle = resources.get("target_throttle_ratio", {})
-    return {
+    audited = {
         "cell": cell_dir.name,
         "repetition": int(cell_dir.name.split("-", 1)[0]),
         "treatment": cell_dir.name.split("-", 1)[1],
@@ -94,6 +105,42 @@ def audit_cell(cell_dir: Path) -> dict:
         "health_sha256": sha256(health_path),
         "resource_sha256": sha256(resource_path),
     }
+    if external:
+        target_cpu_max = group_values(external, "gauges", "otel_target_cpu_cores", "max")
+        target_memory_max = group_values(
+            external, "gauges", "otel_target_memory_working_set_bytes", "max"
+        )
+        conntrack = group_values(external, "gauges", "node_conntrack_entries", "max")
+        conntrack_limit = group_values(external, "gauges", "node_conntrack_limit", "max")
+        audited["external_telemetry"] = {
+            "complete": bool(external.get("critical_signals_complete")),
+            "sha256": sha256(external_path),
+            "target_cpu_sum_of_pod_max_cores": sum(target_cpu_max.values()),
+            "target_memory_sum_of_pod_max_bytes": sum(target_memory_max.values()),
+            "node_conntrack_max": conntrack,
+            "node_conntrack_limit": conntrack_limit,
+            "node_conntrack_max_fraction": {
+                node: value / conntrack_limit[node]
+                for node, value in conntrack.items()
+                if conntrack_limit.get(node, 0) > 0
+            },
+            "node_tcp_retransmit_delta": group_values(
+                external, "counters", "node_tcp_retransmits", "delta"
+            ),
+            "node_softnet_drop_delta": group_values(
+                external, "counters", "node_softnet_drops", "delta"
+            ),
+            "target_network_error_delta": sum(
+                group_values(external, "counters", "otel_target_network_errors", "delta").values()
+            ),
+            "pod_receive_drop_delta": sum(
+                group_values(external, "counters", "pod_receive_drops", "delta").values()
+            ),
+            "pod_transmit_drop_delta": sum(
+                group_values(external, "counters", "pod_transmit_drops", "delta").values()
+            ),
+        }
+    return audited
 
 
 def median(values: list[float]) -> float:
@@ -172,16 +219,94 @@ def percent_change(before: float, after: float) -> float:
     return (after / before - 1.0) * 100.0
 
 
+def aggregate_cells(cells: list[dict]) -> dict:
+    statuses: Counter[str] = Counter()
+    for cell in cells:
+        statuses.update(cell["statuses"])
+    rps = [cell["useful_rps"] for cell in cells]
+    p99 = [cell["p99_ms"] for cell in cells]
+    external = [cell["external_telemetry"] for cell in cells if cell.get("external_telemetry")]
+    conntrack_fractions = [
+        value
+        for item in external
+        for value in item.get("node_conntrack_max_fraction", {}).values()
+    ]
+    retransmits = [
+        value
+        for item in external
+        for value in item.get("node_tcp_retransmit_delta", {}).values()
+    ]
+    return {
+        "cells": len(cells),
+        "median_useful_rps": median(rps),
+        "min_useful_rps": min(rps),
+        "max_useful_rps": max(rps),
+        "median_p99_ms": median(p99),
+        "min_p99_ms": min(p99),
+        "max_p99_ms": max(p99),
+        "selected_requests": sum(cell["selected_requests"] for cell in cells),
+        "error_requests": sum(cell["error_requests"] for cell in cells),
+        "error_cells": sum(cell["error_requests"] > 0 for cell in cells),
+        "health_break_cells": sum(not cell["health_slo_pass"] for cell in cells),
+        "restart_delta": sum(cell["restart_delta"] for cell in cells),
+        "warning_event_delta": sum(cell["warning_event_delta"] for cell in cells),
+        "statuses": dict(sorted(statuses.items())),
+        "external_telemetry_cells": len(external),
+        "external_telemetry_complete_cells": sum(item.get("complete", False) for item in external),
+        "max_otel_target_cpu_sum_of_pod_max_cores": max(
+            (item["target_cpu_sum_of_pod_max_cores"] for item in external), default=None
+        ),
+        "max_otel_target_memory_sum_of_pod_max_bytes": max(
+            (item["target_memory_sum_of_pod_max_bytes"] for item in external), default=None
+        ),
+        "max_node_conntrack_fraction": max(conntrack_fractions, default=None),
+        "max_node_tcp_retransmit_delta": max(retransmits, default=None),
+        "node_softnet_drop_delta": sum(
+            value
+            for item in external
+            for value in item.get("node_softnet_drop_delta", {}).values()
+        ),
+        "target_network_error_delta": sum(
+            item.get("target_network_error_delta", 0) for item in external
+        ),
+        "pod_receive_drop_delta": sum(item.get("pod_receive_drop_delta", 0) for item in external),
+        "pod_transmit_drop_delta": sum(
+            item.get("pod_transmit_drop_delta", 0) for item in external
+        ),
+    }
+
+
+def aggregate_by_concurrency(runs: list[dict]) -> list[dict]:
+    rows = []
+    for concurrency in sorted({run["concurrency"] for run in runs}):
+        selected_runs = [run for run in runs if run["concurrency"] == concurrency]
+        cells = [cell for run in selected_runs for cell in run["cells"]]
+        treatments = sorted({cell["treatment"] for cell in cells})
+        rows.append(
+            {
+                "concurrency": concurrency,
+                "runs": len(selected_runs),
+                "all_topologies_isolated": all(run["topology_isolated"] for run in selected_runs),
+                "treatments": {
+                    treatment: aggregate_cells(
+                        [cell for cell in cells if cell["treatment"] == treatment]
+                    )
+                    for treatment in treatments
+                },
+            }
+        )
+    return rows
+
+
 def summarize(runs: list[dict]) -> dict:
-    loaded = sorted(
-        (run for run in runs if run["concurrency"] > 1), key=lambda run: run["concurrency"]
-    )
+    by_concurrency = aggregate_by_concurrency(runs)
+    loaded = [row for row in by_concurrency if row["concurrency"] > 1]
     transitions = []
     for before, after in zip(loaded, loaded[1:]):
         row = {"from": before["concurrency"], "to": after["concurrency"], "treatments": {}}
-        for treatment in sorted(set(before["aggregates"]) & set(after["aggregates"])):
-            left = before["aggregates"][treatment]
-            right = after["aggregates"][treatment]
+        for treatment in sorted(set(before["treatments"]) & set(after["treatments"])):
+            left = before["treatments"][treatment]
+            right = after["treatments"][treatment]
             row["treatments"][treatment] = {
                 "useful_rps_change_percent": percent_change(
                     left["median_useful_rps"], right["median_useful_rps"]
@@ -206,10 +331,11 @@ def summarize(runs: list[dict]) -> dict:
             warnings += cell["warning_event_delta"]
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "kind": "llm-d-sc-transport-knee-independent-audit",
         "source": "raw result.json, health-summary.json, resource-summary.json, and topology snapshots",
         "runs": runs,
+        "by_concurrency": by_concurrency,
         "transitions": transitions,
         "accounting": {
             "selected_requests": selected,

@@ -1,5 +1,10 @@
 # Isolated five-replica cache-hit knee and bottleneck — 2026-09-01
 
+> Superseded for knee and ceiling conclusions by
+> `cache-hit-transport-knee-corrected-otel-20260901.md`, which adds the focused
+> OTel boundary repetition and aggregates all valid repetitions. Raw evidence
+> and historical methodology remain valid.
+
 ## Executive result
 
 The corrected Arena campaign found three distinct boundaries for the unchanged
