@@ -27,6 +27,7 @@ MANIFEST=${REPO_ROOT}/deploy/arena/arena-transport-gateway.yaml
 TARGET_SELECTOR=benchmark.llm-d/component=transport-target
 NETWORK_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-network-summarize.py
 RESOURCE_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-resource-summarize.py
+EXTERNAL_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-external-summarize.py
 HEALTH_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-health-summarize.py
 CAMPAIGN_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-summarize.py
 
@@ -229,9 +230,42 @@ capture_network_distribution() {
     "sum(rate(container_cpu_usage_seconds_total{namespace=\"${NAMESPACE}\",pod=\"${driver_pod}\",container=\"driver\"}[60s]))"
   query_range_to gateway-cpu-query \
     "sum(rate(container_cpu_usage_seconds_total{namespace=\"${NAMESPACE}\",pod=~\"classifier-transport-gateway.*\",container=\"istio-proxy\"}[60s]))"
+  node_regex="${TARGET_NODE:-gnr2.fm2aihpcsed.com}|${DRIVER_NODE}"
+  query_range_to otel-target-cpu-query \
+    "k8s_pod_cpu_usage{k8s_namespace_name=\"${NAMESPACE}\",k8s_pod_name=~\"${pod_regex}\"}"
+  query_range_to otel-target-memory-query \
+    "k8s_pod_memory_working_set_bytes{k8s_namespace_name=\"${NAMESPACE}\",k8s_pod_name=~\"${pod_regex}\"}"
+  query_range_to otel-target-network-errors-query \
+    "k8s_pod_network_errors_total{k8s_namespace_name=\"${NAMESPACE}\",k8s_pod_name=~\"${pod_regex}\"}"
+  query_range_to otel-collector-up-query \
+    "up{namespace=\"${NAMESPACE}\",service=\"llm-d-sc-otel\"}"
+  query_range_to node-retransmits-query \
+    "node_netstat_Tcp_RetransSegs{instance=~\"${node_regex}\"}"
+  query_range_to node-softnet-drops-query \
+    "node_softnet_dropped_total{instance=~\"${node_regex}\"}"
+  query_range_to node-conntrack-query \
+    "node_nf_conntrack_entries{instance=~\"${node_regex}\"}"
+  query_range_to node-conntrack-limit-query \
+    "node_nf_conntrack_entries_limit{instance=~\"${node_regex}\"}"
+  query_range_to node-tcp-inuse-query \
+    "node_sockstat_TCP_inuse{instance=~\"${node_regex}\"}"
+  query_range_to node-tcp-timewait-query \
+    "node_sockstat_TCP_tw{instance=~\"${node_regex}\"}"
+  query_range_to node-load1-query \
+    "node_load1{instance=~\"${node_regex}\"}"
+  pod_error_regex="${pod_regex}|${driver_pod}"
+  query_range_to pod-receive-errors-query \
+    "sum by (pod)(container_network_receive_errors_total{namespace=\"${NAMESPACE}\",pod=~\"${pod_error_regex}\"})"
+  query_range_to pod-transmit-errors-query \
+    "sum by (pod)(container_network_transmit_errors_total{namespace=\"${NAMESPACE}\",pod=~\"${pod_error_regex}\"})"
+  query_range_to pod-receive-drops-query \
+    "sum by (pod)(container_network_receive_packets_dropped_total{namespace=\"${NAMESPACE}\",pod=~\"${pod_error_regex}\"})"
+  query_range_to pod-transmit-drops-query \
+    "sum by (pod)(container_network_transmit_packets_dropped_total{namespace=\"${NAMESPACE}\",pod=~\"${pod_error_regex}\"})"
   python3 "$NETWORK_SUMMARIZER" "$cell_dir/network-receive-query.json" "$job_json" \
     "$RUN_DIR/target-pods-start.json" "$cell_dir/network-distribution.json"
   python3 "$RESOURCE_SUMMARIZER" "$cell_dir" "$cell_dir/resource-summary.json"
+  python3 "$EXTERNAL_SUMMARIZER" "$cell_dir" "$cell_dir/external-telemetry-summary.json"
 }
 
 job_manifest() {

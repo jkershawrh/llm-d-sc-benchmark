@@ -22,12 +22,14 @@ def cell_summary(run_dir: Path, repetition: int, treatment: str) -> dict:
     network_path = cell_dir / "network-distribution.json"
     resource_path = cell_dir / "resource-summary.json"
     health_path = cell_dir / "health-summary.json"
+    external_path = cell_dir / "external-telemetry-summary.json"
     if not result_path.exists():
         return {"repetition": repetition, "treatment": treatment, "complete": False}
     result = load(result_path)
     network = load(network_path) if network_path.exists() else None
     resources = load(resource_path) if resource_path.exists() else None
     health = load(health_path) if health_path.exists() else None
+    external = load(external_path) if external_path.exists() else None
     selected = result.get("selected_requests", 0)
     successful = result.get("successful_requests", 0)
     statuses = {}
@@ -57,6 +59,7 @@ def cell_summary(run_dir: Path, repetition: int, treatment: str) -> dict:
         "complete": bool(network and health),
         "core_valid": core_valid,
         "telemetry_complete": resource_complete,
+        "external_telemetry_complete": bool(external and external.get("critical_signals_complete")),
         "health_evidence_complete": bool(health),
         "health_slo_pass": health.get("health_slo_pass") if health else None,
         "selected_requests": selected,
@@ -86,6 +89,7 @@ def cell_summary(run_dir: Path, repetition: int, treatment: str) -> dict:
             if resources
             else None
         ),
+        "external_telemetry_summary": external,
         "health_summary": (
             {
                 "identity_stable": health.get("identity_stable"),
@@ -156,6 +160,9 @@ def summarize(run_dir: Path, repetitions: int, treatments=DEFAULT_TREATMENTS) ->
 
     complete = all(cell.get("complete") and cell.get("core_valid") for cell in cells)
     telemetry_complete = complete and all(cell.get("telemetry_complete") for cell in cells)
+    external_telemetry_complete = complete and all(
+        cell.get("external_telemetry_complete") for cell in cells
+    )
     health_evidence_complete = complete and all(cell.get("health_evidence_complete") for cell in cells)
     overload_cells = sum(
         bool(cell.get("complete") and cell.get("core_valid") and not cell.get("zero_error_slo_pass"))
@@ -173,6 +180,7 @@ def summarize(run_dir: Path, repetitions: int, treatments=DEFAULT_TREATMENTS) ->
         "expected_repetitions": repetitions,
         "campaign_complete": complete,
         "telemetry_complete": telemetry_complete,
+        "external_telemetry_complete": external_telemetry_complete,
         "health_evidence_complete": health_evidence_complete,
         "steady_state_eligible": steady_state_eligible,
         "validity": {
@@ -181,6 +189,9 @@ def summarize(run_dir: Path, repetitions: int, treatments=DEFAULT_TREATMENTS) ->
                 bool(cell.get("complete") and cell.get("core_valid")) for cell in cells
             ),
             "cells_with_resource_telemetry": sum(bool(cell.get("telemetry_complete")) for cell in cells),
+            "cells_with_external_telemetry": sum(
+                bool(cell.get("external_telemetry_complete")) for cell in cells
+            ),
             "overload_cells": overload_cells,
             "health_break_cells": health_break_cells,
         },
