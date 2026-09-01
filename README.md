@@ -103,6 +103,14 @@ aggregate connection/concurrency/request budget, and retain the unchanged
 classifier image. Run `hack/arena-sc-transport-matrix.sh` with a digest-pinned
 emulator image and an isolated kubeconfig.
 
+The runner brackets every cell with target-Pod and Kubernetes-event snapshots.
+It records readiness/liveness warning deltas, restart deltas, and Pod identity
+changes after the telemetry bracket. `FAIL_ON_TARGET_HEALTH_ERRORS=true` is the
+strict healthy-capacity lane. Explicit break campaigns may set it to `false`;
+those cells remain valid observed-break evidence but are not eligible for
+steady-state capacity claims. Set different `DRIVER_NODE` and `TARGET_NODE`
+values to remove load-generator/target node co-location.
+
 ## Arena profile
 
 The checked-in manifests preserve the reproducible 2026-08-28 Arena profile,
@@ -135,11 +143,12 @@ The strongest confirmed finding retained here is a service/SLO knee in
 unique-miss, direct-Pod-IP, single-connection, 180-second workload. See
 `docs/results/confirmed-knee-20260829.md`.
 
-The independent five-replica cache-hit transport lane also confirmed a
+The first independent five-replica cache-hit transport lane observed a
 zero-error boundary in `(250, 500]` aggregate concurrency and a
-throughput/latency knee in `(500, 750]`. Matched direct-Pod routing reproduced
-both boundaries, while CPU remained below saturation, so ClusterIP and CPU are
-not the dominant limit in that scope. See
+throughput/latency knee in `(500, 750]`. A post-run audit found probe failures
+and one target restart that the original health-snapshot timing missed. The
+numeric ladder remains observed-break evidence, but its steady-state capacity
+claim is withdrawn pending the corrected isolated rerun. See
 `docs/results/cache-hit-transport-knee-20260901.md`.
 
 No repeatable horizontal replica knee has been established. The exploratory

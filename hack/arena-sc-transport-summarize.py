@@ -21,11 +21,13 @@ def cell_summary(run_dir: Path, repetition: int, treatment: str) -> dict:
     result_path = cell_dir / "result.json"
     network_path = cell_dir / "network-distribution.json"
     resource_path = cell_dir / "resource-summary.json"
+    health_path = cell_dir / "health-summary.json"
     if not result_path.exists():
         return {"repetition": repetition, "treatment": treatment, "complete": False}
     result = load(result_path)
     network = load(network_path) if network_path.exists() else None
     resources = load(resource_path) if resource_path.exists() else None
+    health = load(health_path) if health_path.exists() else None
     selected = result.get("selected_requests", 0)
     successful = result.get("successful_requests", 0)
     statuses = {}
@@ -52,9 +54,11 @@ def cell_summary(run_dir: Path, repetition: int, treatment: str) -> dict:
     return {
         "repetition": repetition,
         "treatment": treatment,
-        "complete": bool(network),
+        "complete": bool(network and health),
         "core_valid": core_valid,
         "telemetry_complete": resource_complete,
+        "health_evidence_complete": bool(health),
+        "health_slo_pass": health.get("health_slo_pass") if health else None,
         "selected_requests": selected,
         "successful_requests": successful,
         "error_requests": selected - successful,
@@ -82,6 +86,20 @@ def cell_summary(run_dir: Path, repetition: int, treatment: str) -> dict:
             if resources
             else None
         ),
+        "health_summary": (
+            {
+                "identity_stable": health.get("identity_stable"),
+                "before_ready": health.get("before_ready"),
+                "after_ready": health.get("after_ready"),
+                "restart_delta_count": health.get("restart_delta_count"),
+                "warning_event_delta_count": health.get("warning_event_delta_count"),
+                "warning_event_deltas_by_probe": health.get("warning_event_deltas_by_probe"),
+                "warning_event_deltas_by_failure": health.get("warning_event_deltas_by_failure"),
+                "warning_affected_pods": health.get("warning_affected_pods"),
+            }
+            if health
+            else None
+        ),
     }
 
 
@@ -100,6 +118,7 @@ def summarize(run_dir: Path, repetitions: int, treatments=DEFAULT_TREATMENTS) ->
         ]
         aggregates[treatment] = {
             "valid_repetitions": len(valid),
+            "healthy_repetitions": sum(bool(cell.get("health_slo_pass")) for cell in valid),
             "median_useful_requests_per_second": (
                 statistics.median(cell["useful_requests_per_second"] for cell in valid) if valid else None
             ),
@@ -137,17 +156,25 @@ def summarize(run_dir: Path, repetitions: int, treatments=DEFAULT_TREATMENTS) ->
 
     complete = all(cell.get("complete") and cell.get("core_valid") for cell in cells)
     telemetry_complete = complete and all(cell.get("telemetry_complete") for cell in cells)
+    health_evidence_complete = complete and all(cell.get("health_evidence_complete") for cell in cells)
     overload_cells = sum(
         bool(cell.get("complete") and cell.get("core_valid") and not cell.get("zero_error_slo_pass"))
         for cell in cells
     )
+    health_break_cells = sum(
+        bool(cell.get("complete") and cell.get("core_valid") and not cell.get("health_slo_pass"))
+        for cell in cells
+    )
+    steady_state_eligible = bool(complete and telemetry_complete and not health_break_cells)
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "kind": "llm-d-sc-transport-campaign-summary",
         "run_id": run_dir.name,
         "expected_repetitions": repetitions,
         "campaign_complete": complete,
         "telemetry_complete": telemetry_complete,
+        "health_evidence_complete": health_evidence_complete,
+        "steady_state_eligible": steady_state_eligible,
         "validity": {
             "expected_cells": repetitions * len(treatments),
             "complete_valid_cells": sum(
@@ -155,17 +182,20 @@ def summarize(run_dir: Path, repetitions: int, treatments=DEFAULT_TREATMENTS) ->
             ),
             "cells_with_resource_telemetry": sum(bool(cell.get("telemetry_complete")) for cell in cells),
             "overload_cells": overload_cells,
+            "health_break_cells": health_break_cells,
         },
         "cells": cells,
         "aggregates": aggregates,
         "paired_repetitions": paired,
         "claim_gate": (
-            (
+            "eligible for observed-break conclusions; health SLO failures prohibit steady-state capacity claims"
+            if complete and telemetry_complete and health_break_cells
+            else (
                 "eligible for matched transport conclusions; overload responses are part of the result"
                 if overload_cells
                 else "eligible for matched transport conclusions"
             )
-            if complete and telemetry_complete
+            if complete and telemetry_complete and health_evidence_complete
             else "partial: do not use for final bottleneck attribution"
         ),
     }

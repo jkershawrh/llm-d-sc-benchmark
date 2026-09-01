@@ -15,8 +15,11 @@ CONTEXT_BYTES=${CONTEXT_BYTES:-256}
 REPETITIONS=${REPETITIONS:-1}
 TREATMENTS=${TREATMENTS:-clusterip gateway direct}
 FAIL_ON_RESPONSE_ERRORS=${FAIL_ON_RESPONSE_ERRORS:-true}
+FAIL_ON_TARGET_HEALTH_ERRORS=${FAIL_ON_TARGET_HEALTH_ERRORS:-true}
 METRIC_SETTLE_SECONDS=${METRIC_SETTLE_SECONDS:-12}
 METRIC_BRACKET_SECONDS=${METRIC_BRACKET_SECONDS:-45}
+DRIVER_NODE=${DRIVER_NODE:-rhgnr1}
+TARGET_NODE=${TARGET_NODE:-}
 RESULT_ROOT=${RESULT_ROOT:-${REPO_ROOT}/results/transport}
 RUN_DIR=${RUN_DIR:-${RESULT_ROOT}/${RUN_ID}}
 LOCK_NAME=sc-transport-matrix-lock
@@ -24,6 +27,7 @@ MANIFEST=${REPO_ROOT}/deploy/arena/arena-transport-gateway.yaml
 TARGET_SELECTOR=benchmark.llm-d/component=transport-target
 NETWORK_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-network-summarize.py
 RESOURCE_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-resource-summarize.py
+HEALTH_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-health-summarize.py
 CAMPAIGN_SUMMARIZER=${REPO_ROOT}/hack/arena-sc-transport-summarize.py
 
 k=(oc --kubeconfig "$KUBECONFIG_PATH" --request-timeout=30s)
@@ -41,6 +45,30 @@ oc_retry() {
     sleep $((attempt * 2))
   done
   return 1
+}
+
+capture_active_target_pods() {
+  output=$1
+  oc_retry get pods -n "$NAMESPACE" -l "$TARGET_SELECTOR" -o json \
+    | jq '.items = [.items[] | select(.metadata.deletionTimestamp == null)]' >"$output"
+}
+
+wait_for_five_stable_targets() {
+  output=$1
+  stable_observations=0
+  for _ in $(seq 1 120); do
+    capture_active_target_pods "$output"
+    if jq -e '.items|length==5
+      and all(.[]; any(.status.conditions[]?; .type=="Ready" and .status=="True"))' \
+      "$output" >/dev/null; then
+      stable_observations=$((stable_observations + 1))
+      if (( stable_observations == 3 )); then return 0; fi
+    else
+      stable_observations=0
+    fi
+    sleep 2
+  done
+  die "five non-terminating ready transport targets did not stabilize"
 }
 
 cleanup() {
@@ -79,6 +107,13 @@ read -r -a treatments <<<"$TREATMENTS"
 [[ ${#treatments[@]} -gt 0 ]] || die "TREATMENTS cannot be empty"
 [[ "$FAIL_ON_RESPONSE_ERRORS" == true || "$FAIL_ON_RESPONSE_ERRORS" == false ]] \
   || die "FAIL_ON_RESPONSE_ERRORS must be true or false"
+[[ "$FAIL_ON_TARGET_HEALTH_ERRORS" == true || "$FAIL_ON_TARGET_HEALTH_ERRORS" == false ]] \
+  || die "FAIL_ON_TARGET_HEALTH_ERRORS must be true or false"
+[[ -n "$DRIVER_NODE" ]] || die "DRIVER_NODE cannot be empty"
+if [[ -n "$TARGET_NODE" ]]; then
+  [[ "$TARGET_NODE" != "$DRIVER_NODE" ]] \
+    || die "TARGET_NODE and DRIVER_NODE must differ when target isolation is requested"
+fi
 treatment_seen=" "
 for treatment in "${treatments[@]}"; do
   [[ "$treatment" == clusterip || "$treatment" == gateway || "$treatment" == direct ]] \
@@ -91,6 +126,9 @@ mkdir -p "$RUN_DIR"
 git -C "$REPO_ROOT" rev-parse HEAD >"$RUN_DIR/framework-git-head.txt"
 git -C "$REPO_ROOT" status --short >"$RUN_DIR/framework-git-status.txt"
 printf '%s\n' "$DRIVER_IMAGE" >"$RUN_DIR/driver-image.txt"
+jq -n --arg driver_node "$DRIVER_NODE" --arg target_node "$TARGET_NODE" \
+  '{schema_version:1,driver_node:$driver_node,target_node:($target_node|select(length>0))}' \
+  >"$RUN_DIR/requested-topology.json"
 
 if ! "${k[@]}" create configmap "$LOCK_NAME" -n "$NAMESPACE" \
   --from-literal=run-id="$RUN_ID" --from-literal=created-at="$(date -u +%FT%TZ)" >/dev/null; then
@@ -101,6 +139,13 @@ lock_acquired=1
 last_phase=deploying-targets
 oc_retry apply -f "$MANIFEST" >/dev/null
 resources_created=1
+if [[ -n "$TARGET_NODE" ]]; then
+  target_patch=$(jq -nc --arg node "$TARGET_NODE" \
+    '{spec:{template:{spec:{affinity:null,topologySpreadConstraints:null,
+      nodeSelector:{"kubernetes.io/hostname":$node}}}}}')
+  oc_retry patch deployment classifier-transport-target -n "$NAMESPACE" \
+    --type=merge -p "$target_patch" >/dev/null
+fi
 "${k[@]}" rollout status deployment/classifier-transport-target -n "$NAMESPACE" --timeout=900s
 "${k[@]}" wait gateway/classifier-transport-gateway -n "$NAMESPACE" \
   --for=condition=Programmed --timeout=300s
@@ -120,7 +165,7 @@ oc_retry get gateway classifier-transport-gateway -n "$NAMESPACE" -o json \
   >"$RUN_DIR/gateway.json"
 oc_retry get grpcroute classifier-transport-gateway -n "$NAMESPACE" -o json \
   >"$RUN_DIR/grpcroute.json"
-oc_retry get pods -n "$NAMESPACE" -l "$TARGET_SELECTOR" -o json >"$RUN_DIR/target-pods-start.json"
+wait_for_five_stable_targets "$RUN_DIR/target-pods-start.json"
 
 pod_names=()
 while IFS= read -r value; do pod_names+=("$value"); done < <(
@@ -195,12 +240,13 @@ job_manifest() {
   args_json=$(printf '%s\n' "$@" | jq -R . | jq -s .)
   jq -n \
     --arg name "$job" --arg ns "$NAMESPACE" --arg run "$RUN_ID" --arg image "$DRIVER_IMAGE" \
+    --arg driver_node "$DRIVER_NODE" \
     --argjson args "$args_json" \
     '{apiVersion:"batch/v1",kind:"Job",metadata:{name:$name,namespace:$ns,
       labels:{"benchmark.llm-d/run-id":$run,"benchmark.llm-d/component":"signal-emulator"}},
       spec:{backoffLimit:0,ttlSecondsAfterFinished:86400,template:{metadata:{labels:{
         "benchmark.llm-d/run-id":$run,"benchmark.llm-d/component":"signal-emulator"}},
-        spec:{restartPolicy:"Never",nodeSelector:{"kubernetes.io/hostname":"rhgnr1"},containers:[{
+        spec:{restartPolicy:"Never",nodeSelector:{"kubernetes.io/hostname":$driver_node},containers:[{
           name:"driver",image:$image,imagePullPolicy:"IfNotPresent",args:$args,
           resources:{requests:{cpu:"2",memory:"512Mi"},limits:{cpu:"8",memory:"2Gi"}},
           securityContext:{allowPrivilegeEscalation:false,capabilities:{drop:["ALL"]},readOnlyRootFilesystem:true}}]}}}}'
@@ -212,6 +258,19 @@ run_cell() {
   cell_dir="$RUN_DIR/${repetition}-${cell}"
   mkdir -p "$cell_dir"
   last_phase="${repetition}-${cell}-running"
+  capture_active_target_pods "$cell_dir/target-pods-before.json"
+  oc_retry get nodes gnr2.fm2aihpcsed.com rhgnr1 -o json >"$cell_dir/nodes-before.json"
+  oc_retry get events -n "$NAMESPACE" --sort-by=.lastTimestamp -o json \
+    >"$cell_dir/events-before.json"
+  jq -e --slurpfile start "$RUN_DIR/target-pods-start.json" '
+    .items|length==5
+    and all(.[]; any(.status.conditions[]?; .type=="Ready" and .status=="True"))
+    and ([.[] | [.metadata.name,.metadata.uid,.status.podIP]] | sort)
+      == ([$start[0].items[] | [.metadata.name,.metadata.uid,.status.podIP]] | sort)' \
+    "$cell_dir/target-pods-before.json" >/dev/null || {
+      failure_class=target_preflight_gate
+      die "$cell repetition $repetition did not start with the original five ready targets"
+    }
   common=(--run-id "${RUN_ID}-${repetition}-${cell}" --topology "arena-r5-${cell}"
     --cache-mode hit --context-bytes "$CONTEXT_BYTES" --concurrency "$CONCURRENCY"
     --requests "$REQUESTS")
@@ -255,22 +314,29 @@ run_cell() {
   fi
   oc_retry get job/$job -n "$NAMESPACE" -o json >"$cell_dir/job.json"
   oc_retry get pods -n "$NAMESPACE" -l job-name="$job" -o json >"$cell_dir/driver-pod.json"
-  oc_retry get pods -n "$NAMESPACE" -l "$TARGET_SELECTOR" -o json >"$cell_dir/target-pods-after.json"
-  oc_retry get nodes gnr2.fm2aihpcsed.com rhgnr1 -o json >"$cell_dir/nodes-after.json"
-  oc_retry get events -n "$NAMESPACE" --sort-by=.lastTimestamp -o json >"$cell_dir/events.json"
-  health_ok=true
-  jq -e '.items|length==5
-    and all(.[]; any(.status.conditions[]?; .type=="Ready" and .status=="True"))
-    and ([.[] | .status.containerStatuses[]?.restartCount] | add)==0' \
-    "$cell_dir/target-pods-after.json" >/dev/null || health_ok=false
-  jq -e '.items|length==2
-    and all(.[]; any(.status.conditions[]?; .type=="Ready" and .status=="True"))' \
-    "$cell_dir/nodes-after.json" >/dev/null || health_ok=false
   sleep "$METRIC_BRACKET_SECONDS"
   capture_network_distribution "$cell_dir" "$cell_dir/job.json"
-  if [[ "$health_ok" != true ]]; then
+  capture_active_target_pods "$cell_dir/target-pods-after.json"
+  oc_retry get nodes gnr2.fm2aihpcsed.com rhgnr1 -o json >"$cell_dir/nodes-after.json"
+  oc_retry get events -n "$NAMESPACE" --sort-by=.lastTimestamp -o json >"$cell_dir/events-after.json"
+  python3 "$HEALTH_SUMMARIZER" \
+    "$cell_dir/target-pods-before.json" "$cell_dir/target-pods-after.json" \
+    "$cell_dir/events-before.json" "$cell_dir/events-after.json" \
+    "$cell_dir/health-summary.json" >/dev/null
+  jq -e '.identity_stable' "$cell_dir/health-summary.json" >/dev/null || {
+    failure_class=target_identity_gate
+    die "$cell repetition $repetition replaced a target Pod during the measurement"
+  }
+  jq -e '.items|length==2
+    and all(.[]; any(.status.conditions[]?; .type=="Ready" and .status=="True"))' \
+    "$cell_dir/nodes-after.json" >/dev/null || {
+    failure_class=node_health_gate
+    die "$cell repetition $repetition failed node health gates"
+  }
+  if [[ "$FAIL_ON_TARGET_HEALTH_ERRORS" == true ]] \
+    && ! jq -e '.health_slo_pass' "$cell_dir/health-summary.json" >/dev/null; then
     failure_class=target_health_gate
-    die "$cell repetition $repetition failed target or node health gates"
+    die "$cell repetition $repetition failed target health gates"
   fi
   oc_retry delete job/$job -n "$NAMESPACE" --wait=true --timeout=300s >/dev/null
 }
@@ -284,7 +350,7 @@ for repetition in $(seq 1 "$REPETITIONS"); do
 done
 
 last_phase=finalizing
-oc_retry get pods -n "$NAMESPACE" -l "$TARGET_SELECTOR" -o json >"$RUN_DIR/target-pods-end.json"
+capture_active_target_pods "$RUN_DIR/target-pods-end.json"
 python3 "$CAMPAIGN_SUMMARIZER" "$RUN_DIR" --repetitions "$REPETITIONS" \
   --treatments "${treatments[@]}" \
   --output "$RUN_DIR/transport-summary.json" >/dev/null

@@ -54,7 +54,17 @@ A measurement cell is valid when:
 Zero non-OK responses are an SLO gate, not an evidence-validity requirement in
 explicit break mode. `RESOURCE_EXHAUSTED` is therefore retained as measured
 application behavior. Driver failure, malformed accounting, missing required
-telemetry, or cluster health failure remains fail-closed.
+telemetry, target Pod replacement, or node health failure remains fail-closed.
+The corrected runner captures target Pods and events before the cell and again
+after the complete telemetry bracket. Probe-warning or restart deltas fail the
+strict lane. An explicit break lane may retain them as application
+health-break evidence, but the resulting cell is not eligible for a healthy
+steady-state capacity claim.
+
+The original 2026-09-01 campaign captured its target health snapshot before
+the post-cell metric bracket. A later audit found that this timing allowed one
+restart to escape the gate. The historical numeric results are preserved, but
+the corrected runner semantics above apply to all new qualification runs.
 
 ## Decision rules
 

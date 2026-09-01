@@ -12,7 +12,7 @@ SPEC.loader.exec_module(MODULE)
 
 
 class TransportSummaryTests(unittest.TestCase):
-    def write_cell(self, root, treatment, rps, resources=True):
+    def write_cell(self, root, treatment, rps, resources=True, health_pass=True):
         cell = root / f"1-{treatment}"
         cell.mkdir()
         (cell / "result.json").write_text(
@@ -43,6 +43,18 @@ class TransportSummaryTests(unittest.TestCase):
                     }
                 )
             )
+        (cell / "health-summary.json").write_text(
+            json.dumps(
+                {
+                    "identity_stable": True,
+                    "before_ready": True,
+                    "after_ready": True,
+                    "restart_delta_count": 0 if health_pass else 1,
+                    "warning_event_delta_count": 0,
+                    "health_slo_pass": health_pass,
+                }
+            )
+        )
 
     def test_complete_matched_campaign_is_claim_eligible(self):
         with tempfile.TemporaryDirectory() as value:
@@ -53,6 +65,7 @@ class TransportSummaryTests(unittest.TestCase):
             result = MODULE.summarize(root, 1)
             self.assertTrue(result["campaign_complete"])
             self.assertTrue(result["telemetry_complete"])
+            self.assertTrue(result["steady_state_eligible"])
             self.assertEqual(result["paired_repetitions"][0]["clusterip_over_direct_rps"], 0.9)
 
     def test_missing_cell_is_partial(self):
@@ -87,6 +100,16 @@ class TransportSummaryTests(unittest.TestCase):
             self.assertTrue(summary["campaign_complete"])
             self.assertEqual(summary["validity"]["overload_cells"], 1)
             self.assertIn("overload responses", summary["claim_gate"])
+
+    def test_health_break_is_valid_break_evidence_not_steady_state_capacity(self):
+        with tempfile.TemporaryDirectory() as value:
+            root = Path(value)
+            self.write_cell(root, "clusterip", 90, health_pass=False)
+            summary = MODULE.summarize(root, 1, ("clusterip",))
+            self.assertTrue(summary["campaign_complete"])
+            self.assertFalse(summary["steady_state_eligible"])
+            self.assertEqual(summary["validity"]["health_break_cells"], 1)
+            self.assertIn("observed-break", summary["claim_gate"])
 
 
 if __name__ == "__main__":

@@ -47,6 +47,26 @@ The 24 cells selected 120,000,000 requests. They produced 119,965,227 OK
 responses and 34,773 `RESOURCE_EXHAUSTED` responses; there were no other
 response statuses.
 
+## Post-run health audit correction
+
+An independent recalculation found no mismatch in request accounting, medians,
+latency growth, image identity, or transport ordering. A separate audit of the
+saved Pod and Kubernetes-event evidence did find health behavior that the
+original report understated:
+
+- concurrency 125: 1 recorded readiness timeout;
+- concurrency 250: 45 readiness and 1 liveness timeout;
+- concurrency 500: 37 readiness and 6 liveness timeouts, plus one target
+  container restart;
+- concurrency 750: 40 readiness and 5 liveness timeouts.
+
+The original runner sampled target health before its post-cell telemetry
+bracket. The concurrency-500 restart occurred after that snapshot and escaped
+the gate. Consequently, `clean` in the historical ladder means zero
+application response errors only; it does not mean health-clean. The numeric
+knee is retained as observed-break evidence, not as a healthy steady-state
+capacity certification.
+
 ## Bottleneck attribution
 
 ClusterIP was not the dominant ceiling in this scope. Its paired useful-RPS
@@ -60,14 +80,15 @@ CPU was not the limiting resource:
 - embedded driver CPU averaged approximately 1.2–1.6 cores;
 - aggregate classifier CPU remained well below the five-Pod 20-core limit;
 - classifier CPU throttling was zero in every cell;
-- no target restart was required to complete the campaign.
+- probe timeouts and one restart occurred despite low aggregate CPU.
 
-The narrowest evidence-backed attribution is an SC/application-path
-concurrency or admission boundary shared by both transports. The unchanged
-image does not expose enough queue, cache-lock, executor, or gRPC-server
-telemetry to distinguish those internal causes. A separately instrumented
-candidate lane is required for code-level attribution; it must not replace
-these unchanged-image capacity results.
+The evidence establishes a shared break across both transports, but the
+post-run audit weakens a code-only attribution. SC worker/admission starvation,
+TCP accept/backlog behavior, probe starvation, and driver/target node
+co-location remain plausible. The unchanged image does not expose enough
+queue, cache-lock, executor, or gRPC-server telemetry to distinguish those
+causes. A node-isolated rerun and separately instrumented candidate lane are
+required for stronger attribution.
 
 ## Gateway mitigation result
 

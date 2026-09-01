@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "kind": "llm-d-sc-cache-hit-transport-knee-decision",
   "date": "2026-09-01",
   "scope": {
@@ -20,7 +20,8 @@
     "throughput_latency_knee": "(500, 750] aggregate concurrency",
     "clusterip_is_dominant_ceiling": false,
     "cpu_is_immediate_limiter": false,
-    "narrowest_attribution": "SC/application-path concurrency or admission boundary shared by ClusterIP and direct Pod routing"
+    "steady_state_eligible": false,
+    "narrowest_attribution": "shared transport-independent break; SC worker/admission starvation, TCP accept/backlog behavior, probe starvation, and driver/target node co-location remain plausible"
   },
   "rungs": [
     {
@@ -73,6 +74,16 @@
     "ok_responses": 119965227,
     "resource_exhausted_responses": 34773,
     "other_responses": 0
+  },
+  "post_run_health_audit": {
+    "audit_status": "numeric results verified; steady-state eligibility withdrawn",
+    "health_gate_issue": "target health was sampled before the post-cell telemetry bracket, allowing one later restart to escape the gate",
+    "rungs": {
+      "125": {"readiness_timeouts": 1, "liveness_timeouts": 0, "restarts": 0},
+      "250": {"readiness_timeouts": 45, "liveness_timeouts": 1, "restarts": 0},
+      "500": {"readiness_timeouts": 37, "liveness_timeouts": 6, "restarts": 1},
+      "750": {"readiness_timeouts": 40, "liveness_timeouts": 5, "restarts": 0}
+    }
   },
   "raw_summary_sha256": {
     "transport-r5-c125-0901a": "2007668ee28b96ff13ff5a3218569c3f028e9c67048b9e9f8b998064cf572125",

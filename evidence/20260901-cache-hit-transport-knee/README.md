@@ -5,6 +5,8 @@ cache-hit transport ladder. Full raw captures remain under the ignored local
 `results/transport/` tree.
 
 - `decision.json` contains scope, medians, transitions, and attribution.
+- `decision.json` also records the post-run health audit that withdrew healthy
+  steady-state eligibility without changing the verified numeric ladder.
 - `SHA256SUMS` covers the tracked compact evidence.
 - `decision.json` also records hashes for each ignored raw campaign summary.
 
