@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "kind": "llm-d-sc-cache-hit-transport-knee-isolated-decision",
+  "date": "2026-09-01",
+  "scope": {
+    "cluster": "Arena",
+    "replicas": 5,
+    "target_node": "gnr2.fm2aihpcsed.com",
+    "driver_node": "rhgnr1",
+    "application_workers_per_replica": 4,
+    "rayon_override": null,
+    "cache_mode": "hit",
+    "context_bytes": 256,
+    "requests_per_loaded_cell": 5000000,
+    "connections": 125,
+    "repetitions_per_loaded_rung": 3,
+    "classifier_image_digest": "sha256:04323612ce3f73873b4c3ed6e09264e828241537e2c1a4231b43f32e9744d5aa",
+    "driver_image_digest": "sha256:5c7420b265163dfacd141e10be4ff297ea82d5675ad91db2323ae96a3e1fe452"
+  },
+  "decision": {
+    "idle_health_control": "3 of 3 windows health-clean",
+    "first_tested_loaded_health_degradation": "concurrency 50: 4 of 6 cells had one probe timeout",
+    "first_repeatable_all_cell_health_break": "concurrency 125: 6 of 6 cells failed health",
+    "zero_error_slo_boundary": "(250, 500] aggregate concurrency",
+    "operational_throughput_latency_knee_zone": "750-1000 aggregate concurrency",
+    "post_knee_confirmation": "1500 aggregate concurrency",
+    "clusterip_is_dominant_ceiling": false,
+    "cpu_is_immediate_limiter": false,
+    "steady_state_eligible_loaded_ladder": false,
+    "narrowest_attribution": "load-associated break in a shared SC-facing service path; exact admission, gRPC/TCP, worker/executor, or probe-starvation primitive is unresolved"
+  },
+  "loaded_accounting": {
+    "cells": 42,
+    "selected_requests": 210000000,
+    "ok_responses": 209953068,
+    "resource_exhausted_responses": 46932,
+    "other_responses": 0,
+    "health_break_cells": 38,
+    "readiness_timeout_delta": 638,
+    "liveness_timeout_delta": 84,
+    "restart_delta": 3
+  },
+  "resource_bounds": {
+    "target_cpu_limit_cores_aggregate": 20,
+    "max_observed_target_cpu_cores_aggregate": 1.6478573817865492,
+    "driver_cpu_limit_cores": 8,
+    "max_observed_driver_average_cores": 2.3073225844209566,
+    "max_observed_target_throttle_ratio": 0.0,
+    "caveat": "Prometheus target samples are coarse and sparse in some cells; they reject CPU-limit saturation but are not a precise code profile"
+  },
+  "rungs": [
+    {"concurrency": 50, "run_id": "transport-isolated-r5-c50-0901a", "clusterip": {"median_useful_rps": 43045.24592458365, "median_p99_ms": 5.641, "total_errors": 0}, "direct": {"median_useful_rps": 44643.59682228411, "median_p99_ms": 5.667, "total_errors": 0}, "health_break_cells": 4},
+    {"concurrency": 125, "run_id": "transport-isolated-r5-c125-0901a", "clusterip": {"median_useful_rps": 55950.61825700729, "median_p99_ms": 8.62, "total_errors": 0}, "direct": {"median_useful_rps": 54406.89746278708, "median_p99_ms": 8.811, "total_errors": 0}, "health_break_cells": 6},
+    {"concurrency": 250, "run_id": "transport-isolated-r5-c250-0901a", "clusterip": {"median_useful_rps": 64616.930073293486, "median_p99_ms": 12.19, "total_errors": 0}, "direct": {"median_useful_rps": 63892.10461251884, "median_p99_ms": 12.319, "total_errors": 0}, "health_break_cells": 5},
+    {"concurrency": 500, "run_id": "transport-isolated-r5-c500-0901a", "clusterip": {"median_useful_rps": 69696.81190660808, "median_p99_ms": 26.801, "total_errors": 1878}, "direct": {"median_useful_rps": 72467.95488971265, "median_p99_ms": 25.407, "total_errors": 2467}, "health_break_cells": 5},
+    {"concurrency": 750, "run_id": "transport-isolated-r5-c750-0901a", "clusterip": {"median_useful_rps": 77956.3017554761, "median_p99_ms": 30.02, "total_errors": 2557}, "direct": {"median_useful_rps": 77586.85289409383, "median_p99_ms": 26.159, "total_errors": 3259}, "health_break_cells": 6},
+    {"concurrency": 1000, "run_id": "transport-isolated-r5-c1000-0901a", "clusterip": {"median_useful_rps": 81078.00711985749, "median_p99_ms": 34.611, "total_errors": 5788}, "direct": {"median_useful_rps": 79925.0842609098, "median_p99_ms": 52.103, "total_errors": 6918}, "health_break_cells": 6},
+    {"concurrency": 1500, "run_id": "transport-isolated-r5-c1500-0901a", "clusterip": {"median_useful_rps": 86614.00266432583, "median_p99_ms": 53.995, "total_errors": 14717}, "direct": {"median_useful_rps": 86167.54321980802, "median_p99_ms": 58.989, "total_errors": 9348}, "health_break_cells": 6}
+  ],
+  "integrity": {
+    "independent_audit": "independent-audit.json",
+    "independent_input": "raw result.json, health-summary.json, resource-summary.json, and topology snapshots",
+    "generated_campaign_summaries_used_as_numeric_input": false
+  }
+}

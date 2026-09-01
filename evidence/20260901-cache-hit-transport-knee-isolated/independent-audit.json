@@ -1,0 +1,2303 @@
+{
+  "accounting": {
+    "health_break_cells": 38,
+    "restart_delta": 3,
+    "selected_requests": 210000003,
+    "statuses": {
+      "GRPC_RESOURCEEXHAUSTED": 46932,
+      "OK": 209953071
+    },
+    "warning_event_delta": 722
+  },
+  "kind": "llm-d-sc-transport-knee-independent-audit",
+  "runs": [
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 0,
+          "max_driver_cpu_average_cores": 0.011803952887424661,
+          "max_target_cpu_aggregate_cores": 0.03262602475519332,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 41.142,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 24.280504903387264,
+          "restart_delta": 0,
+          "selected_requests": 3,
+          "statuses": {
+            "OK": 3
+          },
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 1,
+          "driver_cpu_average_cores": 0.011803952887424661,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 0.041342083,
+          "error_requests": 0,
+          "health_sha256": "18c886a8bfef0d426211dda99ed7fe6e49a5f8deeb16328bd9468f7d1b85d705",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 41.296,
+          "p95_ms": 41.296,
+          "p99_ms": 41.296,
+          "repetition": 1,
+          "resource_sha256": "f9f8fb82f781f7f648aeb7f82f8ffe43e8fbef10fdfafd61828744b2bb8d1ce5",
+          "restart_delta": 0,
+          "result_sha256": "52e456d8050c271d3151d72d9644df36c9c58590e218910c4fe7a225dc923270",
+          "selected_requests": 1,
+          "statuses": {
+            "OK": 1
+          },
+          "successful_requests": 1,
+          "target_cpu_aggregate_max_cores": 0.03262602475519332,
+          "target_cpu_aggregate_samples": 2,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 24.188428048001352,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 1,
+          "driver_cpu_average_cores": 0.0102949340790362,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 0.041185305,
+          "error_requests": 0,
+          "health_sha256": "18c886a8bfef0d426211dda99ed7fe6e49a5f8deeb16328bd9468f7d1b85d705",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 41.142,
+          "p95_ms": 41.142,
+          "p99_ms": 41.142,
+          "repetition": 2,
+          "resource_sha256": "6c8e481052b228b5ab2ca1a10a3fffdc58c581930a74d12588c566b8e4334701",
+          "restart_delta": 0,
+          "result_sha256": "1e8042f67a80c4f14f3a5bcb547347440edd15daee27615b4475b4decde33b3f",
+          "selected_requests": 1,
+          "statuses": {
+            "OK": 1
+          },
+          "successful_requests": 1,
+          "target_cpu_aggregate_max_cores": 0.00025126539377107903,
+          "target_cpu_aggregate_samples": 1,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 24.280504903387264,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 1,
+          "driver_cpu_average_cores": 0.008735092433336889,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 0.041098592,
+          "error_requests": 0,
+          "health_sha256": "18c886a8bfef0d426211dda99ed7fe6e49a5f8deeb16328bd9468f7d1b85d705",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 41.045,
+          "p95_ms": 41.045,
+          "p99_ms": 41.045,
+          "repetition": 3,
+          "resource_sha256": "0ca5ba194599740f6f871873ee9ea406ac6b8c057de27c9dabad0e37d1fbd7b3",
+          "restart_delta": 0,
+          "result_sha256": "96d8f3dcca7f70ca09ecdad34aeda2a105afdcaf1f97ac4b2e52901c533e559e",
+          "selected_requests": 1,
+          "statuses": {
+            "OK": 1
+          },
+          "successful_requests": 1,
+          "target_cpu_aggregate_max_cores": 0.0002157424970052101,
+          "target_cpu_aggregate_samples": 2,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 24.33173379759579,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        }
+      ],
+      "concurrency": 1,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-idle-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "15b2b9fc10b54500efd25d76e1a40fe3857e3245d88ed54d8adf031823fa5354"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 2,
+          "max_driver_cpu_average_cores": 1.304473672445254,
+          "max_target_cpu_aggregate_cores": 1.4496817078216766,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 5.641,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 43045.24592458365,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "OK": 15000000
+          },
+          "warning_by_failure": {
+            "timeout": 2
+          },
+          "warning_by_probe": {
+            "readiness": 2
+          },
+          "warning_event_delta": 2
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 2,
+          "max_driver_cpu_average_cores": 1.3439779544652968,
+          "max_target_cpu_aggregate_cores": 1.5236373943143064,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 5.667,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 44643.59682228411,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "OK": 15000000
+          },
+          "warning_by_failure": {
+            "timeout": 2
+          },
+          "warning_by_probe": {
+            "liveness": 1,
+            "readiness": 1
+          },
+          "warning_event_delta": 2
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 50,
+          "driver_cpu_average_cores": 1.2382778546120872,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 120.289095412,
+          "error_requests": 0,
+          "health_sha256": "315d91092c37f015c2005e2ec73811d5618d968401a1b63073bf0dd072ce5544",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 0.83,
+          "p95_ms": 3.743,
+          "p99_ms": 5.87,
+          "repetition": 1,
+          "resource_sha256": "c6dce043b989656d279d21fa98db0eb77933482ee44e56ebbbb3c9699be672c1",
+          "restart_delta": 0,
+          "result_sha256": "ab223dc975d1a8f015a828e185641fa99a7ce6eb30a95e85912a2b7e25b1dda2",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.395295229317302,
+          "target_cpu_aggregate_samples": 26,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 41566.527563239135,
+          "warning_by_failure": {
+            "timeout": 1
+          },
+          "warning_by_probe": {
+            "readiness": 1
+          },
+          "warning_event_delta": 1
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 50,
+          "driver_cpu_average_cores": 1.323371867114056,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 112.61339666,
+          "error_requests": 0,
+          "health_sha256": "7487b280c26faf4ea741aeee952a7f69a9d4ff953464f41c6e4b988fd647b06a",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 0.793,
+          "p95_ms": 3.357,
+          "p99_ms": 5.548,
+          "repetition": 1,
+          "resource_sha256": "871eb79bf8292588ce397e08d65d74f98df1e76bb075d04dd62dcc9d00e0d496",
+          "restart_delta": 0,
+          "result_sha256": "dd0eb695435efb9c3fe27802fca3b0f295dcd4a97ea78cbf7d4ffbb7f3f930e6",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.465705366832957,
+          "target_cpu_aggregate_samples": 24,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 44399.690874220716,
+          "warning_by_failure": {
+            "timeout": 1
+          },
+          "warning_by_probe": {
+            "liveness": 1
+          },
+          "warning_event_delta": 1
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 50,
+          "driver_cpu_average_cores": 1.2823100762947854,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 116.156845956,
+          "error_requests": 0,
+          "health_sha256": "ec02f6e6b2e149f4d1e2bd3c02ddb5823cf0bfa7faf41a5a74c2c0e1b8e0750f",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 0.817,
+          "p95_ms": 3.46,
+          "p99_ms": 5.582,
+          "repetition": 2,
+          "resource_sha256": "6ffd181de68b0e40475448685f6e5dd5e0b08fbaaac4e10018eec1f0fb6d228e",
+          "restart_delta": 0,
+          "result_sha256": "42197072379fcd15716ecacac1c09093bd7b192d131186d8d184bd14a0b46d60",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.434334233611139,
+          "target_cpu_aggregate_samples": 25,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 43045.24592458365,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 50,
+          "driver_cpu_average_cores": 1.3439779544652968,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 111.193248746,
+          "error_requests": 0,
+          "health_sha256": "ec02f6e6b2e149f4d1e2bd3c02ddb5823cf0bfa7faf41a5a74c2c0e1b8e0750f",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 0.764,
+          "p95_ms": 3.381,
+          "p99_ms": 5.667,
+          "repetition": 2,
+          "resource_sha256": "5dac960569a68cbbb2e84a3d28dc08258a17ea668640ee99d2e0bcd725153720",
+          "restart_delta": 0,
+          "result_sha256": "4a657bf974ee12a9d8ca775dd3c77a9a268bfd35a3750a7cccc27c8929691001",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.4984652007615813,
+          "target_cpu_aggregate_samples": 24,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 44966.758831029,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 50,
+          "driver_cpu_average_cores": 1.304473672445254,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 114.401247915,
+          "error_requests": 0,
+          "health_sha256": "82b2bc228edfef933b9c3004a75462cee4146fb8412d86f0152c9a93ed3a59fb",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 0.801,
+          "p95_ms": 3.435,
+          "p99_ms": 5.641,
+          "repetition": 3,
+          "resource_sha256": "176fee0fa5235a14903d591e06b3f3161a66187f7c0676d1e552bf6c6227bb44",
+          "restart_delta": 0,
+          "result_sha256": "e063edc2796cdfd0225f2a197f03444db2986acbcc0becfb257ee54ec5a5f2e2",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.4496817078216766,
+          "target_cpu_aggregate_samples": 24,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 43705.81694803709,
+          "warning_by_failure": {
+            "timeout": 1
+          },
+          "warning_by_probe": {
+            "readiness": 1
+          },
+          "warning_event_delta": 1
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 50,
+          "driver_cpu_average_cores": 1.3332463756663808,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 111.998144323,
+          "error_requests": 0,
+          "health_sha256": "c07d5cb0e1dc466567c62dec4ca3a67dcaa23789ca0eccf08ed787e0c4f1c25b",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 0.774,
+          "p95_ms": 3.404,
+          "p99_ms": 5.716,
+          "repetition": 3,
+          "resource_sha256": "b4f6c7eb4093b023602961e737760f2ab1b6f0bbbd067da176ed84926f86929b",
+          "restart_delta": 0,
+          "result_sha256": "eb0ed6af59e988c64a63ac78f141a7a9b142f708de58139a2fd6e6f9966ab34f",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.5236373943143064,
+          "target_cpu_aggregate_samples": 24,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 44643.59682228411,
+          "warning_by_failure": {
+            "timeout": 1
+          },
+          "warning_by_probe": {
+            "readiness": 1
+          },
+          "warning_event_delta": 1
+        }
+      ],
+      "concurrency": 50,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c50-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "0e115ea6e8e751d920cc9742b70e453d046c1ab0f63415c7b782ba5f3895b246"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 1.7584101080677008,
+          "max_target_cpu_aggregate_cores": 1.6478573817865492,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 8.62,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 55950.61825700729,
+          "restart_delta": 1,
+          "selected_requests": 15000000,
+          "statuses": {
+            "OK": 15000000
+          },
+          "warning_by_failure": {
+            "timeout": 36
+          },
+          "warning_by_probe": {
+            "liveness": 7,
+            "readiness": 29
+          },
+          "warning_event_delta": 36
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 1.6892728155676264,
+          "max_target_cpu_aggregate_cores": 0.00025472146945598105,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 8.811,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 54406.89746278708,
+          "restart_delta": 1,
+          "selected_requests": 15000000,
+          "statuses": {
+            "OK": 15000000
+          },
+          "warning_by_failure": {
+            "timeout": 112
+          },
+          "warning_by_probe": {
+            "liveness": 15,
+            "readiness": 97
+          },
+          "warning_event_delta": 112
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 125,
+          "driver_cpu_average_cores": 1.7584101080677008,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 86.263628322,
+          "error_requests": 0,
+          "health_sha256": "39e3b885b9624c296796551118868c896395cb01af1a8c629a611376093dfdeb",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 1.718,
+          "p95_ms": 5.253,
+          "p99_ms": 7.851,
+          "repetition": 1,
+          "resource_sha256": "a05e401912802845ccc3a938ab3812d98986fb2b24a22354d6c7dfb30bde69cf",
+          "restart_delta": 0,
+          "result_sha256": "cf5aa38c3ff2ab25d6f9e726a0fb4196b215ff3b148f8cf799a8318a25776d24",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.6478573817865492,
+          "target_cpu_aggregate_samples": 19,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 57961.85596710913,
+          "warning_by_failure": {
+            "timeout": 15
+          },
+          "warning_by_probe": {
+            "liveness": 2,
+            "readiness": 13
+          },
+          "warning_event_delta": 15
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 125,
+          "driver_cpu_average_cores": 1.6892728155676264,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 90.130053948,
+          "error_requests": 0,
+          "health_sha256": "5d2b3dc392758c9ceaeeaaf474f6123e6787c7b4a21689e600dadc557ecc3a6b",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 1.777,
+          "p95_ms": 5.583,
+          "p99_ms": 8.7,
+          "repetition": 1,
+          "resource_sha256": "f8e8ec8571e2224c12adc7db70b5d38e97ed4c38ac692917214631e94bc7962f",
+          "restart_delta": 0,
+          "result_sha256": "b7c6d1e22959892bc1c98f74b8ecc68d722d53eee9f61da46c9f949b1c098e90",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.00025472146945598105,
+          "target_cpu_aggregate_samples": 5,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 55475.3911817774,
+          "warning_by_failure": {
+            "timeout": 45
+          },
+          "warning_by_probe": {
+            "liveness": 6,
+            "readiness": 39
+          },
+          "warning_event_delta": 45
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 125,
+          "driver_cpu_average_cores": 1.7207111103600539,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 89.364517422,
+          "error_requests": 0,
+          "health_sha256": "27856767a98201e6dec90390eba06f031f525e03be7869a86f1e477abc5b5d6c",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 1.783,
+          "p95_ms": 5.625,
+          "p99_ms": 8.62,
+          "repetition": 2,
+          "resource_sha256": "e7cc3c8c8f387102af0386ab5d7667f9e5f1ece7533edd19b941f921cfe6cd55",
+          "restart_delta": 0,
+          "result_sha256": "c186393f486a1f00a8395d59aed3fd8d788878a6ec410fe3f2f2c0d07195c8f6",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.00021565247178431435,
+          "target_cpu_aggregate_samples": 7,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 55950.61825700729,
+          "warning_by_failure": {
+            "timeout": 19
+          },
+          "warning_by_probe": {
+            "liveness": 5,
+            "readiness": 14
+          },
+          "warning_event_delta": 19
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 125,
+          "driver_cpu_average_cores": 1.584019398691103,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 93.275195444,
+          "error_requests": 0,
+          "health_sha256": "8e2cbc7b8faa99b26f4beb448002724dc30a1facf5fd7c33a6766c6edbc5a0dd",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 1.823,
+          "p95_ms": 5.9,
+          "p99_ms": 9.118,
+          "repetition": 2,
+          "resource_sha256": "761a7805593e4d7958fe8cf1b3c38ecd7f0ea88c1cb8d99bf572ce645aca735b",
+          "restart_delta": 0,
+          "result_sha256": "35cbfcf1d69680fa58125fcfefc96b5a3e61665768f89474fbba4df83bc00a3c",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.00024084982657210166,
+          "target_cpu_aggregate_samples": 3,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 53604.81933272249,
+          "warning_by_failure": {
+            "timeout": 27
+          },
+          "warning_by_probe": {
+            "liveness": 9,
+            "readiness": 18
+          },
+          "warning_event_delta": 27
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 125,
+          "driver_cpu_average_cores": 1.6053591370293894,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 94.757730212,
+          "error_requests": 0,
+          "health_sha256": "c359b1072ac11897e2689c9866825c8d7574751618cc9312027cfcc2b3ff96be",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 1.858,
+          "p95_ms": 6.067,
+          "p99_ms": 9.226,
+          "repetition": 3,
+          "resource_sha256": "34c20f0ca2667aac2e5f85170c1eb075f81c0ef43b1ba8a52212fed6b5059339",
+          "restart_delta": 1,
+          "result_sha256": "2af32183a3caae9d57049e5c3be321e3720f2f481fa81862d8dd6da328619773",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.5064290850727078,
+          "target_cpu_aggregate_samples": 6,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 52766.14360446981,
+          "warning_by_failure": {
+            "timeout": 2
+          },
+          "warning_by_probe": {
+            "readiness": 2
+          },
+          "warning_event_delta": 2
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 125,
+          "driver_cpu_average_cores": 1.6637513792683873,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 91.900112544,
+          "error_requests": 0,
+          "health_sha256": "77405804069e0189f76cbf642196649d8b47d00677380a60e7871e5ae01c0201",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 1.828,
+          "p95_ms": 5.724,
+          "p99_ms": 8.811,
+          "repetition": 3,
+          "resource_sha256": "6093ffaaba6c8a76207ad6654f6f6f0bc81164bf57edf7e5f9ad0dd7a2331b65",
+          "restart_delta": 1,
+          "result_sha256": "0d116b7e7ffb5a472c714d82e75635273267a64c5efad7220500d9e2917273bb",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.00016478843926865934,
+          "target_cpu_aggregate_samples": 4,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 54406.89746278708,
+          "warning_by_failure": {
+            "timeout": 40
+          },
+          "warning_by_probe": {
+            "readiness": 40
+          },
+          "warning_event_delta": 40
+        }
+      ],
+      "concurrency": 125,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c125-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "1f6ea597eeafdca64aecda88e1a194627689ddc2dfbb663ae431004fff639f21"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 1.9292603442358196,
+          "max_target_cpu_aggregate_cores": 1.5690884429289482,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 12.19,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 64616.930073293486,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "OK": 15000000
+          },
+          "warning_by_failure": {
+            "timeout": 61
+          },
+          "warning_by_probe": {
+            "liveness": 7,
+            "readiness": 54
+          },
+          "warning_event_delta": 61
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 2,
+          "max_driver_cpu_average_cores": 1.9488364181879279,
+          "max_target_cpu_aggregate_cores": 1.3413449890624671,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 12.319,
+          "median_success_rate": 1.0,
+          "median_useful_rps": 63892.10461251884,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "OK": 15000000
+          },
+          "warning_by_failure": {
+            "timeout": 48
+          },
+          "warning_by_probe": {
+            "liveness": 5,
+            "readiness": 43
+          },
+          "warning_event_delta": 48
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 250,
+          "driver_cpu_average_cores": 1.9027570348294334,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 77.379101643,
+          "error_requests": 0,
+          "health_sha256": "2e534fc5b65ffe01fdfd6469f0e1997343d5795ee9eb64be34688841fae0d031",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 3.283,
+          "p95_ms": 8.59,
+          "p99_ms": 11.945,
+          "repetition": 1,
+          "resource_sha256": "d5077ffecb11d2797ec8ad58e5dcc92a09e876d6f62072534b0f2915bd7b95cd",
+          "restart_delta": 0,
+          "result_sha256": "58d0ccc9c3207574c875906169119e3f9b1a3a11e8e947eb9cae04e303d1ae3e",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.0578992407528054,
+          "target_cpu_aggregate_samples": 17,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 64616.930073293486,
+          "warning_by_failure": {
+            "timeout": 18
+          },
+          "warning_by_probe": {
+            "readiness": 18
+          },
+          "warning_event_delta": 18
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 250,
+          "driver_cpu_average_cores": 1.9488364181879279,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 76.003443705,
+          "error_requests": 0,
+          "health_sha256": "dbf7e2a0871699a204736e75c1386df081c1315ee95e1ed6fb7fbb34e479c60c",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 3.216,
+          "p95_ms": 8.452,
+          "p99_ms": 11.798,
+          "repetition": 1,
+          "resource_sha256": "1e15d5e097055cc93c1640575a4d978a1b5fa99139c24ecdc7cde78d5db35bd6",
+          "restart_delta": 0,
+          "result_sha256": "0b57e4b69a0ee852b4971d48ef7cdc47af224cb1e40624921fb61e9f56a4747a",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.018924110004383,
+          "target_cpu_aggregate_samples": 7,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 65786.4927727093,
+          "warning_by_failure": {
+            "timeout": 26
+          },
+          "warning_by_probe": {
+            "liveness": 4,
+            "readiness": 22
+          },
+          "warning_event_delta": 26
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 250,
+          "driver_cpu_average_cores": 1.835847713260987,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 78.327893954,
+          "error_requests": 0,
+          "health_sha256": "060d0e1518e0f48054d5386824eb1e0036d60562f6394327d87ba69aca6b629e",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 3.313,
+          "p95_ms": 8.682,
+          "p99_ms": 12.228,
+          "repetition": 2,
+          "resource_sha256": "112b2c6d6af7367221e356cb9454bc2fb9d93e7a59db303243cbf5120b646ed3",
+          "restart_delta": 0,
+          "result_sha256": "d622f45a5f8e00a4ab214f7ce4194ad27bdced0701961afd310036ebcc0b3f06",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.3322186501951485,
+          "target_cpu_aggregate_samples": 1,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 63834.21981109787,
+          "warning_by_failure": {
+            "timeout": 28
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 25
+          },
+          "warning_event_delta": 28
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 250,
+          "driver_cpu_average_cores": 1.868803795111849,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 78.256930654,
+          "error_requests": 0,
+          "health_sha256": "008a9e626fe16629a2bdb29fcbc2b0fbdae126445011e87e934be6450c22e0a3",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 3.275,
+          "p95_ms": 8.78,
+          "p99_ms": 12.557,
+          "repetition": 2,
+          "resource_sha256": "0aa26833c980c3d0e144e034e4c953adf8a4a6bc77e59736d154f256f48c9ee1",
+          "restart_delta": 0,
+          "result_sha256": "e99b619c7247bab168aa45b0351be0c60e2510a74b2a1041ede5145daa261bb7",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 0.3953312790616855,
+          "target_cpu_aggregate_samples": 7,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 63892.10461251884,
+          "warning_by_failure": {
+            "timeout": 22
+          },
+          "warning_by_probe": {
+            "liveness": 1,
+            "readiness": 21
+          },
+          "warning_event_delta": 22
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 250,
+          "driver_cpu_average_cores": 1.9292603442358196,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 77.030816211,
+          "error_requests": 0,
+          "health_sha256": "32b5dde1229e54fc789bb7ef9d875bce01bb308b9355814736ea2d6b5dc41bfb",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 3.236,
+          "p95_ms": 8.672,
+          "p99_ms": 12.19,
+          "repetition": 3,
+          "resource_sha256": "f17bdaf7bcb4468a425820de45fe120372557beff01f89cf8ee7f0dd574250e3",
+          "restart_delta": 0,
+          "result_sha256": "56b993555733a9dcc227c7c953237b97c2a97e021beba212c1f118ff29a27501",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.5690884429289482,
+          "target_cpu_aggregate_samples": 3,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 64909.08763454073,
+          "warning_by_failure": {
+            "timeout": 15
+          },
+          "warning_by_probe": {
+            "liveness": 4,
+            "readiness": 11
+          },
+          "warning_event_delta": 15
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 250,
+          "driver_cpu_average_cores": 1.8168447188981725,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 79.492325072,
+          "error_requests": 0,
+          "health_sha256": "3b8226485405ab9d898a9c6a3065403fa45e2a1da058344ea5c60eb65754deee",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 3.374,
+          "p95_ms": 8.815,
+          "p99_ms": 12.319,
+          "repetition": 3,
+          "resource_sha256": "01b0a52f63f63c4bc50e1f7170cb0f1f9ae47d92dec1867ba3c30ce35c66a925",
+          "restart_delta": 0,
+          "result_sha256": "c90a0ec141c7a952734a425899e1d1ce631f2f68c29bf23011e9e8e459551386",
+          "selected_requests": 5000000,
+          "statuses": {
+            "OK": 5000000
+          },
+          "successful_requests": 5000000,
+          "target_cpu_aggregate_max_cores": 1.3413449890624671,
+          "target_cpu_aggregate_samples": 18,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 62899.154043755305,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        }
+      ],
+      "concurrency": 250,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c250-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "92db266fdd20c94febdf98c46ff2ea5c06a3317345cfa3f0037eeb0920d4d2d4"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 1.987404306419622,
+          "max_target_cpu_aggregate_cores": 0.1476403595556761,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 26.801,
+          "median_success_rate": 0.9998756,
+          "median_useful_rps": 69696.81190660808,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1878,
+            "OK": 14998122
+          },
+          "warning_by_failure": {
+            "timeout": 62
+          },
+          "warning_by_probe": {
+            "liveness": 6,
+            "readiness": 56
+          },
+          "warning_event_delta": 62
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 2,
+          "max_driver_cpu_average_cores": 2.082736878136065,
+          "max_target_cpu_aggregate_cores": 0.4252071712554051,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 25.407,
+          "median_success_rate": 0.9998228,
+          "median_useful_rps": 72467.95488971265,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2467,
+            "OK": 14997533
+          },
+          "warning_by_failure": {
+            "timeout": 84
+          },
+          "warning_by_probe": {
+            "liveness": 9,
+            "readiness": 75
+          },
+          "warning_event_delta": 84
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 500,
+          "driver_cpu_average_cores": 1.8830199888072574,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 71.730655438,
+          "error_requests": 602,
+          "health_sha256": "f9766b98ffb469b795ed59509b2e4753fb712d4d628bf790b17a2355f3fe1aec",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 6.439,
+          "p95_ms": 15.0,
+          "p99_ms": 20.356,
+          "repetition": 1,
+          "resource_sha256": "7a3fc1548e4ab06ce9b8aaa35e2b619de3b114ca9e11a61dc74e7a386276b384",
+          "restart_delta": 0,
+          "result_sha256": "1a5fb17288ad91dffbfab012f97c56926d8dbbb9d1bcac5f613eff5bca3bff56",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 602,
+            "OK": 4999398
+          },
+          "successful_requests": 4999398,
+          "target_cpu_aggregate_max_cores": 0.1476403595556761,
+          "target_cpu_aggregate_samples": 8,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 69696.81190660808,
+          "warning_by_failure": {
+            "timeout": 21
+          },
+          "warning_by_probe": {
+            "liveness": 2,
+            "readiness": 19
+          },
+          "warning_event_delta": 21
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 500,
+          "driver_cpu_average_cores": 2.082736878136065,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 68.776131783,
+          "error_requests": 1382,
+          "health_sha256": "b228bb632a15ae14afe7058e0abda2ee07eb924dcb685f62907ed409ca32f41e",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 6.002,
+          "p95_ms": 14.684,
+          "p99_ms": 21.843,
+          "repetition": 1,
+          "resource_sha256": "e22b03a2b0ad7311ecb27ee23a450d94e599bdb067478684a4c853be1703476e",
+          "restart_delta": 0,
+          "result_sha256": "b70430b0baa9bfb015c3a1db780f317d645f22ca592d4b1a0b5538749497432c",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1382,
+            "OK": 4998618
+          },
+          "successful_requests": 4998618,
+          "target_cpu_aggregate_max_cores": 0.4252071712554051,
+          "target_cpu_aggregate_samples": 5,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 72679.54551110059,
+          "warning_by_failure": {
+            "timeout": 57
+          },
+          "warning_by_probe": {
+            "liveness": 6,
+            "readiness": 51
+          },
+          "warning_event_delta": 57
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 500,
+          "driver_cpu_average_cores": 1.987404306419622,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 71.100032109,
+          "error_requests": 622,
+          "health_sha256": "babc0cfbc53cdd166957dadf2e27870376e76f131e6f73a01f3d6bea612e06df",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 5.998,
+          "p95_ms": 15.838,
+          "p99_ms": 26.801,
+          "repetition": 2,
+          "resource_sha256": "5741d9dadae001cf62fbcaa40e065ddd05589f8ef964796f2c23d9731b3961d7",
+          "restart_delta": 0,
+          "result_sha256": "909effb0b1520610eda9648ca68ce15afb4c517a07e22b04a00f4ba70e98e334",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 622,
+            "OK": 4999378
+          },
+          "successful_requests": 4999378,
+          "target_cpu_aggregate_max_cores": 0.009154193048404452,
+          "target_cpu_aggregate_samples": 5,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 70314.70804873473,
+          "warning_by_failure": {
+            "timeout": 1
+          },
+          "warning_by_probe": {
+            "readiness": 1
+          },
+          "warning_event_delta": 1
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 500,
+          "driver_cpu_average_cores": 2.0524428258415934,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 68.993267543,
+          "error_requests": 199,
+          "health_sha256": "9cc9b6448d2d0b603357a36febc1ae621c3e03017d04c74928b33f07140d2f81",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 5.855,
+          "p95_ms": 15.146,
+          "p99_ms": 25.407,
+          "repetition": 2,
+          "resource_sha256": "beac4d1c13f985e0e1a59499f03f548923d9af7af6563ea6549047b7878b7723",
+          "restart_delta": 0,
+          "result_sha256": "62bed599e836b2534c3146a70f5b9db2933372d849e8c564137073a8aee13e28",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 199,
+            "OK": 4999801
+          },
+          "successful_requests": 4999801,
+          "target_cpu_aggregate_max_cores": 0.00010678959745467137,
+          "target_cpu_aggregate_samples": 2,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 72467.95488971265,
+          "warning_by_failure": {
+            "timeout": 27
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 24
+          },
+          "warning_event_delta": 27
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 500,
+          "driver_cpu_average_cores": 1.964056708285849,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 72.488654426,
+          "error_requests": 654,
+          "health_sha256": "19c99926d49c88c78751c1930cf530a5bd8dba850f5e8bc4708b1fad9e37dd21",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 5.968,
+          "p95_ms": 16.727,
+          "p99_ms": 30.441,
+          "repetition": 3,
+          "resource_sha256": "72ad1dcde5ba10743f57715821050af852ef02e41d4ed21fe684018a07084c31",
+          "restart_delta": 0,
+          "result_sha256": "ddc84ad87ddb52c70afd28587e7e105dd7444559ed0844061ecbe622a53f25ac",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 654,
+            "OK": 4999346
+          },
+          "successful_requests": 4999346,
+          "target_cpu_aggregate_max_cores": 0.00025222613550461657,
+          "target_cpu_aggregate_samples": 3,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 68967.28928943742,
+          "warning_by_failure": {
+            "timeout": 40
+          },
+          "warning_by_probe": {
+            "liveness": 4,
+            "readiness": 36
+          },
+          "warning_event_delta": 40
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 500,
+          "driver_cpu_average_cores": 2.0197820592194513,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 70.054531059,
+          "error_requests": 886,
+          "health_sha256": "d21af505d58d817b6f0c3d6ec93549d901cfc6adf7e52cee7e912298da21982b",
+          "health_slo_pass": true,
+          "identity_stable": true,
+          "p50_ms": 5.919,
+          "p95_ms": 15.505,
+          "p99_ms": 26.378,
+          "repetition": 3,
+          "resource_sha256": "ad135b09f63fed71d40b443f8836114268f86e3fc005fe71888011e2a3a0b09e",
+          "restart_delta": 0,
+          "result_sha256": "a9ac928d2d9ded85b30504befbdf4950a0c127395506badc14aaec68e35bff90",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 886,
+            "OK": 4999114
+          },
+          "successful_requests": 4999114,
+          "target_cpu_aggregate_max_cores": 0.00017649511469850632,
+          "target_cpu_aggregate_samples": 6,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 71360.32351411704,
+          "warning_by_failure": {},
+          "warning_by_probe": {},
+          "warning_event_delta": 0
+        }
+      ],
+      "concurrency": 500,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c500-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "8752b01e0ac3fdcb335e708ff05b0dd20d0d02fdcc49e981886e604d3aec28bf"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 2.1482913661807954,
+          "max_target_cpu_aggregate_cores": 0.5981492132429738,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 30.02,
+          "median_success_rate": 0.999837,
+          "median_useful_rps": 77956.3017554761,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2557,
+            "OK": 14997443
+          },
+          "warning_by_failure": {
+            "timeout": 65
+          },
+          "warning_by_probe": {
+            "liveness": 6,
+            "readiness": 59
+          },
+          "warning_event_delta": 65
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 2.167537039453493,
+          "max_target_cpu_aggregate_cores": 1.5399082965123831,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 26.159,
+          "median_success_rate": 0.999799,
+          "median_useful_rps": 77586.85289409383,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 3259,
+            "OK": 14996741
+          },
+          "warning_by_failure": {
+            "timeout": 42
+          },
+          "warning_by_probe": {
+            "liveness": 1,
+            "readiness": 41
+          },
+          "warning_event_delta": 42
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 750,
+          "driver_cpu_average_cores": 2.114707460020466,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 64.128042088,
+          "error_requests": 815,
+          "health_sha256": "94db984136ffd0ca4f6f587129aff93dd46b203cc42289cc3fc51f693b8429bb",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 8.639,
+          "p95_ms": 19.606,
+          "p99_ms": 30.02,
+          "repetition": 1,
+          "resource_sha256": "5094fc65d27fccad04c63b8fc78b87203925436b840e9ab6c56a1f6350feba8d",
+          "restart_delta": 0,
+          "result_sha256": "6cc47e0b0a4221166683377a56f3b97849926c1b3efa9307ccff70954a49c5d7",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 815,
+            "OK": 4999185
+          },
+          "successful_requests": 4999185,
+          "target_cpu_aggregate_max_cores": 0.3111930155637991,
+          "target_cpu_aggregate_samples": 6,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 77956.3017554761,
+          "warning_by_failure": {
+            "timeout": 20
+          },
+          "warning_by_probe": {
+            "liveness": 4,
+            "readiness": 16
+          },
+          "warning_event_delta": 20
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 750,
+          "driver_cpu_average_cores": 2.167537039453493,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 63.625513885,
+          "error_requests": 1005,
+          "health_sha256": "c329fa863c042befa8102428ed10e47cf5d7f571a63b9cb61649e14f6a250f29",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 8.717,
+          "p95_ms": 19.19,
+          "p99_ms": 26.159,
+          "repetition": 1,
+          "resource_sha256": "ce6612ae4d0ca4686b04208d803ca20dd770619b331312bd5e6a011a3965ceec",
+          "restart_delta": 0,
+          "result_sha256": "c2cfee3fa526576afc39c1fa0a953049690fee7cd080af03c869b24117239ab4",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1005,
+            "OK": 4998995
+          },
+          "successful_requests": 4998995,
+          "target_cpu_aggregate_max_cores": 0.24446825070313502,
+          "target_cpu_aggregate_samples": 5,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 78569.03142716362,
+          "warning_by_failure": {
+            "timeout": 35
+          },
+          "warning_by_probe": {
+            "readiness": 35
+          },
+          "warning_event_delta": 35
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 750,
+          "driver_cpu_average_cores": 2.1482913661807954,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 63.596308746,
+          "error_requests": 349,
+          "health_sha256": "a877f1c9ec6024e0a18c21c21bff542749d146b04b641eb99257a1d8dab46174",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 8.837,
+          "p95_ms": 18.921,
+          "p99_ms": 24.878,
+          "repetition": 2,
+          "resource_sha256": "60cbe1538c803d28bdb691408bcc98b94890cdc3e538044fef427b724b6a773c",
+          "restart_delta": 0,
+          "result_sha256": "e71822f1e824c7207fe9b85398995299cb9f9fc16b1c74828136fa5dc1a8cae4",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 349,
+            "OK": 4999651
+          },
+          "successful_requests": 4999651,
+          "target_cpu_aggregate_max_cores": 0.5981492132429738,
+          "target_cpu_aggregate_samples": 6,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 78615.42750803854,
+          "warning_by_failure": {
+            "timeout": 27
+          },
+          "warning_by_probe": {
+            "liveness": 2,
+            "readiness": 25
+          },
+          "warning_event_delta": 27
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 750,
+          "driver_cpu_average_cores": 2.113991468628044,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 64.432707521,
+          "error_requests": 869,
+          "health_sha256": "49c2929978ba37b9de987e562855ac477d59f20ee70d2114a201509b88e2f1f7",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 8.942,
+          "p95_ms": 19.159,
+          "p99_ms": 25.291,
+          "repetition": 2,
+          "resource_sha256": "35feff59c0485933fca45a8c4ca7f8d0acc9da7b429ce1b06f54a8066a825a82",
+          "restart_delta": 0,
+          "result_sha256": "be60df6170446d6afb5a5294f5438fc937954f1ab98b323e64b79f3856c5eee9",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 869,
+            "OK": 4999131
+          },
+          "successful_requests": 4999131,
+          "target_cpu_aggregate_max_cores": 1.5399082965123831,
+          "target_cpu_aggregate_samples": 14,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 77586.85289409383,
+          "warning_by_failure": {
+            "timeout": 6
+          },
+          "warning_by_probe": {
+            "readiness": 6
+          },
+          "warning_event_delta": 6
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 750,
+          "driver_cpu_average_cores": 2.108628539320452,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 65.730212987,
+          "error_requests": 1393,
+          "health_sha256": "0cfc49cdaa4a49277bf714b52a89804e159e139c5cb4d868404c4e86db53eef8",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 8.744,
+          "p95_ms": 19.99,
+          "p99_ms": 30.744,
+          "repetition": 3,
+          "resource_sha256": "c964ac26a5e1f6b8476355a4729d7ad8a175387900e24a1b224ef99f77e292a3",
+          "restart_delta": 0,
+          "result_sha256": "95c1f956f72fff6c9a965dfdd63d0a778f36f5056dfa6bac0a0b1af48bf4e2ed",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1393,
+            "OK": 4998607
+          },
+          "successful_requests": 4998607,
+          "target_cpu_aggregate_max_cores": 0.284863418168644,
+          "target_cpu_aggregate_samples": 4,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 76047.32698779806,
+          "warning_by_failure": {
+            "timeout": 18
+          },
+          "warning_by_probe": {
+            "readiness": 18
+          },
+          "warning_event_delta": 18
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 750,
+          "driver_cpu_average_cores": 2.0753964837799,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 66.761926255,
+          "error_requests": 1385,
+          "health_sha256": "f784d8a846bf345811a9821fe4bc008179cd8211134c49e6b888f75fd82dbace",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 8.665,
+          "p95_ms": 21.587,
+          "p99_ms": 37.996,
+          "repetition": 3,
+          "resource_sha256": "4dc95adeb5884548aa401d42c1dda06e969aa04283e0aa00b40aa5d1b4f20f1f",
+          "restart_delta": 0,
+          "result_sha256": "beaa8d2a939b398e55825ec1a2a8db672deab59fdd31cae133320ce911e60c86",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1385,
+            "OK": 4998615
+          },
+          "successful_requests": 4998615,
+          "target_cpu_aggregate_max_cores": 0.7405962457843409,
+          "target_cpu_aggregate_samples": 8,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 74872.2405178601,
+          "warning_by_failure": {
+            "timeout": 1
+          },
+          "warning_by_probe": {
+            "liveness": 1
+          },
+          "warning_event_delta": 1
+        }
+      ],
+      "concurrency": 750,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c750-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "cdb270f61de7f9137d3421a3c9ec0e5bfe54f799f0eb8433242d49bf6df8f0b9"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 2.3073225844209566,
+          "max_target_cpu_aggregate_cores": 0.2263347940357203,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 34.611,
+          "median_success_rate": 0.999574,
+          "median_useful_rps": 81078.00711985749,
+          "restart_delta": 1,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 5788,
+            "OK": 14994212
+          },
+          "warning_by_failure": {
+            "timeout": 58
+          },
+          "warning_by_probe": {
+            "liveness": 10,
+            "readiness": 48
+          },
+          "warning_event_delta": 58
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 2.157889547690666,
+          "max_target_cpu_aggregate_cores": 0.6477885173641789,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 52.103,
+          "median_success_rate": 0.9995504,
+          "median_useful_rps": 79925.0842609098,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 6918,
+            "OK": 14993082
+          },
+          "warning_by_failure": {
+            "timeout": 47
+          },
+          "warning_by_probe": {
+            "liveness": 5,
+            "readiness": 42
+          },
+          "warning_event_delta": 47
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 1000,
+          "driver_cpu_average_cores": 2.3073225844209566,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 59.75429614,
+          "error_requests": 2169,
+          "health_sha256": "aba05a8e9d8fecb47746f5d2098bdef2b7e20a10df2854a3e89528c693992958",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 11.157,
+          "p95_ms": 22.965,
+          "p99_ms": 31.643,
+          "repetition": 1,
+          "resource_sha256": "ffeba3958fca743f6107ddd397bd325a8fa7dfa228b9b7d567d29d7af26193f5",
+          "restart_delta": 0,
+          "result_sha256": "fa6a0ea1299a528a7f906a26ef106c9cf180ef746da4e162ae2c246730525bbc",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2169,
+            "OK": 4997831
+          },
+          "successful_requests": 4997831,
+          "target_cpu_aggregate_max_cores": 0.0002462363633374311,
+          "target_cpu_aggregate_samples": 4,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 83639.6932580453,
+          "warning_by_failure": {
+            "timeout": 24
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 21
+          },
+          "warning_event_delta": 24
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 1000,
+          "driver_cpu_average_cores": 2.124060487562767,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 63.812094709,
+          "error_requests": 1322,
+          "health_sha256": "1343ead78e8a0d7ad6e9e37217380296ad3eeeb039779f9f9f05b5dbfe27615e",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 11.094,
+          "p95_ms": 26.809,
+          "p99_ms": 53.286,
+          "repetition": 1,
+          "resource_sha256": "dce8f97579d1f2172c99709d426b4f28376c19274f8d8ee141560cd6060041b0",
+          "restart_delta": 0,
+          "result_sha256": "7ce995f7e31b31c3b7085d8d5e4a902c0ee0a33cb07ca3bf0e87ac151edd405e",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1322,
+            "OK": 4998678
+          },
+          "successful_requests": 4998678,
+          "target_cpu_aggregate_max_cores": 0.2811150490361853,
+          "target_cpu_aggregate_samples": 6,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 78334.33493752699,
+          "warning_by_failure": {
+            "timeout": 18
+          },
+          "warning_by_probe": {
+            "liveness": 1,
+            "readiness": 17
+          },
+          "warning_event_delta": 18
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 1000,
+          "driver_cpu_average_cores": 2.168739006960367,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 61.650639644,
+          "error_requests": 1489,
+          "health_sha256": "c7ec7444cd7168c036abea3ce0e81d291283578719b7bf0931befc94d133c43e",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 11.436,
+          "p95_ms": 23.738,
+          "p99_ms": 34.611,
+          "repetition": 2,
+          "resource_sha256": "5ab1a50511b554d9db77322c1e00efa8946a846a6ec6469c89441423891b5986",
+          "restart_delta": 0,
+          "result_sha256": "56565e5fa2a478b424f2e138fecb23a898edbe22a681df20db9be235f380077d",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 1489,
+            "OK": 4998511
+          },
+          "successful_requests": 4998511,
+          "target_cpu_aggregate_max_cores": 0.2263347940357203,
+          "target_cpu_aggregate_samples": 4,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 81078.00711985749,
+          "warning_by_failure": {
+            "timeout": 19
+          },
+          "warning_by_probe": {
+            "liveness": 4,
+            "readiness": 15
+          },
+          "warning_event_delta": 19
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 1000,
+          "driver_cpu_average_cores": 2.143605350527532,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 62.530456442,
+          "error_requests": 2248,
+          "health_sha256": "b02f18dfc871ab936b5229ea5e1f96353516b67f2fc02801fae2f12e53b6dad5",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 11.232,
+          "p95_ms": 24.973,
+          "p99_ms": 43.635,
+          "repetition": 2,
+          "resource_sha256": "25c875f00042441026f88434ed47ec86051ae67d8a81990ed360795f0d9eb7d7",
+          "restart_delta": 0,
+          "result_sha256": "9695839ba19ee3ad8d44dbb8b21d7b177d48e7b1a749395f249aa98f79f67ee9",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2248,
+            "OK": 4997752
+          },
+          "successful_requests": 4997752,
+          "target_cpu_aggregate_max_cores": 0.6477885173641789,
+          "target_cpu_aggregate_samples": 4,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 79925.0842609098,
+          "warning_by_failure": {
+            "timeout": 26
+          },
+          "warning_by_probe": {
+            "liveness": 4,
+            "readiness": 22
+          },
+          "warning_event_delta": 26
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 1000,
+          "driver_cpu_average_cores": 2.1102546389460977,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 64.062750298,
+          "error_requests": 2130,
+          "health_sha256": "a144955352daabe83e4b0a1d9fa535dd1338a9a7525a276b07e7986212f9d76a",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 11.184,
+          "p95_ms": 27.301,
+          "p99_ms": 51.551,
+          "repetition": 3,
+          "resource_sha256": "4c814c9341a755f553ef1ba3d67ac409baca36b4ee59d82d2b5107d042f0e405",
+          "restart_delta": 1,
+          "result_sha256": "2185b90d2eb671a89c826ccdceb3ec4fcae9713a04be37178298c8c53226f7c8",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2130,
+            "OK": 4997870
+          },
+          "successful_requests": 4997870,
+          "target_cpu_aggregate_max_cores": 0.011371319275794683,
+          "target_cpu_aggregate_samples": 1,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 78015.22689474715,
+          "warning_by_failure": {
+            "timeout": 15
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 12
+          },
+          "warning_event_delta": 15
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 1000,
+          "driver_cpu_average_cores": 2.157889547690666,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 62.474711064,
+          "error_requests": 3348,
+          "health_sha256": "4281cdddd5faffb2407521e20f9fef1815694fb223d1f119d4bfe200ca604edf",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 10.88,
+          "p95_ms": 26.361,
+          "p99_ms": 52.103,
+          "repetition": 3,
+          "resource_sha256": "0cc3c4261e46d28461a65b3f99984dfddc1360f955e438d4a299c595eedf041f",
+          "restart_delta": 0,
+          "result_sha256": "759316bd5eeaa1aab00f7177d5918782f36c521418fe3a5971beb60b8ea302f9",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 3348,
+            "OK": 4996652
+          },
+          "successful_requests": 4996652,
+          "target_cpu_aggregate_max_cores": 0.5780805755279128,
+          "target_cpu_aggregate_samples": 9,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 79978.79325734467,
+          "warning_by_failure": {
+            "timeout": 3
+          },
+          "warning_by_probe": {
+            "readiness": 3
+          },
+          "warning_event_delta": 3
+        }
+      ],
+      "concurrency": 1000,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c1000-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "a3dc4b4b8215013f27a8f9a0f7a74ced49b4616b2685abd17575d8f57231f7b4"
+    },
+    {
+      "aggregates": {
+        "clusterip": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 2.305227210243172,
+          "max_target_cpu_aggregate_cores": 1.0198821895940247,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 53.995,
+          "median_success_rate": 0.9988498,
+          "median_useful_rps": 86614.00266432583,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 14717,
+            "OK": 14985283
+          },
+          "warning_by_failure": {
+            "timeout": 63
+          },
+          "warning_by_probe": {
+            "liveness": 6,
+            "readiness": 57
+          },
+          "warning_event_delta": 63
+        },
+        "direct": {
+          "cells": 3,
+          "health_break_cells": 3,
+          "max_driver_cpu_average_cores": 2.290151186750107,
+          "max_target_cpu_aggregate_cores": 1.5770920875701517,
+          "max_target_throttle_ratio": 0.0,
+          "median_p99_ms": 58.989,
+          "median_success_rate": 0.9994624,
+          "median_useful_rps": 86167.54321980802,
+          "restart_delta": 0,
+          "selected_requests": 15000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 9348,
+            "OK": 14990652
+          },
+          "warning_by_failure": {
+            "timeout": 40
+          },
+          "warning_by_probe": {
+            "liveness": 6,
+            "readiness": 34
+          },
+          "warning_event_delta": 40
+        }
+      },
+      "cells": [
+        {
+          "cell": "1-clusterip",
+          "concurrency": 1500,
+          "driver_cpu_average_cores": 2.2684644844521293,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 57.657155268,
+          "error_requests": 6083,
+          "health_sha256": "abe42a23709e15a8e8cc050c0e867d91401385ecba6d958a8d74e1d2ca4c6fa6",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 16.099,
+          "p95_ms": 32.151,
+          "p99_ms": 53.995,
+          "repetition": 1,
+          "resource_sha256": "b696ed097a619b53596dfbdd8b27d889b26e763e300c53624cfdb2ec1bc3f706",
+          "restart_delta": 0,
+          "result_sha256": "8d645b2c8d3fe7687a98f77d65ec8c5e4456ad49135fdee357f9af092742d477",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 6083,
+            "OK": 4993917
+          },
+          "successful_requests": 4993917,
+          "target_cpu_aggregate_max_cores": 1.0198821895940247,
+          "target_cpu_aggregate_samples": 13,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 86614.00266432583,
+          "warning_by_failure": {
+            "timeout": 10
+          },
+          "warning_by_probe": {
+            "readiness": 10
+          },
+          "warning_event_delta": 10
+        },
+        {
+          "cell": "1-direct",
+          "concurrency": 1500,
+          "driver_cpu_average_cores": 2.290151186750107,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 57.538305664,
+          "error_requests": 2688,
+          "health_sha256": "6df8c8dd38abe8c247bb8bf0645b195f4409c292c0fa353c3065df1d1c7cec22",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 15.969,
+          "p95_ms": 32.313,
+          "p99_ms": 54.876,
+          "repetition": 1,
+          "resource_sha256": "b0fa33d3a8b8f3f01c19ec3eef5222c83eb391e782740c46647ed1d8892969bf",
+          "restart_delta": 0,
+          "result_sha256": "d751899fb49fec0df4205cc22bb39945c1f0bb8570048fc48cc41f54d182c312",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2688,
+            "OK": 4997312
+          },
+          "successful_requests": 4997312,
+          "target_cpu_aggregate_max_cores": 0.23635394167450618,
+          "target_cpu_aggregate_samples": 4,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 86851.91443040126,
+          "warning_by_failure": {
+            "timeout": 15
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 12
+          },
+          "warning_event_delta": 15
+        },
+        {
+          "cell": "2-clusterip",
+          "concurrency": 1500,
+          "driver_cpu_average_cores": 2.2548222183426496,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 59.015470895,
+          "error_requests": 5751,
+          "health_sha256": "75b35a9b20e0747cff60272c6ddbf486cab9caff62e8e1ce99773d84d4563ecb",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 15.826,
+          "p95_ms": 34.764,
+          "p99_ms": 71.353,
+          "repetition": 2,
+          "resource_sha256": "a1821cd42187006e8b162647a766eee06f437a06653c141749351fa0184f3a57",
+          "restart_delta": 0,
+          "result_sha256": "0fae5c3d62531094bd9d592c20b31ca1cee6a78593853d427f3c805c18bd1541",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 5751,
+            "OK": 4994249
+          },
+          "successful_requests": 4994249,
+          "target_cpu_aggregate_max_cores": 0.7121751222942381,
+          "target_cpu_aggregate_samples": 8,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 84626.09760219892,
+          "warning_by_failure": {
+            "timeout": 21
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 18
+          },
+          "warning_event_delta": 21
+        },
+        {
+          "cell": "2-direct",
+          "concurrency": 1500,
+          "driver_cpu_average_cores": 2.2777494105272487,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 58.540898478,
+          "error_requests": 4481,
+          "health_sha256": "6597509fff9fa778eaa2d1ccb80580ed9debfb365d133c21d165347290d0cf6a",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 15.942,
+          "p95_ms": 33.979,
+          "p99_ms": 61.988,
+          "repetition": 2,
+          "resource_sha256": "6e2ff12cc76c235969a5aa4bd385ccd6543bad0966e8ae56485a8cab16786f50",
+          "restart_delta": 0,
+          "result_sha256": "a2a1ba4f8ca237f661cc1e3e2a2ce605273c33dfdcad85bd0caf7e622895573c",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 4481,
+            "OK": 4995519
+          },
+          "successful_requests": 4995519,
+          "target_cpu_aggregate_max_cores": 1.5770920875701517,
+          "target_cpu_aggregate_samples": 13,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 85333.82865446358,
+          "warning_by_failure": {
+            "timeout": 9
+          },
+          "warning_by_probe": {
+            "liveness": 2,
+            "readiness": 7
+          },
+          "warning_event_delta": 9
+        },
+        {
+          "cell": "3-clusterip",
+          "concurrency": 1500,
+          "driver_cpu_average_cores": 2.305227210243172,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 56.507946124,
+          "error_requests": 2883,
+          "health_sha256": "09104b81777e4e68f4262f22fe6c2e936bc86ab1b1184f008e88df55c0c9cea5",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 16.24,
+          "p95_ms": 29.793,
+          "p99_ms": 41.121,
+          "repetition": 3,
+          "resource_sha256": "6dd2919acb4e413679f2e497c08b1896083648f16dddaa0365ddb157f7e1c1ad",
+          "restart_delta": 0,
+          "result_sha256": "230bd2050e27d66829892b23ef18d59058d4414847c01a2450d085f3daeb49db",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2883,
+            "OK": 4997117
+          },
+          "successful_requests": 4997117,
+          "target_cpu_aggregate_max_cores": 0.2733721087844297,
+          "target_cpu_aggregate_samples": 5,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "clusterip",
+          "useful_rps": 88432.1116367319,
+          "warning_by_failure": {
+            "timeout": 32
+          },
+          "warning_by_probe": {
+            "liveness": 3,
+            "readiness": 29
+          },
+          "warning_event_delta": 32
+        },
+        {
+          "cell": "3-direct",
+          "concurrency": 1500,
+          "driver_cpu_average_cores": 2.2647642561999106,
+          "driver_cpu_limit_cores": 8.0,
+          "driver_node": "rhgnr1",
+          "elapsed_seconds": 58.00120107,
+          "error_requests": 2179,
+          "health_sha256": "b562a3d80e150c51a1440506d0e2b86be67bc47e3fc2a3a0715c4bbdd217a5ec",
+          "health_slo_pass": false,
+          "identity_stable": true,
+          "p50_ms": 15.977,
+          "p95_ms": 32.731,
+          "p99_ms": 58.989,
+          "repetition": 3,
+          "resource_sha256": "a7c9cc8e8f9f03c6d8d867a2a1046c9dd75beb27784b4f3284fcbf24110570c9",
+          "restart_delta": 0,
+          "result_sha256": "c78a6ad5e968ec1447d6f8056589ce6edce4cef77cd1a31c32c938e7eb6c2669",
+          "selected_requests": 5000000,
+          "statuses": {
+            "GRPC_RESOURCEEXHAUSTED": 2179,
+            "OK": 4997821
+          },
+          "successful_requests": 4997821,
+          "target_cpu_aggregate_max_cores": 0.2591922171978972,
+          "target_cpu_aggregate_samples": 8,
+          "target_cpu_limit_cores": 20.0,
+          "target_throttle_ratio_max": 0.0,
+          "treatment": "direct",
+          "useful_rps": 86167.54321980802,
+          "warning_by_failure": {
+            "timeout": 16
+          },
+          "warning_by_probe": {
+            "liveness": 1,
+            "readiness": 15
+          },
+          "warning_event_delta": 16
+        }
+      ],
+      "concurrency": 1500,
+      "observed_driver_nodes": [
+        "rhgnr1"
+      ],
+      "observed_target_nodes": [
+        "gnr2.fm2aihpcsed.com"
+      ],
+      "requested_topology": {
+        "driver_node": "rhgnr1",
+        "schema_version": 1,
+        "target_node": "gnr2.fm2aihpcsed.com"
+      },
+      "run_id": "transport-isolated-r5-c1500-0901a",
+      "topology_isolated": true,
+      "transport_summary_sha256": "c18f7be173c81076c491c05335f2ef4c00e162bcad6ccd398c5f1efcfab760f3"
+    }
+  ],
+  "schema_version": 1,
+  "source": "raw result.json, health-summary.json, resource-summary.json, and topology snapshots",
+  "transitions": [
+    {
+      "from": 50,
+      "to": 125,
+      "treatments": {
+        "clusterip": {
+          "p99_change_percent": 52.809785499024976,
+          "useful_rps_change_percent": 29.980946920443152
+        },
+        "direct": {
+          "p99_change_percent": 55.47908946532558,
+          "useful_rps_change_percent": 21.869431084077796
+        }
+      }
+    },
+    {
+      "from": 125,
+      "to": 250,
+      "treatments": {
+        "clusterip": {
+          "p99_change_percent": 41.415313225058,
+          "useful_rps_change_percent": 15.48921546581985
+        },
+        "direct": {
+          "p99_change_percent": 39.813869027352176,
+          "useful_rps_change_percent": 17.43383209127005
+        }
+      }
+    },
+    {
+      "from": 250,
+      "to": 500,
+      "treatments": {
+        "clusterip": {
+          "p99_change_percent": 119.86054142739953,
+          "useful_rps_change_percent": 7.861533854289582
+        },
+        "direct": {
+          "p99_change_percent": 106.24238980436722,
+          "useful_rps_change_percent": 13.422394408828865
+        }
+      }
+    },
+    {
+      "from": 500,
+      "to": 750,
+      "treatments": {
+        "clusterip": {
+          "p99_change_percent": 12.010745867691508,
+          "useful_rps_change_percent": 11.850599221002422
+        },
+        "direct": {
+          "p99_change_percent": 2.959814224426327,
+          "useful_rps_change_percent": 7.06367112494275
+        }
+      }
+    },
+    {
+      "from": 750,
+      "to": 1000,
+      "treatments": {
+        "clusterip": {
+          "p99_change_percent": 15.293137908061283,
+          "useful_rps_change_percent": 4.0044297819221475
+        },
+        "direct": {
+          "p99_change_percent": 99.1781031384992,
+          "useful_rps_change_percent": 3.013695335738986
+        }
+      }
+    },
+    {
+      "from": 1000,
+      "to": 1500,
+      "treatments": {
+        "clusterip": {
+          "p99_change_percent": 56.00531622894456,
+          "useful_rps_change_percent": 6.827986702096034
+        },
+        "direct": {
+          "p99_change_percent": 13.216129589467007,
+          "useful_rps_change_percent": 7.810387710721889
+        }
+      }
+    }
+  ]
+}

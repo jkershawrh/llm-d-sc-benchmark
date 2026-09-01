@@ -29,6 +29,8 @@ reference instrumentation, and the methods used to interpret results.
 - `hack/arena-sc-inference-*.sh`: closed-loop and deterministic open-loop cell/matrix runners
 - `hack/arena-sc-horizontal-scale-*.{sh,py}`: isolated horizontal campaign planning, preflight, execution, and scoring
 - `hack/arena-sc-knee-confirm-*.py`: preregistered paired-block knee confirmation analyzers
+- `hack/arena-sc-transport-knee-audit.py`: independent raw-cell accounting,
+  topology, health, resource, transition, and checksum audit
 - `hack/arena-sc-same-pod-recovery-*.{sh,py}`: recovery-cycle execution and fail-closed reconciliation
 - `hack/arena-sc-profile-*.py`: cAdvisor and process/scheduler attribution helpers
 - `tests/`: cluster-free regression tests for planners, analyzers, summarizers, and safety gates
@@ -143,13 +145,18 @@ The strongest confirmed finding retained here is a service/SLO knee in
 unique-miss, direct-Pod-IP, single-connection, 180-second workload. See
 `docs/results/confirmed-knee-20260829.md`.
 
-The first independent five-replica cache-hit transport lane observed a
-zero-error boundary in `(250, 500]` aggregate concurrency and a
-throughput/latency knee in `(500, 750]`. A post-run audit found probe failures
-and one target restart that the original health-snapshot timing missed. The
-numeric ladder remains observed-break evidence, but its steady-state capacity
-claim is withdrawn pending the corrected isolated rerun. See
-`docs/results/cache-hit-transport-knee-20260901.md`.
+The corrected node-isolated five-replica cache-hit transport lane confirms a
+zero-error boundary in `(250, 500]` aggregate concurrency and places the
+operational throughput/latency knee in the 750–1000 region. A clean idle
+control contrasts with intermittent probe degradation by concurrency 50,
+repeatable all-cell health failure at 125, and explicit overload from 500.
+ClusterIP/direct useful throughput remained within roughly 4% at every loaded
+rung, aggregate target CPU stayed far below its 20-core limit, and target
+throttling was zero. The loaded ladder is observed-break evidence, not healthy
+steady-state capacity. See
+`docs/results/cache-hit-transport-knee-isolated-20260901.md`; the earlier
+`docs/results/cache-hit-transport-knee-20260901.md` is retained as historical
+audit context.
 
 No repeatable horizontal replica knee has been established. The exploratory
 lane remained efficient through r15; r20 is diagnostic only because its CPU
