@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package classify;
+
+enum ClassificationStatus {
+  CLASSIFICATION_STATUS_UNSPECIFIED = 0;
+  OK = 1;
+  ABSTAIN = 2;
+  UNAVAILABLE = 3;
+}
+
+message ClassifyRequest {
+  string request_id = 1;
+  string session_id = 2;
+  string context = 3;
+  repeated string signals = 4;
+}
+
+message RankedSignal {
+  string label = 1;
+  float score = 2;
+}
+
+message ClassifyResponse {
+  string request_id = 1;
+  string classifier_id = 2;
+  string model_revision = 3;
+  string tokenizer_revision = 4;
+  string taxonomy_revision = 5;
+  ClassificationStatus status = 6;
+  repeated RankedSignal ranked = 7;
+}
+
+service Classify {
+  rpc Classify(ClassifyRequest) returns (ClassifyResponse);
+}

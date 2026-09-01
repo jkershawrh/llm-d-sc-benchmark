@@ -18,6 +18,8 @@ reference instrumentation, and the methods used to interpret results.
 - p50/p95/p99/max latency
 - readiness, liveness, restart, and node stability
 - OpenTelemetry overhead at configurable trace sampling ratios
+- requested-signal, cache-mix, and constant/burst/sawtooth/spike emulation
+- matched ClusterIP, gRPC gateway, and deterministic endpoint-sharding treatments
 - artifact/image/model/tokenizer provenance
 
 ## Framework layout
@@ -32,6 +34,8 @@ reference instrumentation, and the methods used to interpret results.
 - `tests/`: cluster-free regression tests for planners, analyzers, summarizers, and safety gates
 - `instrumentation/reference/`: candidate telemetry and benchmark-driver source
   captured from the evaluated classifier tree
+- `driver/`: standalone benchmark-owned signal emulator; it uses only the
+  public gRPC contract and does not compile or modify classifier code
 - `docs/methodology/`: tested methods, result schemas, interpretation rules,
   known harness boundaries, and reference runs
 - `docs/results/`: concise, claim-bounded findings
@@ -80,6 +84,25 @@ an explicit input:
    traces using the same binary where attribution requires it.
 9. Restore the cluster to the declared safe baseline.
 
+## Independent signal and transport emulation
+
+`driver/` builds `llm-d-sc-signal-emulator`, an external gRPC client that can
+vary requested `signals`, cache-hit/miss ratio, context size, arrival shape,
+connection count, concurrency, and endpoint selection. Multiple explicit
+`--target` values are assigned deterministically, giving the suite a balanced
+direct-endpoint oracle with one global timer.
+
+The Arena transport matrix is deliberately independent of Fleet:
+
+1. emulator to the ordinary ClusterIP;
+2. emulator to a benchmark-owned Istio gRPC Gateway;
+3. emulator directly and evenly to the five ready target Pod IPs.
+
+All three cells prewarm the same stable key on every target, use the same
+aggregate connection/concurrency/request budget, and retain the unchanged
+classifier image. Run `hack/arena-sc-transport-matrix.sh` with a digest-pinned
+emulator image and an isolated kubeconfig.
+
 ## Arena profile
 
 The checked-in manifests preserve the reproducible 2026-08-28 Arena profile,
@@ -111,6 +134,13 @@ The strongest confirmed finding retained here is a service/SLO knee in
 `(41, 42]` offered RPS per Pod for the exact unchanged W1/RT1, 64-token
 unique-miss, direct-Pod-IP, single-connection, 180-second workload. See
 `docs/results/confirmed-knee-20260829.md`.
+
+The independent five-replica cache-hit transport lane also confirmed a
+zero-error boundary in `(250, 500]` aggregate concurrency and a
+throughput/latency knee in `(500, 750]`. Matched direct-Pod routing reproduced
+both boundaries, while CPU remained below saturation, so ClusterIP and CPU are
+not the dominant limit in that scope. See
+`docs/results/cache-hit-transport-knee-20260901.md`.
 
 No repeatable horizontal replica knee has been established. The exploratory
 lane remained efficient through r15; r20 is diagnostic only because its CPU

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "llm-d-sc-cache-hit-transport-knee-decision",
+  "date": "2026-09-01",
+  "scope": {
+    "cluster": "Arena",
+    "replicas": 5,
+    "application_workers_per_replica": 4,
+    "rayon_override": null,
+    "cache_mode": "hit",
+    "context_bytes": 256,
+    "requests_per_cell": 5000000,
+    "connections": 125,
+    "repetitions_per_rung": 3,
+    "classifier_image_digest": "sha256:04323612ce3f73873b4c3ed6e09264e828241537e2c1a4231b43f32e9744d5aa",
+    "driver_image_digest": "sha256:5c7420b265163dfacd141e10be4ff297ea82d5675ad91db2323ae96a3e1fe452"
+  },
+  "decision": {
+    "zero_error_slo_boundary": "(250, 500] aggregate concurrency",
+    "throughput_latency_knee": "(500, 750] aggregate concurrency",
+    "clusterip_is_dominant_ceiling": false,
+    "cpu_is_immediate_limiter": false,
+    "narrowest_attribution": "SC/application-path concurrency or admission boundary shared by ClusterIP and direct Pod routing"
+  },
+  "rungs": [
+    {
+      "concurrency": 125,
+      "run_id": "transport-r5-c125-0901a",
+      "clusterip": {"median_useful_rps": 46635.74017320792, "median_p99_ms": 12.105, "median_success_rate": 1.0, "total_errors": 0},
+      "direct": {"median_useful_rps": 46920.023307758056, "median_p99_ms": 11.977, "median_success_rate": 1.0, "total_errors": 0}
+    },
+    {
+      "concurrency": 250,
+      "run_id": "transport-r5-c250-0901b",
+      "clusterip": {"median_useful_rps": 54667.76338989145, "median_p99_ms": 17.193, "median_success_rate": 1.0, "total_errors": 0},
+      "direct": {"median_useful_rps": 55696.024729009856, "median_p99_ms": 16.625, "median_success_rate": 1.0, "total_errors": 0}
+    },
+    {
+      "concurrency": 500,
+      "run_id": "transport-r5-c500-0901b",
+      "clusterip": {"median_useful_rps": 61610.34264316466, "median_p99_ms": 24.348, "median_success_rate": 0.9997334, "total_errors": 4396},
+      "direct": {"median_useful_rps": 62954.78495079036, "median_p99_ms": 24.17, "median_success_rate": 0.9995822, "total_errors": 7002}
+    },
+    {
+      "concurrency": 750,
+      "run_id": "transport-r5-c750-0901a",
+      "clusterip": {"median_useful_rps": 64649.52844412405, "median_p99_ms": 32.152, "median_success_rate": 0.9993966, "total_errors": 13035},
+      "direct": {"median_useful_rps": 65459.09603870974, "median_p99_ms": 31.329, "median_success_rate": 0.9991462, "total_errors": 10340}
+    }
+  ],
+  "transitions": {
+    "125_to_250": {
+      "clusterip_useful_rps_gain_percent": 17.22289211418564,
+      "clusterip_p99_growth_percent": 42.03221809169766,
+      "direct_useful_rps_gain_percent": 18.704171060803198,
+      "direct_p99_growth_percent": 38.80771478667447
+    },
+    "250_to_500": {
+      "clusterip_useful_rps_gain_percent": 12.699585318240691,
+      "clusterip_p99_growth_percent": 41.61577386145523,
+      "direct_useful_rps_gain_percent": 13.032815640071526,
+      "direct_p99_growth_percent": 45.383458646616546
+    },
+    "500_to_750": {
+      "clusterip_useful_rps_gain_percent": 4.932914946702671,
+      "clusterip_p99_growth_percent": 32.05191391490061,
+      "direct_useful_rps_gain_percent": 3.977951937850177,
+      "direct_p99_growth_percent": 29.619362846503925
+    }
+  },
+  "accounting": {
+    "selected_requests": 120000000,
+    "ok_responses": 119965227,
+    "resource_exhausted_responses": 34773,
+    "other_responses": 0
+  },
+  "raw_summary_sha256": {
+    "transport-r5-c125-0901a": "2007668ee28b96ff13ff5a3218569c3f028e9c67048b9e9f8b998064cf572125",
+    "transport-r5-c250-0901b": "e7852bfd71a486a29fde24563a6b0eef0ad19fb7c52d1e29073b0ed2dbfc17ac",
+    "transport-r5-c500-0901b": "84645114716677069171d9965dd01411d1941409e69ef5643aa3460d4cc1ed2d",
+    "transport-r5-c750-0901a": "57b4b8d796f45f7d1f42393893265be8a3cfa9054494fd8db7634ff1f025884d"
+  }
+}

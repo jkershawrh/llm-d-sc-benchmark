@@ -1,0 +1,20 @@
+FROM registry.access.redhat.com/ubi9/ubi:9.6 AS builder
+USER 0
+RUN dnf install -y rust cargo gcc make \
+ && dnf clean all
+
+WORKDIR /src
+COPY driver/Cargo.toml driver/Cargo.lock driver/build.rs ./
+COPY driver/proto ./proto
+COPY driver/src ./src
+RUN cargo build --release --locked --bin llm-d-sc-signal-emulator
+
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.6 AS runtime
+ARG LLM_D_SC_BENCHMARK_REVISION=unattested
+LABEL org.opencontainers.image.title="llm-d-sc independent signal emulator" \
+      org.opencontainers.image.description="Benchmark-only gRPC signal, arrival, and transport emulator" \
+      org.opencontainers.image.revision="${LLM_D_SC_BENCHMARK_REVISION}"
+COPY --from=builder /src/target/release/llm-d-sc-signal-emulator \
+  /usr/local/bin/llm-d-sc-signal-emulator
+USER 65534
+ENTRYPOINT ["/usr/local/bin/llm-d-sc-signal-emulator"]
