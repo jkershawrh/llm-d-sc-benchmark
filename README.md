@@ -43,9 +43,23 @@ reference instrumentation, and the methods used to interpret results.
 - `docs/results/`: concise, claim-bounded findings
 - `evidence/`: compact summaries, provenance, independent audits, and checksums;
   full raw captures remain outside Git
+- `contracts/vef/` and `hack/vef-export-pilot.py`: versioned, sanitized,
+  fail-closed export of a bounded capacity-decision pilot to VEF
 
 Generated runs default to `results/`, which is intentionally ignored by Git.
 Set `RESULT_ROOT` to an external evidence volume for long campaigns.
+
+## ROI evidence pilot
+
+The benchmark is an evidence engine, not an ROI calculator. It can establish
+technical performance, safety, and reproducibility boundaries; proving value
+also requires a representative workload, an independent business
+counterfactual, complete costs, attribution, and customer/finance validation.
+
+Start with [`examples/vef-project-intake.yaml`](examples/vef-project-intake.yaml)
+and the complete [VEF pilot guide](docs/vef-pilot.md). The pilot exporter emits
+a deterministic candidate claim and fails closed when a value or safety gate
+is absent. Raw/private evidence and generated pilot outputs remain ignored.
 
 ## Local verification
 

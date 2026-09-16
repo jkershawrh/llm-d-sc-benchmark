@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jkershawrh/llm-d-sc-benchmark/contracts/vef/benchmark-pilot-input.v1alpha1.schema.json",
+  "title": "llm-d SC benchmark ROI pilot input",
+  "type": "object",
+  "required": ["schema_version", "pilot_id", "product", "outcome_id", "population", "baseline", "treatment", "counterfactual", "safety", "attribution", "economics", "approvals", "evidence_sources"],
+  "properties": {
+    "schema_version": {"const": "llm-d-sc.vef-pilot-input.v1alpha1"},
+    "pilot_id": {"type": "string", "minLength": 1},
+    "product": {"type": "string", "minLength": 1},
+    "outcome_id": {"type": "string", "minLength": 1},
+    "population": {
+      "type": "object",
+      "required": ["workload_digest", "period_start", "period_end", "representative", "total_signals"],
+      "properties": {
+        "workload_digest": {"type": "string", "minLength": 1},
+        "period_start": {"type": "string", "format": "date-time"},
+        "period_end": {"type": "string", "format": "date-time"},
+        "representative": {"type": "boolean"},
+        "total_signals": {"type": "integer", "minimum": 1}
+      }
+    },
+    "baseline": {"$ref": "#/$defs/cohort"},
+    "treatment": {"$ref": "#/$defs/cohort"},
+    "counterfactual": {
+      "type": "object",
+      "required": ["independent", "matched_population", "competing_factors"],
+      "properties": {
+        "independent": {"type": "boolean"},
+        "matched_population": {"type": "boolean"},
+        "competing_factors": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["accounting_complete", "overload_events", "probe_failures", "restart_delta", "recovery_complete", "failure_threshold_breached"],
+      "properties": {
+        "accounting_complete": {"type": "boolean"},
+        "overload_events": {"type": "integer", "minimum": 0},
+        "probe_failures": {"type": "integer", "minimum": 0},
+        "restart_delta": {"type": "integer", "minimum": 0},
+        "recovery_complete": {"type": "boolean"},
+        "failure_threshold_breached": {"type": "boolean"}
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "required": ["product_share"],
+      "properties": {"product_share": {"type": "number", "minimum": 0, "maximum": 1}}
+    },
+    "economics": {
+      "type": "object",
+      "required": ["currency", "engineering_effort", "other_realization_cost_usd", "marginal_delivery_cost_measured"],
+      "properties": {
+        "currency": {"const": "USD"},
+        "other_realization_cost_usd": {"type": "number", "minimum": 0},
+        "marginal_delivery_cost_measured": {"type": "boolean"},
+        "engineering_effort": {"type": "array", "items": {"$ref": "#/$defs/effort"}, "minItems": 1}
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "required": ["customer_validated", "finance_approved", "privacy_approved"],
+      "properties": {
+        "customer_validated": {"type": "boolean"},
+        "finance_approved": {"type": "boolean"},
+        "privacy_approved": {"type": "boolean"}
+      }
+    },
+    "evidence_sources": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  },
+  "$defs": {
+    "cohort": {
+      "type": "object",
+      "required": ["workload_digest", "qualified_successes", "operating_cost_usd", "false_negative_count", "dropped_requests", "unknown_outcomes"],
+      "properties": {
+        "workload_digest": {"type": "string", "minLength": 1},
+        "qualified_successes": {"type": "integer", "minimum": 1},
+        "operating_cost_usd": {"type": "number", "minimum": 0},
+        "false_negative_count": {"type": "integer", "minimum": 0},
+        "dropped_requests": {"type": "integer", "minimum": 0},
+        "unknown_outcomes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "effort": {
+      "type": "object",
+      "required": ["activity", "lifecycle", "role", "hours", "loaded_rate_usd", "source"],
+      "properties": {
+        "activity": {"enum": ["ruleset_design", "ruleset_review", "ruleset_testing", "ruleset_deployment", "ruleset_monitoring", "ruleset_maintenance"]},
+        "lifecycle": {"enum": ["initial", "recurring"]},
+        "role": {"type": "string", "minLength": 1},
+        "hours": {"type": "number", "minimum": 0},
+        "loaded_rate_usd": {"type": "number", "minimum": 0},
+        "source": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

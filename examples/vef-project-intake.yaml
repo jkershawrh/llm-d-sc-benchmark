@@ -1,0 +1,80 @@
+schema_version: vef.project-intake.v1alpha1
+project:
+  name: llm-d-sc-benchmark-pilot
+  repository: jkershawrh/llm-d-sc-benchmark
+  decision: "Decide whether benchmark-guided capacity configuration merits broader adoption"
+  audience: engineering-and-finance
+  owners:
+    product_semantics: unknown
+    evidence: unknown
+    finance: unknown
+    privacy: unknown
+    customer_validation: unknown
+
+value_hypothesis:
+  capability: "benchmark-guided capacity configuration"
+  customer_observable_outcome: "lower fully loaded cost per SLO-qualified successful classification"
+  outcome_id: llm-d-sc.cost-per-qualified-classification
+  population: "representative bounded customer workload; must be supplied"
+  inclusion_rule: "requests within the preregistered window that meet the success and SLO definition"
+  exclusions: ["warm-up", "partial runs", "unreconciled outcomes", "health-invalid cells"]
+  unit: USD_per_SLO_qualified_success
+  period: unknown
+  minimum_meaningful_improvement: unknown
+  falsification_condition: "no improvement, negative net value, or any preregistered safety threshold breach"
+
+evidence:
+  observed_events: ["qualified successes", "fully loaded cohort cost", "overload", "probe failures", "restarts", "recovery"]
+  failure_events: ["unreconciled request", "SLO miss", "overload", "probe failure", "restart", "incomplete recovery"]
+  provenance: "benchmark evidence digest plus private pilot cost ledger"
+  bounded_start_end_supported: true
+  unknown_state_supported: true
+  raw_storage: private
+  retention_policy: unknown
+  sanitized_export: contracts/vef/benchmark-pilot-claim.v1alpha1.schema.json
+
+counterfactual:
+  method: matched_control
+  independent_control: "current/default capacity-planning process"
+  matched_population: "same workload digest, inclusion rules, SLO, and bounded period"
+  matching_variables: ["workload digest", "request mix", "SLO", "resource pricing", "period"]
+  competing_explanations: ["workload mix", "platform contention", "pricing change", "operator learning", "runtime change"]
+  contamination_risks: ["treatment guidance applied to control", "different workload digest"]
+  invalidation_condition: "unmatched workload or non-independent control"
+
+attribution_and_safety:
+  product_share: unknown
+  other_contributors: ["classifier runtime", "platform", "operator process"]
+  dangerous_miss_definition: "a cost improvement reported despite a safety, accounting, or recovery failure"
+  dangerous_miss_threshold: 0
+  fail_closed_conditions: ["non-representative workload", "unmatched control", "incomplete accounting", "failure threshold breach", "missing approvals"]
+  customer_validated: false
+
+economics:
+  currency: USD
+  financial_conversion: "difference in fully loaded cost per SLO-qualified success, applied only to observed treatment volume"
+  infrastructure_cost: unknown
+  inference_cost: unknown
+  enablement_cost: unknown
+  support_and_services_cost: unknown
+  human_transition_cost: unknown
+  engineering_effort:
+    - {activity: ruleset_design, lifecycle: initial, hours: unknown, loaded_role_rate: unknown, source: unknown}
+    - {activity: ruleset_review, lifecycle: initial, hours: unknown, loaded_role_rate: unknown, source: unknown}
+    - {activity: ruleset_testing, lifecycle: initial, hours: unknown, loaded_role_rate: unknown, source: unknown}
+    - {activity: ruleset_deployment, lifecycle: initial, hours: unknown, loaded_role_rate: unknown, source: unknown}
+    - {activity: ruleset_monitoring, lifecycle: recurring, hours: unknown, loaded_role_rate: unknown, source: unknown}
+    - {activity: ruleset_maintenance, lifecycle: recurring, hours: unknown, loaded_role_rate: unknown, source: unknown}
+  marginal_delivery_cost: unknown
+  automation_rate: unknown
+  cohort_reuse: unknown
+  time_to_value: unknown
+
+pilot_acceptance:
+  success_threshold: unknown
+  failure_threshold: "zero preregistered dangerous misses"
+  stop_conditions: ["accounting mismatch", "health-invalid cohort", "recovery incomplete", "privacy violation"]
+  privacy_approved: false
+  finance_approved: false
+  customer_approved: false
+  result_to_decision_mapping: "positive net value and all gates pass -> adoption candidate; otherwise remain unproven or stop"

@@ -6,6 +6,8 @@ kubeconfig*
 *.pem
 /results/
 /artifacts/
+/private-evidence/
+/pilot-outputs/
 target/
 __pycache__/
 *.pyc

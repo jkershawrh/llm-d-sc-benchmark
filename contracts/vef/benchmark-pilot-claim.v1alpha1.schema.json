@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jkershawrh/llm-d-sc-benchmark/contracts/vef/benchmark-pilot-claim.v1alpha1.schema.json",
+  "title": "llm-d SC benchmark VEF candidate claim",
+  "type": "object",
+  "required": ["schema_version", "claim_status", "value_eligible", "eligibility_gaps", "claim"],
+  "properties": {
+    "schema_version": {"const": "llm-d-sc.vef-pilot-claim.v1alpha1"},
+    "claim_status": {"enum": ["unproven", "decision-grade"]},
+    "value_eligible": {"type": "boolean"},
+    "eligibility_gaps": {"type": "array", "items": {"type": "string"}},
+    "claim": {
+      "type": "object",
+      "required": ["id", "product", "outcome_id", "value_type", "measurement", "counterfactual", "attribution", "financial_model", "evidence", "realization_cost"]
+    }
+  }
+}

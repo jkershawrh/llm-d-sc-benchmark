@@ -1,0 +1,12 @@
+evidence_schemas:
+  - contracts/vef/benchmark-pilot-input.v1alpha1.schema.json
+  - contracts/vef/benchmark-pilot-claim.v1alpha1.schema.json
+exporters:
+  - hack/vef-export-pilot.py
+test_commands:
+  - python3 -m unittest discover -s tests -p test_arena_sc_vef_pilot.py
+ignore_paths:
+  - private-evidence/
+  - pilot-outputs/
+  - results/
+  - artifacts/
